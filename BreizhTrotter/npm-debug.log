@@ -2,6 +2,7 @@
 1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
 1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
 1 verbose cli   'install',
+1 verbose cli   '--save-dev',
 1 verbose cli   'gulp' ]
 2 info using npm@2.11.3
 3 info using node@v0.12.7
@@ -25,21 +26,21 @@
 16 verbose addNameRange registry:https://registry.npmjs.org/gulp not in flight; fetching
 17 verbose request uri https://registry.npmjs.org/gulp
 18 verbose request no auth needed
-19 info attempt registry request try #1 at 14:37:40
-20 verbose request id a1b4c1e729b1813a
+19 info attempt registry request try #1 at 15:03:27
+20 verbose request id 91e57a0a0fa45881
 21 http request GET https://registry.npmjs.org/gulp
 22 info retry will retry, error on last attempt: Error: connect ETIMEDOUT
-23 info attempt registry request try #2 at 14:38:11
+23 info attempt registry request try #2 at 15:03:58
 24 http request GET https://registry.npmjs.org/gulp
 25 info retry will retry, error on last attempt: Error: connect ETIMEDOUT
-26 info attempt registry request try #3 at 14:39:32
+26 info attempt registry request try #3 at 15:05:19
 27 http request GET https://registry.npmjs.org/gulp
 28 verbose stack Error: connect ETIMEDOUT
 28 verbose stack     at exports._errnoException (util.js:746:11)
 28 verbose stack     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1010:19)
 29 verbose cwd C:\wamp\www\BreizhTrotter\BreizhTrotter\BreizhTrotter
 30 error Windows_NT 6.3.9600
-31 error argv "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "gulp"
+31 error argv "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "--save-dev" "gulp"
 32 error node v0.12.7
 33 error npm  v2.11.3
 34 error code ETIMEDOUT
