@@ -4,7 +4,6 @@ Breizh Trotteur Installation
 
 ## Project install
 
-
 Require -> Git, Composer
 
 	git clone https://github.com/GroupBreizhTrotter/BreizhTrotter.git
@@ -36,6 +35,12 @@ Require -> Npm
 =============================
 
 ## ORM / Doctrine
+
+####List doctrine command
+	php app/console doctrine
+
+####Create database
+	php app/console doctrine:database:create
 
 ####Generate entity
 	php app/console generate:doctrine:entity
