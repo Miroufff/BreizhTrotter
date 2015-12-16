@@ -2,13 +2,16 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        {% block stylesheets %}
+            <link href=" {{ asset('../css/master.css') }}" rel="stylesheet" /> 
+        {% endblock %}
     </head>
     <body>
-        <div>
+        <div is='form-connection' class= "form row">
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
                 <a href="{{ path('fos_user_security_logout') }}">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                    {{ 'Déconnexion'|trans({}, 'FOSUserBundle') }}
                 </a>
             {% else %}
                 <!--<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a> -->
