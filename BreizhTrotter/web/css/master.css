@@ -7371,6 +7371,18 @@ code {
     -webkit-animation: fade-in 1s .2s forwards;
     animation: fade-in 1s .2s forwards; } }
 
-/**
+/*****************************************************************
 *	CUSTOM CSS
 */
+/* line 38, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
+html, body {
+  box-sizing: border-box; }
+
+/*****************************************************************
+*	Layer Connexion FSOBundle
+*/
+/* line 48, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
+#form-connection #remember_me {
+  width: 20px;
+  float: left;
+  margin-right: 15px; }
