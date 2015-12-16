@@ -5,6 +5,7 @@
         <div id="container">
             <div id="welcome">
                 <h1>BREIZH TROTTEUR</h1>
+                <h3>Bonjour {{ app.user.username }}</h3>
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     <a href="./logout">
                         <h3>Déconnexion</h3>

@@ -7271,88 +7271,55 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
-/*
-*	DEFAULT SYMFONY CSS
+/*****************************************************************
+*	CUSTOM CSS
 */
 /* line 5, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
-body {
-  background: #F5F5F5;
-  font: 18px/1.5 sans-serif; }
-
-/* line 6, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
-h1, h2 {
-  line-height: 1.2;
-  margin: 0 0 .5em; }
-
-/* line 7, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
-h1 {
-  font-size: 36px; }
+html, body {
+  box-sizing: border-box; }
 
 /* line 8, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
-h2 {
-  font-size: 21px;
-  margin-bottom: 1em; }
+body {
+  max-width: 1260px;
+  margin: 0 auto; }
 
-/* line 9, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
-p {
-  margin: 0 0 1em 0; }
+/*****************************************************************
+*	Layer Connexion FSOUserBundle
+*/
+/* line 19, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
+#form-connection .row {
+  text-align: center;
+  margin-top: 50px; }
 
-/* line 10, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
-a {
-  color: #0000F0; }
+/* line 23, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
+#form-connection .account-wall {
+  max-width: 600px;
+  margin: 60px auto 0; }
+  /* line 26, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
+  #form-connection .account-wall input {
+    margin-bottom: 15px; }
+  /* line 29, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
+  #form-connection .account-wall #remember_me {
+    width: 20px;
+    float: left;
+    margin-right: 15px; }
+  /* line 34, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
+  #form-connection .account-wall #_submit {
+    margin: 100px auto 0;
+    max-width: 350px; }
 
-/* line 11, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
-a:hover {
-  text-decoration: none; }
-
-/* line 12, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
-code {
-  background: #F5F5F5;
-  max-width: 100px;
-  padding: 2px 6px;
-  word-wrap: break-word; }
-
-/* line 13, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
-#wrapper {
-  background: #FFF;
-  margin: 1em auto;
-  max-width: 800px;
-  width: 95%; }
-
-/* line 14, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
-#container {
-  padding: 2em; }
-
-/* line 15, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
-#welcome, #status {
-  margin-bottom: 2em; }
-
-/* line 16, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
-#welcome h1 span {
-  display: block;
-  font-size: 75%; }
-
-/* line 17, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
-#icon-status, #icon-book {
-  float: left;
-  height: 64px;
-  margin-right: 1em;
-  margin-top: -4px;
-  width: 64px; }
-
-/* line 18, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
-#icon-book {
-  display: none; }
-
-@media (min-width: 768px) {
-  /* line 21, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
+/*****************************************************************
+*	
+*/
+@media (max-width: 768px) {
+  /* line 46, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
   #wrapper {
     width: 80%;
     margin: 2em auto; }
-  /* line 22, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
+  /* line 47, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
   #icon-book {
     display: inline-block; }
-  /* line 23, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
+  /* line 48, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
   #status a, #next a {
     display: block; }
   @-webkit-keyframes fade-in {
@@ -7365,24 +7332,8 @@ code {
       opacity: 0; }
     100% {
       opacity: 1; } }
-  /* line 27, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
+  /* line 52, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
   .sf-toolbar {
     opacity: 0;
     -webkit-animation: fade-in 1s .2s forwards;
     animation: fade-in 1s .2s forwards; } }
-
-/*****************************************************************
-*	CUSTOM CSS
-*/
-/* line 38, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
-html, body {
-  box-sizing: border-box; }
-
-/*****************************************************************
-*	Layer Connexion FSOBundle
-*/
-/* line 48, C:/wamp/www/BreizhTrotter/BreizhTrotter/BreizhTrotter/web/bundles/AppBundle/sass/main.scss */
-#form-connection #remember_me {
-  width: 20px;
-  float: left;
-  margin-right: 15px; }

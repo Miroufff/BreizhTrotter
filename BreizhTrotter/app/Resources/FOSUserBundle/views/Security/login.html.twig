@@ -7,6 +7,7 @@
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
 
+
 <div class="account-wall">
 	<form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
 	    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
@@ -20,7 +21,7 @@
 	    <input type="checkbox" id="remember_me" class="form-control" name="_remember_me" value="on" />
 	    <label class="checkbox pull-left" for="remember_me">{{ 'Remember me'|trans }}</label>
 
-	    <input class="btn btn-lg btn-primary btn-block" type="submit" id="_submit" name="_submit" value="{{ 'Submit'|trans }}" />
+	    <input class="btn btn-lg btn-primary btn-block" type="submit" id="_submit" name="_submit" value="{{ 'Validez'|trans }}" />
 	</form>
 </div>
 {% endblock fos_user_content %}
