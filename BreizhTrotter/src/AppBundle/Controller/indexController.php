@@ -20,6 +20,6 @@ class indexController extends Controller
             ));
         }
 
-        return $this->redirect('/login');        
+        return $this->redirect('/login');
     }
 }
