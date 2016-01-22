@@ -1,0 +1,26 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">BreizhTrotteur</a>
+		</div>
+		<div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/">Home</a></li>
+				<li><a href="/games">Page 1</a></li>
+				<li><a href="#">Page 2</a></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profil <span class="caret"></span></a>
+            	<ul class="dropdown-menu">
+					<li><a href="/profile/edit">Editez votre profil</a></li>
+					<li><a href="/register/">Créez un utilisateur</a></li>
+				</ul>
+			</ul>
+			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+				<div class="logout">
+	                <a href="{{ path('fos_user_security_logout') }}">
+	                    {{ 'Déconnexion'|trans({}, 'FOSUserBundle') }}
+	                </a>
+	        	</div>
+	        {% endif %}
+		</div>
+	</div>
+</nav>  
