@@ -3,9 +3,9 @@
 namespace AppBundle\Entity;
 
 /**
- * User
+ * FosUser
  */
-class User
+class FosUser
 {
     /**
      * @var string
@@ -28,19 +28,14 @@ class User
     private $emailCanonical;
 
     /**
-     * @var string
-     */
-    private $salt;
-
-    /**
-     * @var integer
+     * @var boolean
      */
     private $enabled;
 
     /**
-     * @var \DateTime
+     * @var string
      */
-    private $lastLogin;
+    private $salt;
 
     /**
      * @var string
@@ -48,12 +43,17 @@ class User
     private $password;
 
     /**
-     * @var integer
+     * @var \DateTime
+     */
+    private $lastLogin;
+
+    /**
+     * @var boolean
      */
     private $locked;
 
     /**
-     * @var integer
+     * @var boolean
      */
     private $expired;
 
@@ -73,7 +73,12 @@ class User
     private $passwordRequestedAt;
 
     /**
-     * @var integer
+     * @var array
+     */
+    private $roles;
+
+    /**
+     * @var boolean
      */
     private $credentialsExpired;
 
@@ -81,11 +86,6 @@ class User
      * @var \DateTime
      */
     private $credentialsExpireAt;
-
-    /**
-     * @var string
-     */
-    private $roles;
 
     /**
      * @var integer
@@ -98,7 +98,7 @@ class User
      *
      * @param string $username
      *
-     * @return User
+     * @return FosUser
      */
     public function setUsername($username)
     {
@@ -122,7 +122,7 @@ class User
      *
      * @param string $usernameCanonical
      *
-     * @return User
+     * @return FosUser
      */
     public function setUsernameCanonical($usernameCanonical)
     {
@@ -146,7 +146,7 @@ class User
      *
      * @param string $email
      *
-     * @return User
+     * @return FosUser
      */
     public function setEmail($email)
     {
@@ -170,7 +170,7 @@ class User
      *
      * @param string $emailCanonical
      *
-     * @return User
+     * @return FosUser
      */
     public function setEmailCanonical($emailCanonical)
     {
@@ -190,11 +190,35 @@ class User
     }
 
     /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     *
+     * @return FosUser
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
      * Set salt
      *
      * @param string $salt
      *
-     * @return User
+     * @return FosUser
      */
     public function setSalt($salt)
     {
@@ -214,59 +238,11 @@ class User
     }
 
     /**
-     * Set enabled
-     *
-     * @param integer $enabled
-     *
-     * @return User
-     */
-    public function setEnabled($enabled)
-    {
-        $this->enabled = $enabled;
-
-        return $this;
-    }
-
-    /**
-     * Get enabled
-     *
-     * @return integer
-     */
-    public function getEnabled()
-    {
-        return $this->enabled;
-    }
-
-    /**
-     * Set lastLogin
-     *
-     * @param \DateTime $lastLogin
-     *
-     * @return User
-     */
-    public function setLastLogin($lastLogin)
-    {
-        $this->lastLogin = $lastLogin;
-
-        return $this;
-    }
-
-    /**
-     * Get lastLogin
-     *
-     * @return \DateTime
-     */
-    public function getLastLogin()
-    {
-        return $this->lastLogin;
-    }
-
-    /**
      * Set password
      *
      * @param string $password
      *
-     * @return User
+     * @return FosUser
      */
     public function setPassword($password)
     {
@@ -286,11 +262,35 @@ class User
     }
 
     /**
+     * Set lastLogin
+     *
+     * @param \DateTime $lastLogin
+     *
+     * @return FosUser
+     */
+    public function setLastLogin($lastLogin)
+    {
+        $this->lastLogin = $lastLogin;
+
+        return $this;
+    }
+
+    /**
+     * Get lastLogin
+     *
+     * @return \DateTime
+     */
+    public function getLastLogin()
+    {
+        return $this->lastLogin;
+    }
+
+    /**
      * Set locked
      *
-     * @param integer $locked
+     * @param boolean $locked
      *
-     * @return User
+     * @return FosUser
      */
     public function setLocked($locked)
     {
@@ -302,7 +302,7 @@ class User
     /**
      * Get locked
      *
-     * @return integer
+     * @return boolean
      */
     public function getLocked()
     {
@@ -312,9 +312,9 @@ class User
     /**
      * Set expired
      *
-     * @param integer $expired
+     * @param boolean $expired
      *
-     * @return User
+     * @return FosUser
      */
     public function setExpired($expired)
     {
@@ -326,7 +326,7 @@ class User
     /**
      * Get expired
      *
-     * @return integer
+     * @return boolean
      */
     public function getExpired()
     {
@@ -338,7 +338,7 @@ class User
      *
      * @param \DateTime $expiresAt
      *
-     * @return User
+     * @return FosUser
      */
     public function setExpiresAt($expiresAt)
     {
@@ -362,7 +362,7 @@ class User
      *
      * @param string $confirmationToken
      *
-     * @return User
+     * @return FosUser
      */
     public function setConfirmationToken($confirmationToken)
     {
@@ -386,7 +386,7 @@ class User
      *
      * @param \DateTime $passwordRequestedAt
      *
-     * @return User
+     * @return FosUser
      */
     public function setPasswordRequestedAt($passwordRequestedAt)
     {
@@ -406,11 +406,35 @@ class User
     }
 
     /**
+     * Set roles
+     *
+     * @param array $roles
+     *
+     * @return FosUser
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * Get roles
+     *
+     * @return array
+     */
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+    /**
      * Set credentialsExpired
      *
-     * @param integer $credentialsExpired
+     * @param boolean $credentialsExpired
      *
-     * @return User
+     * @return FosUser
      */
     public function setCredentialsExpired($credentialsExpired)
     {
@@ -422,7 +446,7 @@ class User
     /**
      * Get credentialsExpired
      *
-     * @return integer
+     * @return boolean
      */
     public function getCredentialsExpired()
     {
@@ -434,7 +458,7 @@ class User
      *
      * @param \DateTime $credentialsExpireAt
      *
-     * @return User
+     * @return FosUser
      */
     public function setCredentialsExpireAt($credentialsExpireAt)
     {
@@ -451,30 +475,6 @@ class User
     public function getCredentialsExpireAt()
     {
         return $this->credentialsExpireAt;
-    }
-
-    /**
-     * Set roles
-     *
-     * @param string $roles
-     *
-     * @return User
-     */
-    public function setRoles($roles)
-    {
-        $this->roles = $roles;
-
-        return $this;
-    }
-
-    /**
-     * Get roles
-     *
-     * @return string
-     */
-    public function getRoles()
-    {
-        return $this->roles;
     }
 
     /**
