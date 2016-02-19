@@ -1,15 +1,18 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
+
+<div id="new_action" class="form-container form row">
     <h1>Action creation</h1>
 
     {{ form(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('ens_action') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+	<ul class="record_actions">
+	    <li>
+	        <a href="{{ path('ens_action') }}">
+	            Back to the list
+	        </a>
+	    </li>
+	</ul>
+</div>
 {% endblock %}

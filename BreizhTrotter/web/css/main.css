@@ -15,9 +15,16 @@ body {
   margin-top: 100px; }
 
 /*****************************************************************
+*		Form container
+*/
+/* line 19, stdin */
+.form-container {
+  margin-top: 100px; }
+
+/*****************************************************************
 *	Nav-bar top
 */
-/* line 21, stdin */
+/* line 27, stdin */
 .navbar-fixed-top .logout {
   float: right;
   height: 50px;
@@ -25,40 +32,40 @@ body {
   font-size: 17px;
   margin-right: 150px; }
 
-/* line 30, stdin */
+/* line 36, stdin */
 .dropdown .dropdown-menu {
   background-color: #f8f8f8;
   border-color: #e7e7e7; }
 
-/* line 35, stdin */
+/* line 41, stdin */
 .dropdown:hover .dropdown-menu {
   display: block; }
 
 /*****************************************************************
 *	Layer FSOUserBundle
 */
-/* line 46, stdin */
+/* line 52, stdin */
 #form-connection .row {
   text-align: center;
   margin-top: 50px; }
 
-/* line 50, stdin */
+/* line 56, stdin */
 #form-connection .account-wall {
   max-width: 600px;
   margin: 80px auto 0; }
-  /* line 53, stdin */
+  /* line 59, stdin */
   #form-connection .account-wall input {
     margin-bottom: 15px; }
-  /* line 56, stdin */
+  /* line 62, stdin */
   #form-connection .account-wall #remember_me {
     width: 20px;
     float: left;
     margin-right: 15px; }
-  /* line 61, stdin */
+  /* line 67, stdin */
   #form-connection .account-wall #_submit {
     margin: 100px auto 0;
     max-width: 350px; }
 
-/* line 68, stdin */
+/* line 75, stdin */
 #user-container {
   margin-top: 100px; }
