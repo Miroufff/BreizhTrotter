@@ -6,6 +6,9 @@ use FOS\UserBundle\Model\User as FOSExtendUser;
 use FOS\UserBundle\Model\GroupInterface;
 use FOS\UserBundle\Model\GroupableInterface;
 
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * User
  */
