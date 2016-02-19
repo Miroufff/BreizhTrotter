@@ -3,7 +3,7 @@ var gulp = require('gulp');
 var sass = sass = require('gulp-sass');
 
 gulp.task('sass', function () {
-    gulp.src('./src/AppBundle/sass/**/*.scss').pipe(sass({sourceComments: 'map'})).pipe(gulp.dest('./web/css/'));
+    gulp.src('./src/AppBundle/sass/master.scss').pipe(sass({sourceComments: 'map'})).pipe(gulp.dest('./web/css/'));
 });
 
 gulp.task('watch', function () {
