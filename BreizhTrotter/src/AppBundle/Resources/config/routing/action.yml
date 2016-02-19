@@ -1,0 +1,30 @@
+ens_action:
+    path:     /
+    defaults: { _controller: "AppBundle:Action:index" }
+
+ens_action_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Action:show" }
+
+ens_action_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Action:new" }
+
+ens_action_create:
+    path:     /create
+    defaults: { _controller: "AppBundle:Action:create" }
+    methods:  POST
+
+ens_action_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Action:edit" }
+
+ens_action_update:
+    path:     /{id}/update
+    defaults: { _controller: "AppBundle:Action:update" }
+    methods:  [POST, PUT]
+
+ens_action_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Action:delete" }
+    methods:  [POST, DELETE]

@@ -1,0 +1,30 @@
+ens_constraint:
+    path:     /
+    defaults: { _controller: "AppBundle:Constraint:index" }
+
+ens_constraint_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Constraint:show" }
+
+ens_constraint_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Constraint:new" }
+
+ens_constraint_create:
+    path:     /create
+    defaults: { _controller: "AppBundle:Constraint:create" }
+    methods:  POST
+
+ens_constraint_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Constraint:edit" }
+
+ens_constraint_update:
+    path:     /{id}/update
+    defaults: { _controller: "AppBundle:Constraint:update" }
+    methods:  [POST, PUT]
+
+ens_constraint_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Constraint:delete" }
+    methods:  [POST, DELETE]

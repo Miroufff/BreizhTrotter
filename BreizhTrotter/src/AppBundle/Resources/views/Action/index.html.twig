@@ -1,0 +1,57 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Action list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Step</th>
+                <th>Updatedate</th>
+                <th>Feasibility</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Budget</th>
+                <th>Timelimit</th>
+                <th>Accomplishment</th>
+                <th>Idimage</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('ens_action_show', { 'id': entity.id }) }}">{{ entity.step }}</a></td>
+                <td>{% if entity.updateDate %}{{ entity.updateDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.feasibility }}</td>
+                <td>{{ entity.name }}</td>
+                <td>{{ entity.description }}</td>
+                <td>{{ entity.budget }}</td>
+                <td>{{ entity.timeLimit }}</td>
+                <td>{{ entity.accomplishment }}</td>
+                <td>{{ entity.idImage }}</td>
+                <td>{{ entity.id }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('ens_action_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('ens_action_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('ens_action_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

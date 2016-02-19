@@ -1,0 +1,30 @@
+ens_profit:
+    path:     /
+    defaults: { _controller: "AppBundle:Profit:index" }
+
+ens_profit_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Profit:show" }
+
+ens_profit_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Profit:new" }
+
+ens_profit_create:
+    path:     /create
+    defaults: { _controller: "AppBundle:Profit:create" }
+    methods:  POST
+
+ens_profit_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Profit:edit" }
+
+ens_profit_update:
+    path:     /{id}/update
+    defaults: { _controller: "AppBundle:Profit:update" }
+    methods:  [POST, PUT]
+
+ens_profit_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Profit:delete" }
+    methods:  [POST, DELETE]

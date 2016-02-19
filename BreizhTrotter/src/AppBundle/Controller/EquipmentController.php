@@ -1,0 +1,224 @@
+<?php
+
+namespace AppBundle\Controller;
+
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+use AppBundle\Entity\Equipment;
+use AppBundle\Form\EquipmentType;
+
+/**
+ * Equipment controller.
+ *
+ */
+class EquipmentController extends Controller
+{
+
+    /**
+     * Lists all Equipment entities.
+     *
+     */
+    public function indexAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('AppBundle:Equipment')->findAll();
+
+        return $this->render('AppBundle:Equipment:index.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
+    /**
+     * Creates a new Equipment entity.
+     *
+     */
+    public function createAction(Request $request)
+    {
+        $entity = new Equipment();
+        $form = $this->createCreateForm($entity);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($entity);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('ens_equipment_show', array('id' => $entity->getId())));
+        }
+
+        return $this->render('AppBundle:Equipment:new.html.twig', array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        ));
+    }
+
+    /**
+     * Creates a form to create a Equipment entity.
+     *
+     * @param Equipment $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createCreateForm(Equipment $entity)
+    {
+        $form = $this->createForm(new EquipmentType(), $entity, array(
+            'action' => $this->generateUrl('ens_equipment_create'),
+            'method' => 'POST',
+        ));
+
+        $form->add('submit', 'submit', array('label' => 'Create'));
+
+        return $form;
+    }
+
+    /**
+     * Displays a form to create a new Equipment entity.
+     *
+     */
+    public function newAction()
+    {
+        $entity = new Equipment();
+        $form   = $this->createCreateForm($entity);
+
+        return $this->render('AppBundle:Equipment:new.html.twig', array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        ));
+    }
+
+    /**
+     * Finds and displays a Equipment entity.
+     *
+     */
+    public function showAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('AppBundle:Equipment')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Equipment entity.');
+        }
+
+        $deleteForm = $this->createDeleteForm($id);
+
+        return $this->render('AppBundle:Equipment:show.html.twig', array(
+            'entity'      => $entity,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing Equipment entity.
+     *
+     */
+    public function editAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('AppBundle:Equipment')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Equipment entity.');
+        }
+
+        $editForm = $this->createEditForm($entity);
+        $deleteForm = $this->createDeleteForm($id);
+
+        return $this->render('AppBundle:Equipment:edit.html.twig', array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+    * Creates a form to edit a Equipment entity.
+    *
+    * @param Equipment $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createEditForm(Equipment $entity)
+    {
+        $form = $this->createForm(new EquipmentType(), $entity, array(
+            'action' => $this->generateUrl('ens_equipment_update', array('id' => $entity->getId())),
+            'method' => 'PUT',
+        ));
+
+        $form->add('submit', 'submit', array('label' => 'Update'));
+
+        return $form;
+    }
+    /**
+     * Edits an existing Equipment entity.
+     *
+     */
+    public function updateAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('AppBundle:Equipment')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Equipment entity.');
+        }
+
+        $deleteForm = $this->createDeleteForm($id);
+        $editForm = $this->createEditForm($entity);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isValid()) {
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('ens_equipment_edit', array('id' => $id)));
+        }
+
+        return $this->render('AppBundle:Equipment:edit.html.twig', array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+    /**
+     * Deletes a Equipment entity.
+     *
+     */
+    public function deleteAction(Request $request, $id)
+    {
+        $form = $this->createDeleteForm($id);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository('AppBundle:Equipment')->find($id);
+
+            if (!$entity) {
+                throw $this->createNotFoundException('Unable to find Equipment entity.');
+            }
+
+            $em->remove($entity);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('ens_equipment'));
+    }
+
+    /**
+     * Creates a form to delete a Equipment entity by id.
+     *
+     * @param mixed $id The entity id
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm($id)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('ens_equipment_delete', array('id' => $id)))
+            ->setMethod('DELETE')
+            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->getForm()
+        ;
+    }
+}

@@ -1,0 +1,30 @@
+ens_deliverable:
+    path:     /
+    defaults: { _controller: "AppBundle:Deliverable:index" }
+
+ens_deliverable_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Deliverable:show" }
+
+ens_deliverable_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Deliverable:new" }
+
+ens_deliverable_create:
+    path:     /create
+    defaults: { _controller: "AppBundle:Deliverable:create" }
+    methods:  POST
+
+ens_deliverable_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Deliverable:edit" }
+
+ens_deliverable_update:
+    path:     /{id}/update
+    defaults: { _controller: "AppBundle:Deliverable:update" }
+    methods:  [POST, PUT]
+
+ens_deliverable_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Deliverable:delete" }
+    methods:  [POST, DELETE]

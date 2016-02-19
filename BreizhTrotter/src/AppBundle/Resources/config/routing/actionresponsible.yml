@@ -1,0 +1,30 @@
+ens_action_responsible:
+    path:     /
+    defaults: { _controller: "AppBundle:ActionResponsible:index" }
+
+ens_action_responsible_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:ActionResponsible:show" }
+
+ens_action_responsible_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:ActionResponsible:new" }
+
+ens_action_responsible_create:
+    path:     /create
+    defaults: { _controller: "AppBundle:ActionResponsible:create" }
+    methods:  POST
+
+ens_action_responsible_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:ActionResponsible:edit" }
+
+ens_action_responsible_update:
+    path:     /{id}/update
+    defaults: { _controller: "AppBundle:ActionResponsible:update" }
+    methods:  [POST, PUT]
+
+ens_action_responsible_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:ActionResponsible:delete" }
+    methods:  [POST, DELETE]

@@ -1,0 +1,30 @@
+ens_image:
+    path:     /
+    defaults: { _controller: "AppBundle:Image:index" }
+
+ens_image_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Image:show" }
+
+ens_image_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Image:new" }
+
+ens_image_create:
+    path:     /create
+    defaults: { _controller: "AppBundle:Image:create" }
+    methods:  POST
+
+ens_image_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Image:edit" }
+
+ens_image_update:
+    path:     /{id}/update
+    defaults: { _controller: "AppBundle:Image:update" }
+    methods:  [POST, PUT]
+
+ens_image_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Image:delete" }
+    methods:  [POST, DELETE]

@@ -4,3 +4,12 @@ app:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+app_ens_action:
+    resource: "@AppBundle/Resources/config/routing/action.yml"
+    prefix:   /action
+
+app_ens_action_responsible:
+    resource: "@AppBundle/Resources/config/routing/actionresponsible.yml"
+    prefix:   /ens_action_responsible
+

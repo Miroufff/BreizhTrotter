@@ -1,0 +1,36 @@
+app_ens_profit:
+    resource: "@AppBundle/Resources/config/routing/profit.yml"
+    prefix:   /ens_profit
+
+app_ens_image:
+    resource: "@AppBundle/Resources/config/routing/image.yml"
+    prefix:   /ens_image
+
+app_ens_equipment:
+    resource: "@AppBundle/Resources/config/routing/equipment.yml"
+    prefix:   /ens_equipment
+
+app_ens_deliverable:
+    resource: "@AppBundle/Resources/config/routing/deliverable.yml"
+    prefix:   /ens_deliverable
+
+app_ens_constraint:
+    resource: "@AppBundle/Resources/config/routing/constraint.yml"
+    prefix:   /ens_constraint
+
+app_ens_actor:
+    resource: "@AppBundle/Resources/config/routing/actor.yml"
+    prefix:   /ens_actor
+
+app_ens_activity:
+    resource: "@AppBundle/Resources/config/routing/activity.yml"
+    prefix:   /ens_activity
+
+app_ens_action_responsible:
+    resource: "@AppBundle/Resources/config/routing/actionresponsible.yml"
+    prefix:   /ens_action_responsible
+
+app_ens_action:
+    resource: "@AppBundle/Resources/config/routing/action.yml"
+    prefix:   /ens_action
+
