@@ -12,6 +12,6 @@ gulp.task('watch', function () {
     var onChange = function (event) {
         console.log('File '+event.path+' has been '+event.type);
     };
-    gulp.watch('./web/bundles/AppBundle/sass/**/*.scss', ['sass'])
+    gulp.watch('./src/AppBundle/sass/**/*.scss', ['sass'])
         .on('change', onChange);
 });
