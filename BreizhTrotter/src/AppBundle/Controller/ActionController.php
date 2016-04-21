@@ -79,11 +79,9 @@ class ActionController extends Controller
     public function newAction()
     {
         $entity = new Action();
-        $form   = $this->createCreateForm($entity);
 
         return $this->render('AppBundle:Action:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+            'entity' => $entity
         ));
     }
 

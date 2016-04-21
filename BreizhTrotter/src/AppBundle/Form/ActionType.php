@@ -23,7 +23,7 @@ class ActionType extends AbstractType
             ->add('budget')
             ->add('timeLimit')
             ->add('accomplishment')
-            ->add('idImage')
+            ->add('image')
         ;
     }
     

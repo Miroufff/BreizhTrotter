@@ -69,9 +69,9 @@ class Constraint
     private $image;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Scenario", inversedBy="constraints")
+     * @ORM\ManyToMany(targetEntity="Activity", inversedBy="constraints")
      */
-    private $scenarios;
+    private $activities;
 
     /**
      * @var integer

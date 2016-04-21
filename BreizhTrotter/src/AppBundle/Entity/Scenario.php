@@ -44,27 +44,21 @@ class Scenario
     /**
      * @var string
      *
+     * @ORM\Column(name="content", type="string", length=500)
+     */
+    private $content;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="description", type="string", length=1000)
      */
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Action", inversedBy="scenarios")
-     * @ORM\JoinTable(name="scenario_actions",
-     *      joinColumns={@ORM\JoinColumn(name="id_scenario", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="id_action", referencedColumnName="id")}
-     *      )
+     * @ORM\OneToMany(targetEntity="Activity", mappedBy="activity")
      */
-    private $actions;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="Action", inversedBy="scenarios")
-     * @ORM\JoinTable(name="scenario_constraints",
-     *      joinColumns={@ORM\JoinColumn(name="id_scenario", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="id_constraint", referencedColumnName="id")}
-     *      )
-     */
-    private $constraints;
+    private $activities;
 
     /**
      * @var integer
@@ -196,6 +190,22 @@ class Scenario
         return $this->description;
     }
 
+    /**
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param string $content
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+    }
+    
     /**
      * Get id
      *

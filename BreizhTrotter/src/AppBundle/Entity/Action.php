@@ -75,10 +75,10 @@ class Action
     private $image;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Scenario", inversedBy="actions")
-     * 
+     * @ORM\ManyToMany(targetEntity="Activity", inversedBy="actions")
+     *
      */
-    private $scenarios;
+    private $activities;
 
     /**
      * @var integer

@@ -54,6 +54,24 @@ class Activity
     private $scenario;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Action", inversedBy="scenarios")
+     * @ORM\JoinTable(name="activity_actions",
+     *      joinColumns={@ORM\JoinColumn(name="id_activity", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="id_action", referencedColumnName="id")}
+     *      )
+     */
+    private $actions;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Constraint", inversedBy="scenarios")
+     * @ORM\JoinTable(name="activity_constraints",
+     *      joinColumns={@ORM\JoinColumn(name="id_activity", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="id_constraint", referencedColumnName="id")}
+     *      )
+     */
+    private $constraints;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -189,6 +207,38 @@ class Activity
     public function setScenario($scenario)
     {
         $this->scenario = $scenario;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActions()
+    {
+        return $this->actions;
+    }
+
+    /**
+     * @param mixed $actions
+     */
+    public function setActions($actions)
+    {
+        $this->actions = $actions;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConstraints()
+    {
+        return $this->constraints;
+    }
+
+    /**
+     * @param mixed $constraints
+     */
+    public function setConstraints($constraints)
+    {
+        $this->constraints = $constraints;
     }
 
     /**
