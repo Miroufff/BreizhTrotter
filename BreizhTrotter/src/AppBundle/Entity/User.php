@@ -12,9 +12,19 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * User
+ *
+ * @ORM\Entity
+ * @ORM\Table(name="user")
  */
 class User extends FOSExtendUser
 {
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
     protected $id;
 
     /**
