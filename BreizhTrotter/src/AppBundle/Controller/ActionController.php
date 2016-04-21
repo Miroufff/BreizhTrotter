@@ -29,6 +29,7 @@ class ActionController extends Controller
             'entities' => $entities,
         ));
     }
+    
     /**
      * Creates a new Action entity.
      *
@@ -79,9 +80,11 @@ class ActionController extends Controller
     public function newAction()
     {
         $entity = new Action();
+        $form   = $this->createCreateForm($entity);
 
         return $this->render('AppBundle:Action:new.html.twig', array(
-            'entity' => $entity
+            'entity' => $entity,
+            'form'   => $form->createView(),
         ));
     }
 
