@@ -7,13 +7,14 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ConstraintHadEquipment
  *
+ * @ORM\Entity
  * @ORM\Table(name="constraint_had_equipment")
  * @package AppBundle\Entity
  */
 class ConstraintHadEquipment
 {
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Entity\Equipment")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Equipment")
      * @ORM\JoinColumn(name="id_equipment", referencedColumnName="id")
      */
     private $equipment;

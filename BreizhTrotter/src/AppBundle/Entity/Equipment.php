@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Equipment
  *
+ * @ORM\Entity
  * @ORM\Table(name="equipment")
  * @package AppBundle\Entity
  */
@@ -20,7 +21,7 @@ class Equipment
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Entity\Image")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image")
      * @ORM\JoinColumn(name="id_image", referencedColumnName="id")
      */
     private $image;

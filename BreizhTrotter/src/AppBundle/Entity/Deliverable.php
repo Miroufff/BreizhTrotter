@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Deliverable
  *
+ * @ORM\Entity
  * @ORM\Table(name="deliverable")
  * @package AppBundle\Entity
  */
@@ -20,7 +21,7 @@ class Deliverable
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Entity\Action")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Action")
      * @ORM\JoinColumn(name="id_action", referencedColumnName="id")
      */
     private $action;

@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Scenario
  *
- * @ORM\Entity
  * @ORM\Table(name="scenario")
  * @package AppBundle\Entity
  */
@@ -49,19 +48,19 @@ class Scenario
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Action", inversedBy="scenarios")
-     * @ORM\JoinTable(name="scenario_actions",
-     *      joinColumns={@ORM\JoinColumn(name="id_scenario", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="id_action", referencedColumnName="id")}
+     * @ManyToMany(targetEntity="Action", inversedBy="scenarios")
+     * @JoinTable(name="scenario_actions",
+     *      joinColumns={@JoinColumn(name="id_scenario", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="id_action", referencedColumnName="id")}
      *      )
      */
     private $actions;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Action", inversedBy="scenarios")
-     * @ORM\JoinTable(name="scenario_constraints",
-     *      joinColumns={@ORM\JoinColumn(name="id_scenario", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="id_constraint", referencedColumnName="id")}
+     * @ManyToMany(targetEntity="Action", inversedBy="scenarios")
+     * @JoinTable(name="scenario_actions",
+     *      joinColumns={@JoinColumn(name="id_scenario", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="id_constraint", referencedColumnName="id")}
      *      )
      */
     private $constraints;

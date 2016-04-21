@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Profit
  *
+ * @ORM\Entity
  * @ORM\Table(name="profit")
  * @package AppBundle\Entity
  */
@@ -20,7 +21,7 @@ class Profit
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Entity\Action")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Action")
      * @ORM\JoinColumn(name="id_action", referencedColumnName="id")
      */
     private $action;

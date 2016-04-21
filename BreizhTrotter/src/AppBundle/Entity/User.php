@@ -12,53 +12,33 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * User
- *
- * @ORM\Table(name="user")
- * @package AppBundle\Entity
  */
 class User extends FOSExtendUser
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
     protected $id;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="username", type="string", length=255)
      */
     protected $username;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="username_canonical", type="string", length=255)
      */
     protected $usernameCanonical;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255)
      */
     protected $email;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="email_canonical", type="string", length=255)
      */
     protected $emailCanonical;
 
     /**
      * @var boolean
-     *
-     * @ORM\Column(name="enabled", type="boolean", options={"default" = false})
      */
     protected $enabled;
 
@@ -66,8 +46,6 @@ class User extends FOSExtendUser
      * The salt to use for hashing
      *
      * @var string
-     *
-     * @ORM\Column(name="salt", type="string", length=255)
      */
     protected $salt;
 
@@ -75,8 +53,6 @@ class User extends FOSExtendUser
      * Encrypted password. Must be persisted.
      *
      * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=255)
      */
     protected $password;
 
@@ -89,8 +65,6 @@ class User extends FOSExtendUser
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="last_login", type="datetime", nullable = true)
      */
     protected $lastLogin;
 
@@ -98,15 +72,11 @@ class User extends FOSExtendUser
      * Random string sent to the user email address in order to verify it
      *
      * @var string
-     *
-     * @ORM\Column(name="confirmation_token", type="string", length=255)
      */
     protected $confirmationToken;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="password_requested_at", type="datetime", nullable = true)
      */
     protected $passwordRequestedAt;
 
@@ -117,43 +87,31 @@ class User extends FOSExtendUser
 
     /**
      * @var boolean
-     *
-     * @ORM\Column(name="locked", type="boolean", options={"default" = false})
      */
     protected $locked;
 
     /**
      * @var boolean
-     *
-     * @ORM\Column(name="expired", type="boolean", options={"default" = false})
      */
     protected $expired;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="expired_at", type="datetime", nullable = true)
      */
     protected $expiresAt;
 
     /**
      * @var array
-     *
-     * @ORM\Column(name="roles", type="array", length=256, nullable=true)
      */
     protected $roles;
 
     /**
      * @var boolean
-     *
-     * @ORM\Column(name="credentials_expired", type="boolean", options={"default" = false})
      */
     protected $credentialsExpired;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="credentials_expired_at", type="datetime", nullable = true)
      */
     protected $credentialsExpireAt;
 

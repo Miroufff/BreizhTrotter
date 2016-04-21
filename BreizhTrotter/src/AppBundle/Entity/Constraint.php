@@ -6,7 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Constraint
- *
+ * 
+ * @ORM\Entity
  * @ORM\Table(name="constraint")
  * @package AppBundle\Entity
  */
@@ -62,10 +63,15 @@ class Constraint
     private $tourismImpact;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Entity\Image")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image")
      * @ORM\JoinColumn(name="id_image", referencedColumnName="id")
      */
     private $image;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Scenario", inversedBy="constraints")
+     */
+    private $scenarios;
 
     /**
      * @var integer

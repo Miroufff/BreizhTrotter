@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Activity
  *
+ * @ORM\Entity
  * @ORM\Table(name="activity")
  * @package AppBundle\Entity
  */
@@ -41,13 +42,13 @@ class Activity
     private $feasibility;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Entity\Image")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image")
      * @ORM\JoinColumn(name="id_image", referencedColumnName="id")
      */
     private $image;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Entity\Scenario")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Scenario")
      * @ORM\JoinColumn(name="id_scenario", referencedColumnName="id")
      */
     private $scenario;

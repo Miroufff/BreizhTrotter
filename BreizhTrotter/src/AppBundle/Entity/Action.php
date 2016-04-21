@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class Action
- *
+ * @ORM\Entity
  * @ORM\Table(name="action")
  * @package AppBundle\Entity
  */
@@ -69,10 +69,16 @@ class Action
     private $accomplishment;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Entity\Image")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image")
      * @ORM\JoinColumn(name="id_image", referencedColumnName="id")
      */
     private $image;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Scenario", inversedBy="actions")
+     * 
+     */
+    private $scenarios;
 
     /**
      * @var integer
