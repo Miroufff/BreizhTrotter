@@ -2,44 +2,45 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * ActionHadEquipment
+ *
+ * @ORM\Table(name="action_had_equipment")
+ * @package AppBundle\Entity
  */
 class ActionHadEquipment
 {
     /**
-     * @var integer
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Entity\Equipment")
+     * @ORM\JoinColumn(name="id_equipment", referencedColumnName="id")
      */
-    private $idEquipment;
+    private $equipment;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
-
     /**
-     * Set idEquipment
-     *
-     * @param integer $idEquipment
-     *
-     * @return ActionHadEquipment
+     * @return mixed
      */
-    public function setIdEquipment($idEquipment)
+    public function getEquipment()
     {
-        $this->idEquipment = $idEquipment;
-
-        return $this;
+        return $this->equipment;
     }
 
     /**
-     * Get idEquipment
-     *
-     * @return integer
+     * @param mixed $equipment
      */
-    public function getIdEquipment()
+    public function setEquipment($equipment)
     {
-        return $this->idEquipment;
+        $this->equipment = $equipment;
     }
 
     /**
@@ -52,4 +53,3 @@ class ActionHadEquipment
         return $this->id;
     }
 }
-

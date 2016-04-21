@@ -9,10 +9,8 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="idAction" type="integer" column="id_action" nullable="false">
-      <options>
-        <option name="unsigned"/>
-      </options>
-    </field>
+    <many-to-one field="action" target-entity="Action">
+      <join-column name="id_action" referenced-column-name="id" />
+    </many-to-one>
   </entity>
 </doctrine-mapping>

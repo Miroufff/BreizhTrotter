@@ -35,10 +35,8 @@
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="idImage" type="integer" column="id_image" nullable="false">
-      <options>
-        <option name="unsigned"/>
-      </options>
-    </field>
+    <many-to-one field="image" target-entity="Image">
+      <join-column name="id_image" referenced-column-name="id" />
+    </many-to-one>
   </entity>
 </doctrine-mapping>

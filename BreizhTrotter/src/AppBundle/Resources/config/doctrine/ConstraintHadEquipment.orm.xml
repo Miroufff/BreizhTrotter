@@ -4,10 +4,8 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="idEquipment" type="integer" column="id_equipment" nullable="false">
-      <options>
-        <option name="unsigned"/>
-      </options>
-    </field>
+    <many-to-one field="equipment" target-entity="Equipment">
+      <join-column name="id_equipment" referenced-column-name="id" />
+    </many-to-one>
   </entity>
 </doctrine-mapping>

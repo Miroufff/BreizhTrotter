@@ -7,7 +7,7 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Idaction</th>
+                <th>Action</th>
                 <th>Profittype</th>
                 <th>Id</th>
                 <th>Actions</th>
@@ -17,7 +17,7 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('ens_profit_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
-                <td>{{ entity.idAction }}</td>
+                <td>{{ entity.action.id }}</td>
                 <td>{{ entity.profitType }}</td>
                 <td>{{ entity.id }}</td>
                 <td>

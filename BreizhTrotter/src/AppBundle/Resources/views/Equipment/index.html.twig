@@ -8,7 +8,7 @@
             <tr>
                 <th>Name</th>
                 <th>Idimage</th>
-                <th>Idequipment</th>
+                <th>Equipment</th>
                 <th>Id</th>
                 <th>Actions</th>
             </tr>
@@ -18,7 +18,7 @@
             <tr>
                 <td><a href="{{ path('ens_equipment_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
                 <td>{{ entity.idImage }}</td>
-                <td>{{ entity.idEquipment }}</td>
+                <td>{{ entity.equipment.id }}</td>
                 <td>{{ entity.id }}</td>
                 <td>
                 <ul>
