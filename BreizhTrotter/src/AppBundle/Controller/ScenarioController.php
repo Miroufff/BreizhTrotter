@@ -44,7 +44,6 @@ class ScenarioController extends Controller
      */
     public function newAction()
     {
-
         $entity = new Scenario();
         $form   = $this->createCreateForm($entity);
 
