@@ -2,53 +2,83 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Constraint
+ * 
+ * @ORM\Entity
+ * @ORM\Table(name="constraint")
+ * @package AppBundle\Entity
  */
 class Constraint
 {
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="update_date", type="datetime", nullable = true)
      */
     private $updateDate;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="diff_level", type="integer")
      */
     private $diffLevel;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="context", type="string", length=500)
      */
     private $context;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=1000)
      */
     private $description;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="diag_action", type="string", length=300)
      */
     private $diagAction;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="viability_impact", type="integer")
      */
     private $viabilityImpact;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="tourism_impact", type="integer")
      */
     private $tourismImpact;
 
     /**
-     * @var integer
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image")
+     * @ORM\JoinColumn(name="id_image", referencedColumnName="id")
      */
-    private $idImage;
+    private $image;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Activity", inversedBy="constraints")
+     */
+    private $activities;
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -222,27 +252,19 @@ class Constraint
     }
 
     /**
-     * Set idImage
-     *
-     * @param integer $idImage
-     *
-     * @return Constraint
+     * @return mixed
      */
-    public function setIdImage($idImage)
+    public function getImage()
     {
-        $this->idImage = $idImage;
-
-        return $this;
+        return $this->image;
     }
 
     /**
-     * Get idImage
-     *
-     * @return integer
+     * @param mixed $image
      */
-    public function getIdImage()
+    public function setImage($image)
     {
-        return $this->idImage;
+        $this->image = $image;
     }
 
     /**

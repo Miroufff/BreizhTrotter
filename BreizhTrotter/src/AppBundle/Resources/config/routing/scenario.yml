@@ -1,0 +1,20 @@
+ens_scenario_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Scenario:new" }
+
+ens_scenario:
+    path:     /
+    defaults: { _controller: "AppBundle:Scenario:index" }
+
+ens_scenario_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Scenario:show" }
+
+ens_scenario_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Scenario:new" }
+
+ens_scenario_create:
+    path:     /create
+    defaults: { _controller: "AppBundle:Scenario:create" }
+    methods:  POST

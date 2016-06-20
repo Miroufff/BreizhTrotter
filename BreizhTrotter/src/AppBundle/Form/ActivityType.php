@@ -19,7 +19,7 @@ class ActivityType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('feasibility')
-            ->add('idImage')
+            ->add('image')
             ->add('idScenario')
         ;
     }

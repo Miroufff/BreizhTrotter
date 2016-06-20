@@ -1,24 +1,37 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace AppBundle\Entity;  
+
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Deliverable
+ *
+ * @ORM\Entity
+ * @ORM\Table(name="deliverable")
+ * @package AppBundle\Entity
  */
 class Deliverable
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=50)
      */
     private $name;
 
     /**
-     * @var integer
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Action")
+     * @ORM\JoinColumn(name="id_action", referencedColumnName="id")
      */
-    private $idAction;
+    private $action;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -48,27 +61,19 @@ class Deliverable
     }
 
     /**
-     * Set idAction
-     *
-     * @param integer $idAction
-     *
-     * @return Deliverable
+     * @return mixed
      */
-    public function setIdAction($idAction)
+    public function getAction()
     {
-        $this->idAction = $idAction;
-
-        return $this;
+        return $this->action;
     }
 
     /**
-     * Get idAction
-     *
-     * @return integer
+     * @param mixed $action
      */
-    public function getIdAction()
+    public function setAction($action)
     {
-        return $this->idAction;
+        $this->action = $action;
     }
 
     /**

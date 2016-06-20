@@ -22,7 +22,7 @@ class ConstraintType extends AbstractType
             ->add('diagAction')
             ->add('viabilityImpact')
             ->add('tourismImpact')
-            ->add('idImage')
+            ->add('image')
         ;
     }
     

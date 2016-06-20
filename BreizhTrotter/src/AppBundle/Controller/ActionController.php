@@ -29,6 +29,7 @@ class ActionController extends Controller
             'entities' => $entities,
         ));
     }
+    
     /**
      * Creates a new Action entity.
      *

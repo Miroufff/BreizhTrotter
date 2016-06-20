@@ -1,29 +1,37 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace AppBundle\Entity;  
+
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Equipment
+ *
+ * @ORM\Entity
+ * @ORM\Table(name="equipment")
+ * @package AppBundle\Entity
  */
 class Equipment
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=50)
      */
     private $name;
 
     /**
-     * @var integer
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image")
+     * @ORM\JoinColumn(name="id_image", referencedColumnName="id")
      */
-    private $idImage;
+    private $image;
 
     /**
      * @var integer
-     */
-    private $idEquipment;
-
-    /**
-     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -53,51 +61,19 @@ class Equipment
     }
 
     /**
-     * Set idImage
-     *
-     * @param integer $idImage
-     *
-     * @return Equipment
+     * @return mixed
      */
-    public function setIdImage($idImage)
+    public function getImage()
     {
-        $this->idImage = $idImage;
-
-        return $this;
+        return $this->image;
     }
 
     /**
-     * Get idImage
-     *
-     * @return integer
+     * @param mixed $image
      */
-    public function getIdImage()
+    public function setImage($image)
     {
-        return $this->idImage;
-    }
-
-    /**
-     * Set idEquipment
-     *
-     * @param integer $idEquipment
-     *
-     * @return Equipment
-     */
-    public function setIdEquipment($idEquipment)
-    {
-        $this->idEquipment = $idEquipment;
-
-        return $this;
-    }
-
-    /**
-     * Get idEquipment
-     *
-     * @return integer
-     */
-    public function getIdEquipment()
-    {
-        return $this->idEquipment;
+        $this->image = $image;
     }
 
     /**
