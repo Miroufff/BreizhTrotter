@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -39,6 +40,13 @@ class Action
      * @ORM\Column(name="name", type="string", length=50)
      */
     private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="person_in_charge", type="string", length=250)
+     */
+    private $personInCharge;
 
     /**
      * @var string
@@ -89,6 +97,13 @@ class Action
      */
     private $id;
 
+    /**
+     * Action constructor.
+     */
+    public function __construct()
+    {
+        $this->updateDate = new DateTime('NOW');;
+    }
 
     /**
      * Set step
@@ -280,6 +295,22 @@ class Action
     public function getAccomplishment()
     {
         return $this->accomplishment;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPersonInCharge()
+    {
+        return $this->personInCharge;
+    }
+
+    /**
+     * @param string $personInCharge
+     */
+    public function setPersonInCharge($personInCharge)
+    {
+        $this->personInCharge = $personInCharge;
     }
 
     /**
