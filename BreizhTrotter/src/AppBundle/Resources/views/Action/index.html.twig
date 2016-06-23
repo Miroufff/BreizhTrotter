@@ -7,7 +7,6 @@
     <table class="records_list">
         <thead>
             <tr>
-                <th>Step</th>
                 <th>Updatedate</th>
                 <th>Feasibility</th>
                 <th>Name</th>
@@ -23,7 +22,6 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('ens_action_show', { 'id': entity.id }) }}">{{ entity.step }}</a></td>
                 <td>{% if entity.updateDate %}{{ entity.updateDate|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ entity.feasibility }}</td>
                 <td>{{ entity.name }}</td>

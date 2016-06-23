@@ -14,7 +14,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * User
  *
  * @ORM\Entity
- * @ORM\Table(name="user")
+ * @ORM\Table(name="base_user")
  */
 class User extends FOSExtendUser
 {

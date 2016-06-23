@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -15,12 +16,16 @@ class ActionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('step')
-            ->add('updateDate')
-            ->add('feasibility')
+            ->add('step', 'text')
+            ->add('feasibility', 'choice', array(
+                'choices' => array(
+                    0 => 'Faible',
+                    1 => 'Moyenne',
+                    2 => 'Forte',
+                )))
             ->add('name')
-            ->add('description')
-            ->add('budget')
+            ->add('description', 'textarea')
+            ->add('budget', 'text')
             ->add('timeLimit')
             ->add('accomplishment')
             ->add('image')

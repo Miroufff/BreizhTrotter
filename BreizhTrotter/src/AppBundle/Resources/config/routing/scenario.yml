@@ -1,20 +1,30 @@
-ens_scenario_new:
-    path:     /new
-    defaults: { _controller: "AppBundle:Scenario:new" }
-
-ens_scenario:
+scenario:
     path:     /
     defaults: { _controller: "AppBundle:Scenario:index" }
 
-ens_scenario_show:
+scenario_show:
     path:     /{id}/show
     defaults: { _controller: "AppBundle:Scenario:show" }
 
-ens_scenario_new:
+scenario_new:
     path:     /new
     defaults: { _controller: "AppBundle:Scenario:new" }
 
-ens_scenario_create:
+scenario_create:
     path:     /create
     defaults: { _controller: "AppBundle:Scenario:create" }
     methods:  POST
+
+scenario_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Scenario:edit" }
+
+scenario_update:
+    path:     /{id}/update
+    defaults: { _controller: "AppBundle:Scenario:update" }
+    methods:  [POST, PUT]
+
+scenario_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Scenario:delete" }
+    methods:  [POST, DELETE]

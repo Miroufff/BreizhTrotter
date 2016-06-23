@@ -68,8 +68,7 @@ class Scenario
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-
+    
     /**
      * Set zone
      *
