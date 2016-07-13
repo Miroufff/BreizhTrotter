@@ -8,12 +8,9 @@
 
 namespace AppBundle\Controller;
 
-use Sonata\AdminBundle\Admin\Admin;
-use Sonata\AdminBundle\Datagrid\ListMapper;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
-use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Controller\CRUDController as Controller;
 
-class ScenarioAdminController extends Admin
+class ScenarioAdminController extends Controller
 {
 
 }
