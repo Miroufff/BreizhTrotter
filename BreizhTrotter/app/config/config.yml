@@ -134,7 +134,6 @@ sonata_admin:
         # permission related to the objects
         object_permissions: [VIEW, EDIT, DELETE, UNDELETE, OPERATOR, MASTER, OWNER]
 
-
 sonata_user:
     security_acl: true
     manager_type: orm # can be orm or mongodb
@@ -190,3 +189,24 @@ sonata_doctrine_orm_admin:
                 bigint:    SonataAdminBundle:CRUD:base_show_field.html.twig
                 integer:   SonataAdminBundle:CRUD:base_show_field.html.twig
                 decimal:   SonataAdminBundle:CRUD:base_show_field.html.twig
+
+sonata_media:
+    default_context: default
+    db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr
+    contexts:
+        default: # the default context is mandatory
+            providers:
+                - sonata.media.provider.dailymotion
+                - sonata.media.provider.youtube
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+            formats:
+                small: { width: 100 , quality: 70}
+                big: { width: 500 , quality: 70}
+    cdn:
+        server:
+            path: /uploads/media
+    filesystem:
+        local:
+            directory: %kernel.root_dir%/../web/uploads/media
+            create: false

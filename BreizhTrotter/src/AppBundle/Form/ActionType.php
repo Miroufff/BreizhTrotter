@@ -28,7 +28,7 @@ class ActionType extends AbstractType
             ->add('budget', 'text')
             ->add('timeLimit')
             ->add('accomplishment')
-            ->add('image')
+            ->add('image', new ImageType())
         ;
     }
     

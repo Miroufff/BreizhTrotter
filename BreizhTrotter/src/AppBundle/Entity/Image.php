@@ -3,30 +3,20 @@
 namespace AppBundle\Entity;  
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Image
+ * Class Image
  *
  * @ORM\Entity
  * @ORM\Table(name="image")
+ * @ORM\HasLifecycleCallbacks
+ *
  * @package AppBundle\Entity
  */
 class Image
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=50)
-     */
-    private $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="path", type="string", length=100)
-     */
-    private $path;
-
     /**
      * @var integer
      *
@@ -36,55 +26,92 @@ class Image
      */
     private $id;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\COlumn(name="updated_at",type="datetime", nullable=true)
+     */
+    private $updateAt;
 
     /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Image
+     * @ORM\PostLoad()
      */
-    public function setName($name)
+    public function postLoad()
     {
-        $this->name = $name;
-
-        return $this;
+        $this->updateAt = new \DateTime();
     }
 
     /**
-     * Get name
-     *
-     * @return string
+     * @ORM\Column(type="string",length=255)
+     * @Assert\NotBlank
      */
-    public function getName()
+    public $name;
+
+    /**
+     * @ORM\Column(type="string",length=255, nullable=true)
+     */
+    public $path;
+
+    public $file;
+
+    public function getUploadRootDir()
     {
-        return $this->name;
+        return __dir__.'/../../../../web/uploads';
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+    }
+
+    public function getAssetPath()
+    {
+        return 'uploads/'.$this->path;
     }
 
     /**
-     * Set path
-     *
-     * @param string $path
-     *
-     * @return Image
+     * @ORM\Prepersist()
+     * @ORM\Preupdate()
      */
-    public function setPath($path)
+    public function preUpload()
     {
-        $this->path = $path;
+        $this->tempFile = $this->getAbsolutePath();
+        $this->oldFile = $this->getPath();
+        $this->updateAt = new \DateTime();
 
-        return $this;
+        if (null !== $this->file)
+            $this->path = sha1(uniqid(mt_rand(),true)).'.'.$this->file->guessExtension();
     }
 
     /**
-     * Get path
-     *
-     * @return string
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
      */
-    public function getPath()
+    public function upload()
     {
-        return $this->path;
+        if (null !== $this->file) {
+            $this->file->move($this->getUploadRootDir(),$this->path);
+            unset($this->file);
+
+            if ($this->oldFile != null) unlink($this->tempFile);
+        }
     }
 
+    /**
+     * @ORM\PreRemove()
+     */
+    public function preRemoveUpload()
+    {
+        $this->tempFile = $this->getAbsolutePath();
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if (file_exists($this->tempFile)) unlink($this->tempFile);
+    }
     /**
      * Get id
      *
@@ -93,6 +120,17 @@ class Image
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    public function getName()
+    {
+        var_dump($this->name);
+        return $this->name;
     }
 }
 

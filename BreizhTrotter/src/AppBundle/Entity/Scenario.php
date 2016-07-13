@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;  
 
 use Doctrine\ORM\Mapping as ORM;
+use Sonata\MediaBundle\Model\Media;
 
 /**
  * Scenario
@@ -23,7 +24,7 @@ class Scenario
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=50)
+     * @ORM\Column(name="name", type="string", length=500)
      */
     private $name;
 
@@ -39,7 +40,7 @@ class Scenario
      *
      * @ORM\Column(name="author", type="string", length=20)
      */
-    private $author;
+    private $author = "mirouf";
 
     /**
      * @var string
@@ -56,9 +57,17 @@ class Scenario
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="Activity", mappedBy="activity")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Activity", mappedBy="activity")
      */
     private $activities;
+
+    /**
+     * @var Media
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image", cascade={"persist","remove"})
+     * @ORM\JoinColumn(name="id_image", referencedColumnName="id")
+     */
+    private $image;
 
     /**
      * @var integer
@@ -213,5 +222,37 @@ class Scenario
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActivities()
+    {
+        return $this->activities;
+    }
+
+    /**
+     * @param mixed $activities
+     */
+    public function setActivities($activities)
+    {
+        $this->activities = $activities;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
     }
 }

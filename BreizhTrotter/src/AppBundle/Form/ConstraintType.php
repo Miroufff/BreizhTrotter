@@ -22,7 +22,14 @@ class ConstraintType extends AbstractType
             ->add('diagAction')
             ->add('viabilityImpact')
             ->add('tourismImpact')
-            ->add('image')
+            ->add('images', 'sonata_type_collection', array(), array(
+                'edit' => 'inline',
+                'inline' => 'table',
+                'link_parameters' => array(
+                    'context' => 'images',
+                    'provider' => 'sonata.media.provider.image'
+                )
+            ))
         ;
     }
     

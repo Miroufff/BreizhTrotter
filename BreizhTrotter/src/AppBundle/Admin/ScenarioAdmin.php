@@ -9,6 +9,10 @@
 
 namespace AppBundle\Admin;
 
+use AppBundle\Entity\Activity;
+use AppBundle\Form\ActivityType;
+use AppBundle\Form\ConstraintType;
+use AppBundle\Form\ImageType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -21,8 +25,17 @@ class ScenarioAdmin extends AbstractAdmin
         $formMapper
             ->add('name')
             ->add('zone')
+            ->add('content')
             ->add('date', 'date')
             ->add('description', 'textarea')
+            ->add('image', new ImageType())
+            ->add('activities', 'collection',
+                array('type' => new ActivityType(),
+                    'allow_add' => true,
+                    'allow_delete' => true,
+                    'options' => array('data_class' => 'AppBundle\Entity\Activity')
+                )
+            )
         ;
     }
 

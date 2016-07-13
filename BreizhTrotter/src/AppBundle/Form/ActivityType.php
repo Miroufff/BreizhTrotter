@@ -19,11 +19,10 @@ class ActivityType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('feasibility')
-            ->add('image')
-            ->add('idScenario')
+            ->add('image', new ImageType())
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
