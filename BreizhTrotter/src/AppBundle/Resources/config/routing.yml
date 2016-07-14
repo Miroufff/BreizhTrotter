@@ -1,4 +1,3 @@
 app_scenario:
     resource: "@AppBundle/Resources/config/routing/scenario.yml"
     prefix:   /scenario
-

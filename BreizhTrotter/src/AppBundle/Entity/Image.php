@@ -42,12 +42,6 @@ class Image
     }
 
     /**
-     * @ORM\Column(type="string",length=255)
-     * @Assert\NotBlank
-     */
-    public $name;
-
-    /**
      * @ORM\Column(type="string",length=255, nullable=true)
      */
     public $path;
@@ -125,12 +119,6 @@ class Image
     public function getPath()
     {
         return $this->path;
-    }
-
-    public function getName()
-    {
-        var_dump($this->name);
-        return $this->name;
     }
 }
 

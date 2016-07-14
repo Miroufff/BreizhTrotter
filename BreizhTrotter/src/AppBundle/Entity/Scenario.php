@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;  
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Sonata\MediaBundle\Model\Media;
 
@@ -57,7 +58,16 @@ class Scenario
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Activity", mappedBy="activity")
+     * @var boolean
+     *
+     * @ORM\Column(name="open", type="boolean")
+     */
+    private $open = true;
+
+    /**
+     * @var mixed
+     *
+     * @ORM\OneToMany(targetEntity="Activity", mappedBy="scenario", cascade={"persist","remove"})
      */
     private $activities;
 
@@ -77,7 +87,15 @@ class Scenario
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->activities = new ArrayCollection();
+    }
+
     /**
      * Set zone
      *
@@ -254,5 +272,55 @@ class Scenario
     public function setImage($image)
     {
         $this->image = $image;
+    }
+
+    /**
+     * Add Activity
+     *
+     * @param Activity $activity
+     *
+     * @return Scenario
+     */
+    public function addActivity(Activity $activity)
+    {
+        $this->activities[] = $activity;
+
+        return $this;
+    }
+
+    /**
+     * Remove Activity
+     *
+     * @param Activity $activity
+     */
+    public function removeActivity(Activity $activity)
+    {
+        $this->activities->removeElement($activity);
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isOpen()
+    {
+        return $this->open;
+    }
+
+    /**
+     * @param boolean $open
+     */
+    public function setOpen($open)
+    {
+        $this->open = $open;
+    }
+
+    /**
+     * toString
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
     }
 }

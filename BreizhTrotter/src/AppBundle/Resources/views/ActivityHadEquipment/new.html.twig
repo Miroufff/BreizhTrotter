@@ -1,14 +1,14 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Activity creation</h1>
+    <h1>ActivityHadEquipment creation</h1>
 
     {{ form(form) }}
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('scenario_show', { id : entity.scenario.id }) }}">
-            Back to the scenario
+        <a href="{{ path('activity') }}">
+            Back to the list
         </a>
     </li>
 </ul>

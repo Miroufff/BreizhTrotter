@@ -12,6 +12,8 @@
                 <th>Author</th>
                 <th>Content</th>
                 <th>Description</th>
+                <th>Open</th>
+                <th>Id</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -24,6 +26,8 @@
                 <td>{{ entity.author }}</td>
                 <td>{{ entity.content }}</td>
                 <td>{{ entity.description }}</td>
+                <td>{{ entity.open }}</td>
+                <td>{{ entity.id }}</td>
                 <td>
                 <ul>
                     <li>
@@ -39,7 +43,7 @@
         </tbody>
     </table>
 
-    <ul>
+        <ul>
         <li>
             <a href="{{ path('scenario_new') }}">
                 Create a new entry

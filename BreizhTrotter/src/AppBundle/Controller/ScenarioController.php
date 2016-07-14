@@ -4,13 +4,16 @@ namespace AppBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use AppBundle\Entity\Scenario;
 use AppBundle\Form\ScenarioType;
 
 /**
  * Scenario controller.
  *
+ * @Route("/scenario")
  */
 class ScenarioController extends Controller
 {
@@ -18,6 +21,9 @@ class ScenarioController extends Controller
     /**
      * Lists all Scenario entities.
      *
+     * @Route("/", name="scenario")
+     * @Method("GET")
+     * @Template()
      */
     public function indexAction()
     {
@@ -25,13 +31,16 @@ class ScenarioController extends Controller
 
         $entities = $em->getRepository('AppBundle:Scenario')->findAll();
 
-        return $this->render('AppBundle:Scenario:index.html.twig', array(
+        return array(
             'entities' => $entities,
-        ));
+        );
     }
     /**
      * Creates a new Scenario entity.
      *
+     * @Route("/", name="scenario_create")
+     * @Method("POST")
+     * @Template("AppBundle:Scenario:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -47,10 +56,10 @@ class ScenarioController extends Controller
             return $this->redirect($this->generateUrl('scenario_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('AppBundle:Scenario:new.html.twig', array(
+        return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        ));
+        );
     }
 
     /**
@@ -62,9 +71,6 @@ class ScenarioController extends Controller
      */
     private function createCreateForm(Scenario $entity)
     {
-        $username = $this->container->get('security.context')->getToken()->getUser()->getUsername();
-        $entity->setAuthor($username);
-
         $form = $this->createForm(new ScenarioType(), $entity, array(
             'action' => $this->generateUrl('scenario_create'),
             'method' => 'POST',
@@ -78,21 +84,27 @@ class ScenarioController extends Controller
     /**
      * Displays a form to create a new Scenario entity.
      *
+     * @Route("/new", name="scenario_new")
+     * @Method("GET")
+     * @Template()
      */
     public function newAction()
     {
         $entity = new Scenario();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('AppBundle:Scenario:new.html.twig', array(
+        return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        ));
+        );
     }
 
     /**
      * Finds and displays a Scenario entity.
      *
+     * @Route("/{id}", name="scenario_show")
+     * @Method("GET")
+     * @Template()
      */
     public function showAction($id)
     {
@@ -106,15 +118,18 @@ class ScenarioController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('AppBundle:Scenario:show.html.twig', array(
+        return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
-        ));
+        );
     }
 
     /**
      * Displays a form to edit an existing Scenario entity.
      *
+     * @Route("/{id}/edit", name="scenario_edit")
+     * @Method("GET")
+     * @Template()
      */
     public function editAction($id)
     {
@@ -129,11 +144,11 @@ class ScenarioController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('AppBundle:Scenario:edit.html.twig', array(
+        return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        );
     }
 
     /**
@@ -157,6 +172,9 @@ class ScenarioController extends Controller
     /**
      * Edits an existing Scenario entity.
      *
+     * @Route("/{id}", name="scenario_update")
+     * @Method("PUT")
+     * @Template("AppBundle:Scenario:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
@@ -178,15 +196,17 @@ class ScenarioController extends Controller
             return $this->redirect($this->generateUrl('scenario_edit', array('id' => $id)));
         }
 
-        return $this->render('AppBundle:Scenario:edit.html.twig', array(
+        return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        );
     }
     /**
      * Deletes a Scenario entity.
      *
+     * @Route("/{id}", name="scenario_delete")
+     * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
     {

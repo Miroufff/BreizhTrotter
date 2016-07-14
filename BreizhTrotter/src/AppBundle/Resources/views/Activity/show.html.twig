@@ -22,31 +22,23 @@
                 <td>{{ entity.feasibility }}</td>
             </tr>
             <tr>
-                <th>Image</th>
-                <td>{{ entity.image.id }}</td>
-            </tr>
-            <tr>
-                <th>Idscenario</th>
-                <td>{{ entity.scenario.id }}</td>
-            </tr>
-            <tr>
                 <th>Id</th>
                 <td>{{ entity.id }}</td>
             </tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('ens_activity') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('ens_activity_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('scenario_show', { id : entity.scenario.id }) }}">
+                Back to the list
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('activity_edit', { 'id': entity.id }) }}">
+                Edit
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
 {% endblock %}

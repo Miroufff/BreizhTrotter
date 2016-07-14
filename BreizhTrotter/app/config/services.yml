@@ -16,3 +16,8 @@ services:
         arguments: [~, AppBundle\Entity\Scenario, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: Scenario, label: Scenario }
+    app.admin.activity:
+        class: AppBundle\Admin\ActivityAdmin
+        arguments: [~, AppBundle\Entity\Activity, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Scenario, label: Activity }

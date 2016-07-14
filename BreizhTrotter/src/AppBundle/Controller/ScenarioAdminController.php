@@ -15,6 +15,11 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
+/**
+ * Class ScenarioAdminController
+ * 
+ * @package AppBundle\Controller
+ */
 class ScenarioAdminController extends Controller
 {
     /**

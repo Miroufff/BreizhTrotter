@@ -9,7 +9,11 @@
 namespace AppBundle\Form;
 
 
+use AppBundle\Entity\Activity;
+use Sonata\ClassificationBundle\Model\Category;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -24,9 +28,10 @@ class ScenarioType extends AbstractType
         $builder
             ->add('name')
             ->add('zone')
+            ->add('content')
             ->add('date', 'date')
             ->add('description', 'textarea')
-            ->add('content', 'textarea')
+            ->add('image', new ImageType())
         ;
     }
 

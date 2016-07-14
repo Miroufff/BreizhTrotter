@@ -1,41 +1,32 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: Mirouf
- * Date: 13/07/2016
- * Time: 19:49
+ * Date: 14/07/2016
+ * Time: 12:05
  */
 
 namespace AppBundle\Admin;
 
-use AppBundle\Entity\Activity;
-use AppBundle\Form\ActivityType;
-use AppBundle\Form\ConstraintType;
+use AppBundle\Entity\Scenario;
 use AppBundle\Form\ImageType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class ScenarioAdmin extends AbstractAdmin
+class ActivityAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('day')
             ->add('name')
-            ->add('zone')
-            ->add('content')
-            ->add('date', 'date')
-            ->add('description', 'textarea')
+            ->add('description')
+            ->add('feasibility')
             ->add('image', new ImageType())
-            ->add('activities', 'collection',
-                array(
-                    'type'         => new ActivityType(),
-                    'allow_add'    => true,
-                    'allow_delete' => true
-                )
-            )
+            ->add('scenario')
         ;
     }
 

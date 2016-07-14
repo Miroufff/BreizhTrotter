@@ -4,7 +4,7 @@ namespace AppBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class ActivityControllerTest extends WebTestCase
+class ActivityHadEquipmentControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
@@ -19,7 +19,7 @@ class ActivityControllerTest extends WebTestCase
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'appbundle_activity[field_name]'  => 'Test',
+            'appbundle_activityhadequipment[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class ActivityControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Update')->form(array(
-            'appbundle_activity[field_name]'  => 'Foo',
+            'appbundle_activityhadequipment[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 

@@ -3,12 +3,15 @@
 namespace AppBundle\Entity;  
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Activity
  *
  * @ORM\Entity
  * @ORM\Table(name="activity")
+ * @ORM\HasLifecycleCallbacks()
+ *
  * @package AppBundle\Entity
  */
 class Activity
@@ -42,19 +45,20 @@ class Activity
     private $feasibility;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image", cascade={"persist","remove"})
      * @ORM\JoinColumn(name="id_image", referencedColumnName="id")
      */
     private $image;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Scenario")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Scenario", inversedBy="activities")
      * @ORM\JoinColumn(name="id_scenario", referencedColumnName="id")
+     * @Assert\NotBlank()
      */
     private $scenario;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Action", inversedBy="scenarios")
+     * @ORM\ManyToMany(targetEntity="Action", inversedBy="activities")
      * @ORM\JoinTable(name="activity_actions",
      *      joinColumns={@ORM\JoinColumn(name="id_activity", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="id_action", referencedColumnName="id")}
@@ -63,7 +67,7 @@ class Activity
     private $actions;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Constraint", inversedBy="scenarios")
+     * @ORM\ManyToMany(targetEntity="Constraint", inversedBy="activities")
      * @ORM\JoinTable(name="activity_constraints",
      *      joinColumns={@ORM\JoinColumn(name="id_activity", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="id_constraint", referencedColumnName="id")}
@@ -249,6 +253,16 @@ class Activity
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * toString
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
     }
 }
 

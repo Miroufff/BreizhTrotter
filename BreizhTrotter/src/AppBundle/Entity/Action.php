@@ -338,4 +338,20 @@ class Action
     {
         return $this->id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getActivities()
+    {
+        return $this->activities;
+    }
+
+    /**
+     * @param mixed $activities
+     */
+    public function setActivities($activities)
+    {
+        $this->activities = $activities;
+    }
 }

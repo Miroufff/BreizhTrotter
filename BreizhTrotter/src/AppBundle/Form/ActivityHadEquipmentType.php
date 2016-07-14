@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ImageType extends AbstractType
+class ActivityHadEquipmentType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,7 +15,8 @@ class ImageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file','file', array('required' => false));
+            ->add('equipment')
+        ;
     }
     
     /**
@@ -24,7 +25,7 @@ class ImageType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Image'
+            'data_class' => 'AppBundle\Entity\ActivityHadEquipment'
         ));
     }
 
@@ -33,6 +34,6 @@ class ImageType extends AbstractType
      */
     public function getName()
     {
-        return 'appbundle_image';
+        return 'appbundle_activityhadequipment';
     }
 }
