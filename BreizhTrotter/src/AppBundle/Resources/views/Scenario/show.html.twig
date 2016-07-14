@@ -34,22 +34,19 @@
                 <td>{{ entity.open }}</td>
             </tr>
             {% if entity.activities %}
+                <tr></tr>
                 <tr>
                     <th>Activities</th>
                     <table style="text-align: left; padding-left: 20px;">
-                        <tr>
-                            <th>Name</th>
-                            <th>Day</th>
-                            <th>Description</th>
-                            <th>Feasibility</th>
-                        </tr>
                         {% for activity in entity.activities %}
                             <tr>
-                                {% if entity.open %}
-                                    <td><a href="{{ path('activity_show', { 'id': activity.id }) }}">{{ activity }}</a></td>
-                                {% else %}
-                                    <td>{{ activity.name }}</td>
-                                {% endif %}
+                                <th>Name</th>
+                                <th>Day</th>
+                                <th>Description</th>
+                                <th>Feasibility</th>
+                            </tr>
+                            <tr>
+                                <td><a href="{{ path('activity_show', { 'id': activity.id }) }}">{{ activity }}</a></td>
                                 <td>{{ activity.day}}</td>
                                 <td>{{ activity.description}}</td>
                                 <td>{{ activity.feasibility}}</td>
@@ -66,15 +63,15 @@
             <li>
                 <a href="{{ path('activity_new', { 'id': entity.id })  }}">Add activity</a>
             </li>
+            <li>
+                <a href="{{ path('scenario_edit', { 'id': entity.id }) }}">
+                    Edit
+                </a>
+            </li>
         {% endif %}
         <li>
             <a href="{{ path('scenario') }}">
                 Back to the list
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('scenario_edit', { 'id': entity.id }) }}">
-                Edit
             </a>
         </li>
         <li>{{ form(delete_form) }}</li>

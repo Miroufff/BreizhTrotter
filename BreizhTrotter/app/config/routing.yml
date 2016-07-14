@@ -58,14 +58,6 @@ app_ens_actor:
     resource: "@AppBundle/Resources/config/routing/actor.yml"
     prefix:   /actor
 
-app_ens_action_responsible:
-    resource: "@AppBundle/Resources/config/routing/actionresponsible.yml"
-    prefix:   /action_responsible
-
-app_ens_action:
-    resource: "@AppBundle/Resources/config/routing/action.yml"
-    prefix:   /action
-
 app_ens_scenario:
     resource: "@AppBundle/Resources/config/routing/scenario.yml"
     prefix:   /scenario

@@ -35,6 +35,7 @@ class ActivityController extends Controller
             'entities' => $entities,
         );
     }
+
     /**
      * Creates a new Activity entity.
      *

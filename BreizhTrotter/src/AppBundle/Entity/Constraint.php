@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Constraint
@@ -69,9 +70,11 @@ class Constraint
     private $image;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Activity", inversedBy="constraints")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Activity", inversedBy="constraints")
+     * @ORM\JoinColumn(name="id_activity", referencedColumnName="id")
+     * @Assert\NotBlank()
      */
-    private $activities;
+    private $activity;
 
     /**
      * @var integer
@@ -275,6 +278,22 @@ class Constraint
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActivity()
+    {
+        return $this->activity;
+    }
+
+    /**
+     * @param mixed $activity
+     */
+    public function setActivity($activity)
+    {
+        $this->activity = $activity;
     }
 }
 

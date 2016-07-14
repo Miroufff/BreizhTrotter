@@ -21,22 +21,50 @@
                 <th>Feasibility</th>
                 <td>{{ entity.feasibility }}</td>
             </tr>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
+            {% if entity.actions %}
+                <tr></tr>
+                <tr>
+                    <th>Actions</th>
+                    <table style="text-align: left; padding-left: 20px;">
+                        {% for action in entity.actions%}
+                            <tr>
+                                <th>Name</th>
+                            </tr>
+                            <tr>
+                                {% if entity.scenario.open %}
+                                    <td><a href="{{ path('action_show', { 'id': action.id }) }}">{{ action.name}}</a></td>
+                                {% else %}
+                                    <td>{{ action.name }}</td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </tr>
+            {% endif %}
         </tbody>
     </table>
 
     <ul class="record_actions">
+        {% if entity.scenario.open %}
+            <li>
+                <a href="{{ path('action_new', { 'id': entity.id }) }}">
+                    Add action
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('constraint_new', { 'id': entity.id }) }}">
+                    Add constraint
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('activity_edit', { 'id': entity.id }) }}">
+                    Edit
+                </a>
+            </li>
+        {% endif %}
         <li>
             <a href="{{ path('scenario_show', { id : entity.scenario.id }) }}">
-                Back to the list
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('activity_edit', { 'id': entity.id }) }}">
-                Edit
+                Back to the scenario
             </a>
         </li>
         <li>{{ form(delete_form) }}</li>

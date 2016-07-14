@@ -4,13 +4,16 @@ namespace AppBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use AppBundle\Entity\Action;
 use AppBundle\Form\ActionType;
 
 /**
  * Action controller.
  *
+ * @Route("/action")
  */
 class ActionController extends Controller
 {
@@ -18,6 +21,9 @@ class ActionController extends Controller
     /**
      * Lists all Action entities.
      *
+     * @Route("/", name="action")
+     * @Method("GET")
+     * @Template()
      */
     public function indexAction()
     {
@@ -25,33 +31,41 @@ class ActionController extends Controller
 
         $entities = $em->getRepository('AppBundle:Action')->findAll();
 
-        return $this->render('AppBundle:Action:index.html.twig', array(
+        return array(
             'entities' => $entities,
-        ));
+        );
     }
-    
+
     /**
      * Creates a new Action entity.
      *
+     * @Route("/create/{id}", name="action_create")
+     * @Method({"POST", "GET"})
+     * @Template("AppBundle:Action:new.html.twig")
      */
-    public function createAction(Request $request)
+    public function createAction(Request $request, $id)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        $activity = $em->getRepository('AppBundle:Activity')->find($id);
+
         $entity = new Action();
+        $entity->setActivity($activity);
+
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('ens_action_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('activity_show', array('id' => $entity->getActivity()->getId())));
         }
 
-        return $this->render('AppBundle:Action:new.html.twig', array(
+        return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        ));
+        );
     }
 
     /**
@@ -64,7 +78,7 @@ class ActionController extends Controller
     private function createCreateForm(Action $entity)
     {
         $form = $this->createForm(new ActionType(), $entity, array(
-            'action' => $this->generateUrl('ens_action_create'),
+            'action' => $this->generateUrl('action_create', array('id' => $entity->getActivity()->getId())),
             'method' => 'POST',
         ));
 
@@ -76,21 +90,32 @@ class ActionController extends Controller
     /**
      * Displays a form to create a new Action entity.
      *
+     * @Route("/new/{id}", name="action_new")
+     * @Method("GET")
+     * @Template()
      */
-    public function newAction()
+    public function newAction($id)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        $activity = $em->getRepository('AppBundle:Activity')->find($id);
+
         $entity = new Action();
+        $entity->setActivity($activity);
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('AppBundle:Action:new.html.twig', array(
+        return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        ));
+        );
     }
 
     /**
      * Finds and displays a Action entity.
      *
+     * @Route("/{id}", name="action_show")
+     * @Method("GET")
+     * @Template()
      */
     public function showAction($id)
     {
@@ -104,15 +129,18 @@ class ActionController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('AppBundle:Action:show.html.twig', array(
+        return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
-        ));
+        );
     }
 
     /**
      * Displays a form to edit an existing Action entity.
      *
+     * @Route("/{id}/edit", name="action_edit")
+     * @Method("GET")
+     * @Template()
      */
     public function editAction($id)
     {
@@ -127,11 +155,11 @@ class ActionController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('AppBundle:Action:edit.html.twig', array(
+        return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        );
     }
 
     /**
@@ -144,7 +172,7 @@ class ActionController extends Controller
     private function createEditForm(Action $entity)
     {
         $form = $this->createForm(new ActionType(), $entity, array(
-            'action' => $this->generateUrl('ens_action_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('action_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -155,6 +183,9 @@ class ActionController extends Controller
     /**
      * Edits an existing Action entity.
      *
+     * @Route("/{id}", name="action_update")
+     * @Method("PUT")
+     * @Template("AppBundle:Action:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
@@ -173,18 +204,20 @@ class ActionController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('ens_action_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('action_edit', array('id' => $id)));
         }
 
-        return $this->render('AppBundle:Action:edit.html.twig', array(
+        return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        );
     }
     /**
      * Deletes a Action entity.
      *
+     * @Route("/{id}", name="action_delete")
+     * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
     {
@@ -203,7 +236,7 @@ class ActionController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('ens_action'));
+        return $this->redirect($this->generateUrl('action'));
     }
 
     /**
@@ -216,7 +249,7 @@ class ActionController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('ens_action_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('action_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

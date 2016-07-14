@@ -13,7 +13,6 @@
                 <th>Diagaction</th>
                 <th>Viabilityimpact</th>
                 <th>Tourismimpact</th>
-                <th>Image</th>
                 <th>Id</th>
                 <th>Actions</th>
             </tr>
@@ -21,22 +20,21 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('ens_constraint_show', { 'id': entity.id }) }}">{{ entity.updateDate }}</a></td>
+                <td><a href="{{ path('constraint_show', { 'id': entity.id }) }}">{{ entity.updateDate }}</a></td>
                 <td>{{ entity.diffLevel }}</td>
                 <td>{{ entity.context }}</td>
                 <td>{{ entity.description }}</td>
                 <td>{{ entity.diagAction }}</td>
                 <td>{{ entity.viabilityImpact }}</td>
                 <td>{{ entity.tourismImpact }}</td>
-                <td>{{ entity.image.id }}</td>
                 <td>{{ entity.id }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('ens_constraint_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('constraint_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('ens_constraint_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('constraint_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
                 </td>
@@ -47,7 +45,7 @@
 
         <ul>
         <li>
-            <a href="{{ path('ens_constraint_new') }}">
+            <a href="{{ path('constraint_new') }}">
                 Create a new entry
             </a>
         </li>

@@ -4,13 +4,16 @@ namespace AppBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use AppBundle\Entity\Constraint;
 use AppBundle\Form\ConstraintType;
 
 /**
  * Constraint controller.
  *
+ * @Route("/constraint")
  */
 class ConstraintController extends Controller
 {
@@ -18,6 +21,9 @@ class ConstraintController extends Controller
     /**
      * Lists all Constraint entities.
      *
+     * @Route("/", name="constraint")
+     * @Method("GET")
+     * @Template()
      */
     public function indexAction()
     {
@@ -25,13 +31,16 @@ class ConstraintController extends Controller
 
         $entities = $em->getRepository('AppBundle:Constraint')->findAll();
 
-        return $this->render('AppBundle:Constraint:index.html.twig', array(
+        return array(
             'entities' => $entities,
-        ));
+        );
     }
     /**
      * Creates a new Constraint entity.
      *
+     * @Route("/", name="constraint_create")
+     * @Method("POST")
+     * @Template("AppBundle:Constraint:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -44,13 +53,13 @@ class ConstraintController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('ens_constraint_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('constraint_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('AppBundle:Constraint:new.html.twig', array(
+        return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        ));
+        );
     }
 
     /**
@@ -63,7 +72,7 @@ class ConstraintController extends Controller
     private function createCreateForm(Constraint $entity)
     {
         $form = $this->createForm(new ConstraintType(), $entity, array(
-            'action' => $this->generateUrl('ens_constraint_create'),
+            'action' => $this->generateUrl('constraint_create'),
             'method' => 'POST',
         ));
 
@@ -75,21 +84,27 @@ class ConstraintController extends Controller
     /**
      * Displays a form to create a new Constraint entity.
      *
+     * @Route("/new", name="constraint_new")
+     * @Method("GET")
+     * @Template()
      */
     public function newAction()
     {
         $entity = new Constraint();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('AppBundle:Constraint:new.html.twig', array(
+        return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        ));
+        );
     }
 
     /**
      * Finds and displays a Constraint entity.
      *
+     * @Route("/{id}", name="constraint_show")
+     * @Method("GET")
+     * @Template()
      */
     public function showAction($id)
     {
@@ -103,15 +118,18 @@ class ConstraintController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('AppBundle:Constraint:show.html.twig', array(
+        return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
-        ));
+        );
     }
 
     /**
      * Displays a form to edit an existing Constraint entity.
      *
+     * @Route("/{id}/edit", name="constraint_edit")
+     * @Method("GET")
+     * @Template()
      */
     public function editAction($id)
     {
@@ -126,11 +144,11 @@ class ConstraintController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('AppBundle:Constraint:edit.html.twig', array(
+        return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        );
     }
 
     /**
@@ -143,7 +161,7 @@ class ConstraintController extends Controller
     private function createEditForm(Constraint $entity)
     {
         $form = $this->createForm(new ConstraintType(), $entity, array(
-            'action' => $this->generateUrl('ens_constraint_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('constraint_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -154,6 +172,9 @@ class ConstraintController extends Controller
     /**
      * Edits an existing Constraint entity.
      *
+     * @Route("/{id}", name="constraint_update")
+     * @Method("PUT")
+     * @Template("AppBundle:Constraint:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
@@ -172,18 +193,20 @@ class ConstraintController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('ens_constraint_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('constraint_edit', array('id' => $id)));
         }
 
-        return $this->render('AppBundle:Constraint:edit.html.twig', array(
+        return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        );
     }
     /**
      * Deletes a Constraint entity.
      *
+     * @Route("/{id}", name="constraint_delete")
+     * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
     {
@@ -202,7 +225,7 @@ class ConstraintController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('ens_constraint'));
+        return $this->redirect($this->generateUrl('constraint'));
     }
 
     /**
@@ -215,7 +238,7 @@ class ConstraintController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('ens_constraint_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('constraint_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

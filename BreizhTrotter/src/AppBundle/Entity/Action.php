@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Action
@@ -77,16 +78,17 @@ class Action
     private $accomplishment;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image", cascade={"persist","remove"})
      * @ORM\JoinColumn(name="id_image", referencedColumnName="id")
      */
     private $image;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Activity", inversedBy="actions")
-     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Activity", inversedBy="actions")
+     * @ORM\JoinColumn(name="id_action", referencedColumnName="id")
+     * @Assert\NotBlank()
      */
-    private $activities;
+    private $activity;
 
     /**
      * @var integer
@@ -342,16 +344,16 @@ class Action
     /**
      * @return mixed
      */
-    public function getActivities()
+    public function getActivity()
     {
-        return $this->activities;
+        return $this->activity;
     }
 
     /**
-     * @param mixed $activities
+     * @param mixed $activity
      */
-    public function setActivities($activities)
+    public function setActivity($activity)
     {
-        $this->activities = $activities;
+        $this->activity = $activity;
     }
 }

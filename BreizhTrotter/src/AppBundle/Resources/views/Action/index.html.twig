@@ -1,20 +1,20 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-<div class="form-container">
     <h1>Action list</h1>
 
     <table class="records_list">
         <thead>
             <tr>
+                <th>Step</th>
                 <th>Updatedate</th>
                 <th>Feasibility</th>
                 <th>Name</th>
+                <th>Personincharge</th>
                 <th>Description</th>
                 <th>Budget</th>
                 <th>Timelimit</th>
                 <th>Accomplishment</th>
-                <th>image</th>
                 <th>Id</th>
                 <th>Actions</th>
             </tr>
@@ -22,22 +22,23 @@
         <tbody>
         {% for entity in entities %}
             <tr>
+                <td><a href="{{ path('action_show', { 'id': entity.id }) }}">{{ entity.step }}</a></td>
                 <td>{% if entity.updateDate %}{{ entity.updateDate|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ entity.feasibility }}</td>
                 <td>{{ entity.name }}</td>
+                <td>{{ entity.personInCharge }}</td>
                 <td>{{ entity.description }}</td>
                 <td>{{ entity.budget }}</td>
                 <td>{{ entity.timeLimit }}</td>
                 <td>{{ entity.accomplishment }}</td>
-                <td>{{ entity.image.id }}</td>
                 <td>{{ entity.id }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('ens_action_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('action_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('ens_action_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('action_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
                 </td>
@@ -48,10 +49,9 @@
 
         <ul>
         <li>
-            <a href="{{ path('ens_action_new') }}">
+            <a href="{{ path('action_new') }}">
                 Create a new entry
             </a>
         </li>
     </ul>
-</div>
-{% endblock %}
+    {% endblock %}

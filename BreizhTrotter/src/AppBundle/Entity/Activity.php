@@ -58,20 +58,16 @@ class Activity
     private $scenario;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Action", inversedBy="activities")
-     * @ORM\JoinTable(name="activity_actions",
-     *      joinColumns={@ORM\JoinColumn(name="id_activity", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="id_action", referencedColumnName="id")}
-     *      )
+     * @var mixed
+     *
+     * @ORM\OneToMany(targetEntity="Action", mappedBy="activity", cascade={"persist","remove"})
      */
     private $actions;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Constraint", inversedBy="activities")
-     * @ORM\JoinTable(name="activity_constraints",
-     *      joinColumns={@ORM\JoinColumn(name="id_activity", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="id_constraint", referencedColumnName="id")}
-     *      )
+     * @var mixed
+     *
+     * @ORM\OneToMany(targetEntity="Constraint", mappedBy="activity", cascade={"persist","remove"})
      */
     private $constraints;
 

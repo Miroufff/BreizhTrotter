@@ -22,6 +22,10 @@
                 <td>{{ entity.name }}</td>
             </tr>
             <tr>
+                <th>Personincharge</th>
+                <td>{{ entity.personInCharge }}</td>
+            </tr>
+            <tr>
                 <th>Description</th>
                 <td>{{ entity.description }}</td>
             </tr>
@@ -38,27 +42,23 @@
                 <td>{{ entity.accomplishment }}</td>
             </tr>
             <tr>
-                <th>image</th>
-                <td>{{ entity.image.id }}</td>
-            </tr>
-            <tr>
                 <th>Id</th>
                 <td>{{ entity.id }}</td>
             </tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('ens_action') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('ens_action_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('action_edit', { 'id': entity.id }) }}">
+                Edit
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('activity_show', { 'id': entity.activity.id }) }}">
+                Back to the activity
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
 {% endblock %}
