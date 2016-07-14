@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Profit
  *
  * @ORM\Entity
- * @ORM\Table(name="profit")
+ * @ORM\Table(name="t_profit")
  * @package AppBundle\Entity
  */
 class Profit

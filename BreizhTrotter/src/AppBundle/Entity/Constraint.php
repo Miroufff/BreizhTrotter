@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -9,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Constraint
  * 
  * @ORM\Entity
- * @ORM\Table(name="constraint")
+ * @ORM\Table(name="t_constraint")
  * @package AppBundle\Entity
  */
 class Constraint
@@ -20,6 +21,13 @@ class Constraint
      * @ORM\Column(name="update_date", type="datetime", nullable = true)
      */
     private $updateDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=500)
+     */
+    private $name;
 
     /**
      * @var integer
@@ -64,7 +72,7 @@ class Constraint
     private $tourismImpact;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Image", cascade={"persist","remove"})
      * @ORM\JoinColumn(name="id_image", referencedColumnName="id")
      */
     private $image;
@@ -85,6 +93,13 @@ class Constraint
      */
     private $id;
 
+    /**
+     * Constraint constructor.
+     */
+    public function __construct()
+    {
+        $this->updateDate = new DateTime('NOW');;
+    }
 
     /**
      * Set updateDate
@@ -295,5 +310,20 @@ class Constraint
     {
         $this->activity = $activity;
     }
-}
 
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+}

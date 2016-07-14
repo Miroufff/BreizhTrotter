@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Class Action
  * @ORM\Entity
- * @ORM\Table(name="action")
+ * @ORM\Table(name="t_action")
  * @package AppBundle\Entity
  */
 class Action
@@ -104,7 +104,7 @@ class Action
      */
     public function __construct()
     {
-        $this->updateDate = new DateTime('NOW');;
+        $this->updateDate = new DateTime('NOW');
     }
 
     /**

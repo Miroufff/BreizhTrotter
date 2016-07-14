@@ -22,10 +22,9 @@
                 <td>{{ entity.feasibility }}</td>
             </tr>
             {% if entity.actions %}
-                <tr></tr>
                 <tr>
                     <th>Actions</th>
-                    <table style="text-align: left; padding-left: 20px;">
+                    <table style="text-align: left; padding-left: 50px;">
                         {% for action in entity.actions%}
                             <tr>
                                 <th>Name</th>
@@ -35,6 +34,25 @@
                                     <td><a href="{{ path('action_show', { 'id': action.id }) }}">{{ action.name}}</a></td>
                                 {% else %}
                                     <td>{{ action.name }}</td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </tr>
+            {% endif %}
+            {% if entity.constraints %}
+                <tr>
+                    <b><th>Constraints</th></b>
+                    <table style="text-align: left; padding-left: 50px;">
+                        {% for constraint in entity.constraints%}
+                            <tr>
+                                <th>Name</th>
+                            </tr>
+                            <tr>
+                                {% if entity.scenario.open %}
+                                    <td><a href="{{ path('constraint_show', { 'id': constraint.id }) }}">{{ constraint.name}}</a></td>
+                                {% else %}
+                                    <td>{{ constraint.name }}</td>
                                 {% endif %}
                             </tr>
                         {% endfor %}

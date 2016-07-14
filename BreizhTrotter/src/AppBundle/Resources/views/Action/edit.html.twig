@@ -5,12 +5,12 @@
 
     {{ form(edit_form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('activity_show', { 'id': entity.activity.id }) }}">
-            Back to the Activity
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('activity_show', { 'id': entity.activity.id }) }}">
+                Back to the activity
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
 {% endblock %}

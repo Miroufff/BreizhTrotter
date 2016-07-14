@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Equipment
  *
  * @ORM\Entity
- * @ORM\Table(name="equipment")
+ * @ORM\Table(name="t_equipment")
  * @package AppBundle\Entity
  */
 class Equipment

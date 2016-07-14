@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Deliverable
  *
  * @ORM\Entity
- * @ORM\Table(name="deliverable")
+ * @ORM\Table(name="t_deliverable")
  * @package AppBundle\Entity
  */
 class Deliverable

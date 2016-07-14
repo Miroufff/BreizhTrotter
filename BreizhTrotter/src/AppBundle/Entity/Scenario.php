@@ -10,7 +10,7 @@ use Sonata\MediaBundle\Model\Media;
  * Scenario
  *
  * @ORM\Entity
- * @ORM\Table(name="scenario")
+ * @ORM\Table(name="t_scenario")
  * @package AppBundle\Entity
  */
 class Scenario

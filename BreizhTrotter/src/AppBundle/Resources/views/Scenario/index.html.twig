@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block body -%}
     <h1>Scenario list</h1>
@@ -13,7 +13,6 @@
                 <th>Content</th>
                 <th>Description</th>
                 <th>Open</th>
-                <th>Id</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -27,7 +26,6 @@
                 <td>{{ entity.content }}</td>
                 <td>{{ entity.description }}</td>
                 <td>{{ entity.open }}</td>
-                <td>{{ entity.id }}</td>
                 <td>
                 <ul>
                     <li>

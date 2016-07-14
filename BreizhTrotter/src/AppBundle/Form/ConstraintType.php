@@ -15,21 +15,13 @@ class ConstraintType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('updateDate')
             ->add('diffLevel')
             ->add('context')
             ->add('description')
             ->add('diagAction')
             ->add('viabilityImpact')
             ->add('tourismImpact')
-            ->add('images', 'sonata_type_collection', array(), array(
-                'edit' => 'inline',
-                'inline' => 'table',
-                'link_parameters' => array(
-                    'context' => 'images',
-                    'provider' => 'sonata.media.provider.image'
-                )
-            ))
+            ->add('image', new ImageType())
         ;
     }
     
