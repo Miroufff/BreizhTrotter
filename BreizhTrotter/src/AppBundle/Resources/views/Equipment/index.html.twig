@@ -7,26 +7,20 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Image</th>
-                <th>Equipment</th>
-                <th>Id</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('ens_equipment_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
-                <td>{{ entity.image.id }}</td>
-                <td>{{ entity.equipment.id }}</td>
-                <td>{{ entity.id }}</td>
+                <td><a href="{{ path('equipment_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('ens_equipment_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('equipment_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('ens_equipment_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('equipment_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
                 </td>
@@ -37,7 +31,7 @@
 
         <ul>
         <li>
-            <a href="{{ path('ens_equipment_new') }}">
+            <a href="{{ path('equipment_new') }}">
                 Create a new entry
             </a>
         </li>

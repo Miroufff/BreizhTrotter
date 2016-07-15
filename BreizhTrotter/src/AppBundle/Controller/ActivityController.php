@@ -173,17 +173,35 @@ class ActivityController extends Controller
             unset($constraints[$constraint->getNumero()]);
         }
 
-        $existingActionForm = $this->createDeleteForm($id);
-        $existingConstraintForm = $this->createDeleteForm($id);
+        $equipments = $em->getRepository('AppBundle:Equipment')->findAll();
+
+        foreach ($entity->getEquipments() as $index => $myEquipment) {
+            foreach ($equipments as $key => $equipment) {
+                if ($myEquipment->getId() == $equipment->getId()) {
+                    unset($equipments[$key]);
+                }
+            }
+        }
+
+        $mobilities = $em->getRepository('AppBundle:Mobility')->findAll();
+
+        foreach ($entity->getMobilities() as $index => $myMobility) {
+            foreach ($mobilities as $key => $mobility) {
+                if ($myMobility->getId() == $mobility->getId()) {
+                    unset($mobilities[$key]);
+                }
+            }
+        }
+
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'                   => $entity,
-            'actions'                  => $actions,
-            'constraints'              => $constraints,
-            'existing_action_form'     => $existingActionForm->createView(),
-            'existing_constraint_form' => $existingConstraintForm->createView(),
-            'delete_form'              => $deleteForm->createView(),
+            'entity'      => $entity,
+            'actions'     => $actions,
+            'constraints' => $constraints,
+            'equipments'  => $equipments,
+            'mobilities'  => $mobilities,
+            'delete_form' => $deleteForm->createView(),
         );
     }
 

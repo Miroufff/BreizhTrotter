@@ -7,21 +7,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use AppBundle\Entity\Equipment;
-use AppBundle\Form\EquipmentType;
+use AppBundle\Entity\Mobility;
+use AppBundle\Form\MobilityType;
 
 /**
- * Equipment controller.
+ * Mobility controller.
  *
- * @Route("/equipment")
+ * @Route("/mobility")
  */
-class EquipmentController extends Controller
+class MobilityController extends Controller
 {
 
     /**
-     * Lists all Equipment entities.
+     * Lists all Mobility entities.
      *
-     * @Route("/", name="equipment")
+     * @Route("/", name="mobility")
      * @Method("GET")
      * @Template()
      */
@@ -29,22 +29,22 @@ class EquipmentController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AppBundle:Equipment')->findAll();
+        $entities = $em->getRepository('AppBundle:Mobility')->findAll();
 
         return array(
             'entities' => $entities,
         );
     }
     /**
-     * Creates a new Equipment entity.
+     * Creates a new Mobility entity.
      *
-     * @Route("/", name="equipment_create")
+     * @Route("/", name="mobility_create")
      * @Method("POST")
-     * @Template("AppBundle:Equipment:new.html.twig")
+     * @Template("AppBundle:Mobility:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new Equipment();
+        $entity = new Mobility();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -53,7 +53,7 @@ class EquipmentController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('equipment_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('mobility_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -63,16 +63,16 @@ class EquipmentController extends Controller
     }
 
     /**
-     * Creates a form to create a Equipment entity.
+     * Creates a form to create a Mobility entity.
      *
-     * @param Equipment $entity The entity
+     * @param Mobility $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Equipment $entity)
+    private function createCreateForm(Mobility $entity)
     {
-        $form = $this->createForm(new EquipmentType(), $entity, array(
-            'action' => $this->generateUrl('equipment_create'),
+        $form = $this->createForm(new MobilityType(), $entity, array(
+            'action' => $this->generateUrl('mobility_create'),
             'method' => 'POST',
         ));
 
@@ -82,15 +82,15 @@ class EquipmentController extends Controller
     }
 
     /**
-     * Displays a form to create a new Equipment entity.
+     * Displays a form to create a new Mobility entity.
      *
-     * @Route("/new", name="equipment_new")
+     * @Route("/new", name="mobility_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new Equipment();
+        $entity = new Mobility();
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -102,28 +102,28 @@ class EquipmentController extends Controller
     /**
      * Displays a form to create a new Action entity.
      *
-     * @Route("/existingEquipmentNew/{id}", name="equipment_existing_new")
+     * @Route("/existingMobilityNew/{id}", name="mobility_existing_new")
      * @Method({"GET", "POST"})
      * @Template()
      */
-    public function existingEquipmentNewAction($id)
+    public function existingMobilityNewAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $equipment = $em->getRepository('AppBundle:Equipment')->find($this->get('request')->request->get('equipment'));
+        $mobility = $em->getRepository('AppBundle:Mobility')->find($this->get('request')->request->get('mobility'));
         $activity = $em->getRepository('AppBundle:Activity')->find($id);
-        $equipment->addActivities($activity);
+        $mobility->addActivities($activity);
 
-        $em->persist($equipment);
+        $em->persist($mobility);
         $em->flush();
 
         return $this->redirect($this->generateUrl('activity_show', array('id' => $activity->getId())));
     }
 
     /**
-     * Finds and displays a Equipment entity.
+     * Finds and displays a Mobility entity.
      *
-     * @Route("/{id}", name="equipment_show")
+     * @Route("/{id}", name="mobility_show")
      * @Method("GET")
      * @Template()
      */
@@ -131,10 +131,10 @@ class EquipmentController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('AppBundle:Equipment')->find($id);
+        $entity = $em->getRepository('AppBundle:Mobility')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Equipment entity.');
+            throw $this->createNotFoundException('Unable to find Mobility entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -146,9 +146,9 @@ class EquipmentController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Equipment entity.
+     * Displays a form to edit an existing Mobility entity.
      *
-     * @Route("/{id}/edit", name="equipment_edit")
+     * @Route("/{id}/edit", name="mobility_edit")
      * @Method("GET")
      * @Template()
      */
@@ -156,10 +156,10 @@ class EquipmentController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('AppBundle:Equipment')->find($id);
+        $entity = $em->getRepository('AppBundle:Mobility')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Equipment entity.');
+            throw $this->createNotFoundException('Unable to find Mobility entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -173,16 +173,16 @@ class EquipmentController extends Controller
     }
 
     /**
-    * Creates a form to edit a Equipment entity.
+    * Creates a form to edit a Mobility entity.
     *
-    * @param Equipment $entity The entity
+    * @param Mobility $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Equipment $entity)
+    private function createEditForm(Mobility $entity)
     {
-        $form = $this->createForm(new EquipmentType(), $entity, array(
-            'action' => $this->generateUrl('equipment_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new MobilityType(), $entity, array(
+            'action' => $this->generateUrl('mobility_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -191,20 +191,20 @@ class EquipmentController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Equipment entity.
+     * Edits an existing Mobility entity.
      *
-     * @Route("/{id}", name="equipment_update")
+     * @Route("/{id}", name="mobility_update")
      * @Method("PUT")
-     * @Template("AppBundle:Equipment:edit.html.twig")
+     * @Template("AppBundle:Mobility:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('AppBundle:Equipment')->find($id);
+        $entity = $em->getRepository('AppBundle:Mobility')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Equipment entity.');
+            throw $this->createNotFoundException('Unable to find Mobility entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -214,7 +214,7 @@ class EquipmentController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('equipment_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('mobility_edit', array('id' => $id)));
         }
 
         return array(
@@ -224,9 +224,9 @@ class EquipmentController extends Controller
         );
     }
     /**
-     * Deletes a Equipment entity.
+     * Deletes a Mobility entity.
      *
-     * @Route("/{id}", name="equipment_delete")
+     * @Route("/{id}", name="mobility_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -236,21 +236,21 @@ class EquipmentController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('AppBundle:Equipment')->find($id);
+            $entity = $em->getRepository('AppBundle:Mobility')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Equipment entity.');
+                throw $this->createNotFoundException('Unable to find Mobility entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('equipment'));
+        return $this->redirect($this->generateUrl('mobility'));
     }
 
     /**
-     * Creates a form to delete a Equipment entity by id.
+     * Creates a form to delete a Mobility entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -259,7 +259,7 @@ class EquipmentController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('equipment_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('mobility_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

@@ -379,6 +379,17 @@ class Action
     }
 
     /**
+     * Remove activities
+     *
+     * @param Activity $activity
+     */
+    public function removeActivities(Activity $activity)
+    {
+        $activity->removeActions($this);
+        $this->activities->removeElement($activity);
+    }
+
+    /**
      * @return string
      */
     public function getNumero()

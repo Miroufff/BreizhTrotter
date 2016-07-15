@@ -27,10 +27,6 @@
                     <table style="text-align: left; padding-left: 50px;">
                         {% for action in entity.actions %}
                             <tr>
-                                <th>Numero</th>
-                                <th>Name</th>
-                            </tr>
-                            <tr>
                                 {% if entity.scenario.open %}
                                     <td><a href="{{ path('action_show', { 'id': action.id }) }}">{{ action.numero}}</a></td>
                                 {% else %}
@@ -48,16 +44,37 @@
                     <table style="text-align: left; padding-left: 50px;">
                         {% for constraint in entity.constraints %}
                             <tr>
-                                <th>Numero</th>
-                                <th>Name</th>
-                            </tr>
-                            <tr>
                                 {% if entity.scenario.open %}
+                                    <td><a href="{{ path('constraint_show', { 'id': constraint.id }) }}">{{ constraint.numero}}</a></td>
                                     <td><a href="{{ path('constraint_show', { 'id': constraint.id }) }}">{{ constraint.numero}}</a></td>
                                 {% else %}
                                     <td>{{ constraint.numero }}</td>
                                 {% endif %}
                                 <td>{{ constraint.name }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </tr>
+            {% endif %}
+            {% if entity.mobilities %}
+                <tr>
+                    <b><th>Mobilities</th></b>
+                    <table style="text-align: left; padding-left: 50px;">
+                        {% for mobility in entity.mobilities %}
+                            <tr>
+                                <td>{{ mobility.name }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </tr>
+            {% endif %}
+            {% if entity.equipments %}
+                <tr>
+                    <b><th>Equipments</th></b>
+                    <table style="text-align: left; padding-left: 50px;">
+                        {% for equipment in entity.equipments %}
+                            <tr>
+                                <td>{{ equipment.name }}</td>
                             </tr>
                         {% endfor %}
                     </table>
@@ -108,6 +125,36 @@
                     </form>
                 </li>
             {% endif %}
+            {% if mobilities %}
+                <li>
+                    <form action="{{ path('mobility_existing_new', { 'id': entity.id }) }}" method="post">
+                        <input type="hidden" name="mobility" />
+
+                        <select name="MOBILITIES" id="MOBILITIES">
+                            {% for mobility in mobilities %}
+                                <option value="{{ mobility.id }}">{{ mobility.name }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <input type="submit" value="Add existing mobility" onclick="changeMobility()">
+                    </form>
+                </li>
+            {% endif %}
+            {% if equipments %}
+                <li>
+                    <form action="{{ path('equipment_existing_new', { 'id': entity.id }) }}" method="post">
+                        <input type="hidden" name="equipment" />
+
+                        <select name="EQUIPMENTS" id="EQUIPMENTS">
+                            {% for equipment in equipments %}
+                                <option value="{{ equipment.id }}">{{ equipment.name }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <input type="submit" value="Add existing equipment" onclick="changeEquipment()">
+                    </form>
+                </li>
+            {% endif %}
             <li>
                 <a href="{{ path('activity_edit', { 'id': entity.id }) }}">
                     Edit
@@ -125,7 +172,7 @@
 
 {% block javascripts %}
     <script>
-        function changeAction()
+        function changeAction(mySelect)
         {
             var action = document.getElementById('ACTIONS').value;
             document.querySelector('[name=action]').value = action;
@@ -135,6 +182,18 @@
         {
             var constraint = document.getElementById('CONSTRAINTS').value;
             document.querySelector('[name=constraint]').value = constraint;
+        }
+
+        function changeMobility()
+        {
+            var mobility = document.getElementById('MOBILITIES').value;
+            document.querySelector('[name=mobility]').value = mobility;
+        }
+
+        function changeEquipment(mySelect)
+        {
+            var equipment = document.getElementById('EQUIPMENTS').value;
+            document.querySelector('[name=equipment]').value = equipment;
         }
     </script>
 {% endblock %}

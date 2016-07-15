@@ -9,10 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
  * Equipment
  *
  * @ORM\Entity
- * @ORM\Table(name="t_equipment")
+ * @ORM\Table(name="t_mobility")
  * @package AppBundle\Entity
  */
-class Equipment
+class Mobility
 {
     /**
      * @var string
@@ -37,15 +37,15 @@ class Equipment
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Activity", mappedBy="equipments")
-     * @ORM\JoinTable(name="tr_activity_equipment",
-     *       joinColumns={@ORM\JoinColumn(name="equipment_id", referencedColumnName="id")},
+     * @ORM\ManyToMany(targetEntity="Activity", mappedBy="mobilities")
+     * @ORM\JoinTable(name="tr_activity_mobility",
+     *       joinColumns={@ORM\JoinColumn(name="mobility_id", referencedColumnName="id")},
      *       inverseJoinColumns={@ORM\JoinColumn(name="activity_id", referencedColumnName="id")})
      */
     private $activities;
 
     /**
-     * Equipment constructor.
+     * Mobility constructor.
      */
     public function __construct()
     {
@@ -125,7 +125,7 @@ class Equipment
      */
     public function addActivities(Activity $activity)
     {
-        $activity->addEquipments($this);
+        $activity->addMobilities($this);
         $this->activities[] = $activity;
     }
 
@@ -136,7 +136,7 @@ class Equipment
      */
     public function removeActivities(Activity $activity)
     {
-        $activity->removeEquipments($this);
+        $activity->removeMobilities($this);
         $this->activities->removeElement($activity);
     }
 }

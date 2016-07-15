@@ -16,8 +16,7 @@ class EquipmentType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('image')
-            ->add('idEquipment')
+            ->add('image', new ImageType())
         ;
     }
     

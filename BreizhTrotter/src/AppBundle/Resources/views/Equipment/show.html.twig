@@ -9,29 +9,17 @@
                 <th>Name</th>
                 <td>{{ entity.name }}</td>
             </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ entity.image.id }}</td>
-            </tr>
-            <tr>
-                <th>Equipment</th>
-                <td>{{ entity.equipment.id }}</td>
-            </tr>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
         </tbody>
     </table>
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('ens_equipment') }}">
-            Back to the list
+        <a href="{{ path('scenario_show', { 'id': entity.activities.first.scenario.id }) }}">
+            Back to the scenario
         </a>
     </li>
     <li>
-        <a href="{{ path('ens_equipment_edit', { 'id': entity.id }) }}">
+        <a href="{{ path('equipment_edit', { 'id': entity.id }) }}">
             Edit
         </a>
     </li>

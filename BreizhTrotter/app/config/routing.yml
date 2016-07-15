@@ -34,33 +34,9 @@ soanata_user:
     resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
     prefix: /admin
 
-app_ens_profit:
-    resource: "@AppBundle/Resources/config/routing/profit.yml"
-    prefix:   /profit
-
 app_ens_image:
     resource: "@AppBundle/Resources/config/routing/image.yml"
     prefix:   /image
-
-app_ens_equipment:
-    resource: "@AppBundle/Resources/config/routing/equipment.yml"
-    prefix:   /equipment
-
-app_ens_deliverable:
-    resource: "@AppBundle/Resources/config/routing/deliverable.yml"
-    prefix:   /deliverable
-
-app_ens_constraint:
-    resource: "@AppBundle/Resources/config/routing/constraint.yml"
-    prefix:   /constraint
-
-app_ens_actor:
-    resource: "@AppBundle/Resources/config/routing/actor.yml"
-    prefix:   /actor
-
-app_ens_scenario:
-    resource: "@AppBundle/Resources/config/routing/scenario.yml"
-    prefix:   /scenario
 
 gallery:
     resource: '@SonataMediaBundle/Resources/config/routing/gallery.xml'

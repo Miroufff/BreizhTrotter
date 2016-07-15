@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ActorType extends AbstractType
+class MobilityType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,7 +16,7 @@ class ActorType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('idAction')
+            ->add('image', New ImageType())
         ;
     }
     
@@ -26,7 +26,7 @@ class ActorType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Actor'
+            'data_class' => 'AppBundle\Entity\Mobility'
         ));
     }
 
@@ -35,6 +35,6 @@ class ActorType extends AbstractType
      */
     public function getName()
     {
-        return 'appbundle_actor';
+        return 'appbundle_mobility';
     }
 }

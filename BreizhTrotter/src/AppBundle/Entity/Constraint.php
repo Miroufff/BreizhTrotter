@@ -363,4 +363,16 @@ class Constraint
         $activity->addConstraints($this);
         $this->activities[] = $activity;
     }
+    
+    /**
+     * Remove activities
+     *
+     * @param Activity $activity
+     */
+    public function removeActivities(Activity $activity)
+    {
+        $activity->removeConstraints($this);
+        $this->activities->removeElement($activity);
+    }
+
 }

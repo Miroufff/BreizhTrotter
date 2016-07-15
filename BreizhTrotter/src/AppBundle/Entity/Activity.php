@@ -75,6 +75,22 @@ class Activity
     private $constraints;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Equipment", inversedBy="activities")
+     * @ORM\JoinTable(name="tr_activity_equipment",
+     *       joinColumns={@ORM\JoinColumn(name="equipment_id", referencedColumnName="id")},
+     *       inverseJoinColumns={@ORM\JoinColumn(name="activity_id", referencedColumnName="id")})
+     */
+    private $equipments;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Mobility", inversedBy="activities")
+     * @ORM\JoinTable(name="tr_activity_mobility",
+     *       joinColumns={@ORM\JoinColumn(name="mobility_id", referencedColumnName="id")},
+     *       inverseJoinColumns={@ORM\JoinColumn(name="activity_id", referencedColumnName="id")})
+     */
+    private $mobilities;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -90,6 +106,8 @@ class Activity
     {
         $this->constraints = new ArrayCollection();
         $this->actions     = new ArrayCollection();
+        $this->equipments  = new ArrayCollection();
+        $this->mobilities  = new ArrayCollection();
     }
 
     /**
@@ -247,6 +265,16 @@ class Activity
     }
 
     /**
+     * Remove actions
+     *
+     * @param Action $action
+     */
+    public function removeActions(Action $action)
+    {
+        $this->actions->removeElement($action);
+    }
+
+    /**
      * @return mixed
      */
     public function getConstraints()
@@ -270,6 +298,88 @@ class Activity
     public function addConstraints(Constraint $constraint)
     {
         $this->constraints[] = $constraint;
+    }
+
+    /**
+     * Remove constraints
+     *
+     * @param Constraint $constraint
+     */
+    public function removeConstraints(Constraint $constraint)
+    {
+        $this->constraints->removeElement($constraint);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEquipments()
+    {
+        return $this->equipments;
+    }
+
+    /**
+     * @param mixed $equipments
+     */
+    public function setEquipments($equipments)
+    {
+        $this->equipments = $equipments;
+    }
+
+    /**
+     * Add equipments
+     *
+     * @param Equipment $equipment
+     */
+    public function addEquipments(Equipment $equipment)
+    {
+        $this->equipments[] = $equipment;
+    }
+
+    /**
+     * Remove equipments
+     *
+     * @param Equipment $equipment
+     */
+    public function removeEquipments(Equipment $equipment)
+    {
+        $this->equipments->removeElement($equipment);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMobilities()
+    {
+        return $this->mobilities;
+    }
+
+    /**
+     * @param mixed $mobilities
+     */
+    public function setMobilities($mobilities)
+    {
+        $this->mobilities = $mobilities;
+    }
+
+    /**
+     * Add mobilities
+     *
+     * @param Mobility $mobility
+     */
+    public function addMobilities(Mobility $mobility)
+    {
+        $this->mobilities[] = $mobility;
+    }
+
+    /**
+     * Remove mobilities
+     *
+     * @param Mobility $mobility
+     */
+    public function removeMobilities(Mobility $mobility)
+    {
+        $this->mobilities->removeElement($mobility);
     }
 
     /**
