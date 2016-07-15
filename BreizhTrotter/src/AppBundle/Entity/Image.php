@@ -55,7 +55,7 @@ class Image
 
     public function getUploadRootDir()
     {
-        return __dir__.'/../../../../web/uploads';
+        return __dir__.'/../../../web/uploads';
     }
 
     public function getAbsolutePath()
@@ -128,7 +128,6 @@ class Image
 
     public function getName()
     {
-        var_dump($this->name);
         return $this->name;
     }
 }
