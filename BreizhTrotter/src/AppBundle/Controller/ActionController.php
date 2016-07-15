@@ -136,6 +136,27 @@ class ActionController extends Controller
     }
 
     /**
+     * Displays a form to create a new Action entity.
+     *
+     * @Route("/existingActionRemove/{id}", name="action_existing_remove")
+     * @Method({"GET", "POST"})
+     * @Template()
+     */
+    public function existingActionRemoveAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $action = $em->getRepository('AppBundle:Action')->find($this->get('request')->request->get('actionRemove'));
+        $activity = $em->getRepository('AppBundle:Activity')->find($id);
+        $action->removeActivities($activity);
+
+        $em->persist($action);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('activity_show', array('id' => $activity->getId())));
+    }
+
+    /**
      * Finds and displays a Action entity.
      *
      * @Route("/{id}", name="action_show")

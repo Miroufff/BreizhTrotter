@@ -121,6 +121,27 @@ class MobilityController extends Controller
     }
 
     /**
+     * Displays a form to create a new Action entity.
+     *
+     * @Route("/existingMobilityRemove/{id}", name="mobility_existing_remove")
+     * @Method({"GET", "POST"})
+     * @Template()
+     */
+    public function existingMobilityRemoveAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $mobility = $em->getRepository('AppBundle:Mobility')->find($this->get('request')->request->get('mobilityRemove'));
+        $activity = $em->getRepository('AppBundle:Activity')->find($id);
+        $mobility->removeActivities($activity);
+
+        $em->persist($mobility);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('activity_show', array('id' => $activity->getId())));
+    }
+
+    /**
      * Finds and displays a Mobility entity.
      *
      * @Route("/{id}", name="mobility_show")

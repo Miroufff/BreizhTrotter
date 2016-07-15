@@ -135,6 +135,27 @@ class ConstraintController extends Controller
     }
 
     /**
+     * Displays a form to create a new Action entity.
+     *
+     * @Route("/existingConstraintRemove/{id}", name="constraint_existing_remove")
+     * @Method({"GET", "POST"})
+     * @Template()
+     */
+    public function existingConstraintRemoveAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $constraint= $em->getRepository('AppBundle:Constraint')->find($this->get('request')->request->get('constraintRemove'));
+        $activity = $em->getRepository('AppBundle:Activity')->find($id);
+        $constraint->removeActivities($activity);
+
+        $em->persist($constraint);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('activity_show', array('id' => $activity->getId())));
+    }
+
+    /**
      * Finds and displays a Constraint entity.
      *
      * @Route("/{id}", name="constraint_show")

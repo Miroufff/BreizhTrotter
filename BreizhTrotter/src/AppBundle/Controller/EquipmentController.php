@@ -121,6 +121,27 @@ class EquipmentController extends Controller
     }
 
     /**
+     * Displays a form to create a new Action entity.
+     *
+     * @Route("/existingEquipmentRemove/{id}", name="equipment_existing_remove")
+     * @Method({"GET", "POST"})
+     * @Template()
+     */
+    public function existingEquipmentRemoveAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $equipment = $em->getRepository('AppBundle:Equipment')->find($this->get('request')->request->get('equipmentRemove'));
+        $activity = $em->getRepository('AppBundle:Activity')->find($id);
+        $equipment->removeActivities($activity);
+
+        $em->persist($equipment);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('activity_show', array('id' => $activity->getId())));
+    }
+
+    /**
      * Finds and displays a Equipment entity.
      *
      * @Route("/{id}", name="equipment_show")
