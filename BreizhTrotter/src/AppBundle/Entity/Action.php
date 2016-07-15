@@ -50,6 +50,12 @@ class Action
      */
     private $name;
 
+    /** @var string
+     *
+     * @ORM\Column(name="associateConstraint", type="string", length=100)
+     */
+    private $associateConstraint;
+
     /**
      * @var string
      *
@@ -65,6 +71,48 @@ class Action
     private $description;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="experienceTourism", type="string", length=1000)
+     */
+    private $experienceTourism;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sustainableMobility", type="string", length=1000)
+     */
+    private $sustainableMobility;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="involvedActor", type="string", length=1000)
+     */
+    private $involvedActor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="deliverable", type="string", length=1000)
+     */
+    private $deliverable;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="vigilancePoint", type="string", length=1000)
+     */
+    private $vigilancePoint;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mobilityEquipment", type="string", length=1000)
+     */
+    private $mobilityEquipment;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="budget", type="integer")
@@ -72,9 +120,9 @@ class Action
     private $budget;
 
     /**
-     * @var integer
+     * @var \DateTime
      *
-     * @ORM\Column(name="time_limit", type="integer")
+     * @ORM\Column(name="time_limit", type="datetime")
      */
     private $timeLimit;
 
@@ -113,8 +161,8 @@ class Action
      */
     public function __construct()
     {
-        $this->updateDate = new DateTime('NOW');
-        $this->activities = new ArrayCollection();
+        $this->updateDate  = new DateTime('NOW');
+        $this->activities  = new ArrayCollection();
     }
 
     /**
@@ -403,5 +451,117 @@ class Action
     public function setNumero($numero)
     {
         $this->numero = $numero;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAssociateConstraint()
+    {
+        return $this->associateConstraint;
+    }
+
+    /**
+     * @param string $associateConstraint
+     */
+    public function setAssociateConstraint($associateConstraint)
+    {
+        $this->associateConstraint = $associateConstraint;
+    }
+
+    /**
+     * @return string
+     */
+    public function getExperienceTourism()
+    {
+        return $this->experienceTourism;
+    }
+
+    /**
+     * @param string $experienceTourism
+     */
+    public function setExperienceTourism($experienceTourism)
+    {
+        $this->experienceTourism = $experienceTourism;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSustainableMobility()
+    {
+        return $this->sustainableMobility;
+    }
+
+    /**
+     * @param string $sustainableMobility
+     */
+    public function setSustainableMobility($sustainableMobility)
+    {
+        $this->sustainableMobility = $sustainableMobility;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInvolvedActor()
+    {
+        return $this->involvedActor;
+    }
+
+    /**
+     * @param string $involvedActor
+     */
+    public function setInvolvedActor($involvedActor)
+    {
+        $this->involvedActor = $involvedActor;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDeliverable()
+    {
+        return $this->deliverable;
+    }
+
+    /**
+     * @param mixed $deliverable
+     */
+    public function setDeliverable($deliverable)
+    {
+        $this->deliverable = $deliverable;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVigilancePoint()
+    {
+        return $this->vigilancePoint;
+    }
+
+    /**
+     * @param mixed $vigilancePoint
+     */
+    public function setVigilancePoint($vigilancePoint)
+    {
+        $this->vigilancePoint = $vigilancePoint;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMobilityEquipment()
+    {
+        return $this->mobilityEquipment;
+    }
+
+    /**
+     * @param string $mobilityEquipment
+     */
+    public function setMobilityEquipment($mobilityEquipment)
+    {
+        $this->mobilityEquipment = $mobilityEquipment;
     }
 }

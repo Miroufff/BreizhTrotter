@@ -17,8 +17,13 @@ class ActivityType extends AbstractType
         $builder
             ->add('day')
             ->add('name')
-            ->add('description')
-            ->add('feasibility')
+            ->add('description', 'textarea')
+            ->add('feasibility', 'choice', array(
+                'choices' => array(
+                    0 => 'Faible',
+                    1 => 'Moyenne',
+                    2 => 'Forte',
+                )))
             ->add('image', new ImageType())
         ;
     }

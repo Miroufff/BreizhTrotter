@@ -26,9 +26,22 @@ class Constraint
     /**
      * @var string
      *
+     * @ORM\Column(name="step", type="string", length=500)
+     */
+    private $step;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="name", type="string", length=500)
      */
     private $name;
+
+    /** @var string
+     *
+     * @ORM\Column(name="associateAction", type="string", length=100)
+     */
+    private $associateAction;
 
     /**
      * @var string
@@ -57,6 +70,20 @@ class Constraint
      * @ORM\Column(name="description", type="string", length=1000)
      */
     private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mobilityEquipment", type="string", length=1000)
+     */
+    private $mobilityEquipment;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="person_in_charge", type="string", length=250)
+     */
+    private $personInCharge;
 
     /**
      * @var string
@@ -133,6 +160,22 @@ class Constraint
     public function getUpdateDate()
     {
         return $this->updateDate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStep()
+    {
+        return $this->step;
+    }
+
+    /**
+     * @param string $step
+     */
+    public function setStep($step)
+    {
+        $this->step = $step;
     }
 
     /**
@@ -363,7 +406,7 @@ class Constraint
         $activity->addConstraints($this);
         $this->activities[] = $activity;
     }
-    
+
     /**
      * Remove activities
      *
@@ -375,4 +418,51 @@ class Constraint
         $this->activities->removeElement($activity);
     }
 
+    /**
+     * @return string
+     */
+    public function getMobilityEquipment()
+    {
+        return $this->mobilityEquipment;
+    }
+
+    /**
+     * @param string $mobilityEquipment
+     */
+    public function setMobilityEquipment($mobilityEquipment)
+    {
+        $this->mobilityEquipment = $mobilityEquipment;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPersonInCharge()
+    {
+        return $this->personInCharge;
+    }
+
+    /**
+     * @param string $personInCharge
+     */
+    public function setPersonInCharge($personInCharge)
+    {
+        $this->personInCharge = $personInCharge;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAssociateAction()
+    {
+        return $this->associateAction;
+    }
+
+    /**
+     * @param string $associateAction
+     */
+    public function setAssociateAction($associateAction)
+    {
+        $this->associateAction = $associateAction;
+    }
 }

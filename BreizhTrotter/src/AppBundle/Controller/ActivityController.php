@@ -173,6 +173,7 @@ class ActivityController extends Controller
             unset($constraints[$constraint->getNumero()]);
         }
 
+
         $equipments = $em->getRepository('AppBundle:Equipment')->findAll();
 
         foreach ($entity->getEquipments() as $index => $myEquipment) {

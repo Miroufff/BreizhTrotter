@@ -16,13 +16,32 @@ class ConstraintType extends AbstractType
     {
         $builder
             ->add('numero')
+            ->add('step')
+            ->add('diffLevel', 'choice', array(
+                'choices' => array(
+                    0 => 'Faible',
+                    1 => 'Moyenne',
+                    2 => 'Forte',
+                )))
             ->add('name')
-            ->add('diffLevel')
-            ->add('context')
-            ->add('description')
-            ->add('diagAction')
-            ->add('viabilityImpact')
-            ->add('tourismImpact')
+            ->add('associateAction')
+            ->add('context', 'textarea')
+            ->add('description', 'textarea')
+            ->add('mobilityEquipment', 'textarea')
+            ->add('personInCharge')
+            ->add('diagAction', 'textarea')
+            ->add('viabilityImpact', 'choice', array(
+                'choices' => array(
+                    0 => 'Faible',
+                    1 => 'Moyenne',
+                    2 => 'Forte',
+                )))
+            ->add('tourismImpact', 'choice', array(
+                'choices' => array(
+                    0 => 'Faible',
+                    1 => 'Moyenne',
+                    2 => 'Forte',
+                )))
             ->add('image', new ImageType())
         ;
     }
