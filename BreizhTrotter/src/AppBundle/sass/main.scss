@@ -1,0 +1,77 @@
+/*****************************************************************
+*	CUSTOM CSS
+*/
+
+html, body {
+	box-sizing: border-box;
+}
+body {
+	max-width: 1260px;
+	margin: 0 auto;
+}
+
+#wrapper {
+	margin-top: 100px;
+}
+/*****************************************************************
+*		Form container
+*/
+.form-container {
+	margin-top: 100px;
+}
+
+/*****************************************************************
+*	Nav-bar top
+*/
+.navbar-fixed-top{
+	.logout {
+	    float: right;
+	    height: 50px;
+	    line-height: 50px;
+	    font-size: 17px;
+	    margin-right: 150px;
+	}
+}
+.dropdown {
+	.dropdown-menu {
+		background-color: #f8f8f8;
+		border-color: #e7e7e7;
+	}
+	&:hover{		
+		.dropdown-menu {
+			display: block;
+		}
+	}
+}
+
+
+/*****************************************************************
+*	Layer FSOUserBundle
+*/
+#form-connection {
+	.row{
+		text-align: center;
+		margin-top: 50px;
+	}
+	.account-wall {
+		max-width: 600px;
+		margin: 80px auto 0;
+		input {
+			margin-bottom: 15px;
+		}
+		#remember_me {
+			width: 20px;
+			float: left;
+			margin-right: 15px;		
+		}
+		#_submit{
+			margin: 100px auto 0;
+			max-width: 350px;
+		}
+	}
+}
+
+
+#user-container {
+	margin-top: 100px;
+}

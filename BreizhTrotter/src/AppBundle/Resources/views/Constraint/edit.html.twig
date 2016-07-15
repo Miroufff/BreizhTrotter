@@ -1,0 +1,20 @@
+{% extends '::base.html.twig' %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block body -%}
+    <h1>Constraint edit</h1>
+
+    {{ form(edit_form) }}
+
+    <ul class="record_actions">
+        {% for activity in entity.activities %}
+            <li>
+                <a href="{{ path('activity_show', { 'id': activity.id }) }}">
+                    Back to the activity {{ activity.name }}
+                </a>
+            </li>
+        {% endfor %}
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+{% endblock %}

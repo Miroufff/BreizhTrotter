@@ -1,0 +1,40 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">BreizhTrotteur</a>
+		</div>
+		<div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/">Home</a></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Scenarios<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="/scenario">Mes scénarios</a></li>
+					<li><a href="/scenario/new">Créer un scénario</a></li>
+				</ul>
+				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Equipements<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="/equipment">Mes équipements</a></li>
+					<li><a href="/equipment/new">Créer un équipement</a></li>
+				</ul>
+				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mobilités<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="/mobility">Mes mobilités</a></li>
+					<li><a href="/mobility/new">Créer une moyen de mobilité</a></li>
+				</ul>
+				<li><a href="/">Historique</a></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profil <span class="caret"></span></a>
+            	<ul class="dropdown-menu">
+					<li><a href="/profile/edit">Editez votre profil</a></li>
+					<li><a href="/register/">Créer un utilisateur</a></li>
+				</ul>
+			</ul>
+			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+				<div class="logout">
+	                <a href="{{ path('fos_user_security_logout') }}">
+	                    {{ 'Déconnexion'|trans({}, 'FOSUserBundle') }}
+	                </a>
+	        	</div>
+	        {% endif %}
+		</div>
+	</div>
+</nav>  
