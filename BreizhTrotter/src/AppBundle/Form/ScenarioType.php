@@ -10,6 +10,7 @@ namespace AppBundle\Form;
 
 
 use AppBundle\Entity\Activity;
+use Doctrine\ORM\EntityRepository;
 use Sonata\ClassificationBundle\Model\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -29,6 +30,7 @@ class ScenarioType extends AbstractType
             ->add('name')
             ->add('zone')
             ->add('content')
+            ->add('author')
             ->add('date', 'date')
             ->add('description', 'textarea')
             ->add('image', new ImageType())

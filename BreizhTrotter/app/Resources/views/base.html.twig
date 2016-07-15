@@ -6,7 +6,9 @@
 		
 		{% block stylesheets %}
 			<link href=" {{ asset('./../css/master.css') }}" rel="stylesheet" />
-			
+			<link rel="stylesheet" type="text/css" href="{{asset('./../css/bootstrap.min.css')}}" />
+			<link rel="stylesheet" type="text/css" href="{{asset('./../css/bootstrap-theme.min.css')}}" />
+
 		{% endblock %}
 
 		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -31,13 +33,15 @@
 				{% endblock fos_user_content %}
 			</div>
 		</div>
-
-		{% block body %}{% endblock %}
+		<div class="container">
+			{% block body %}{% endblock %}
+		</div>
 	</body>
 
 	<footer>
 		{% block javascripts %}
-			<link href=" {{ asset('js/bootstrap.min.js') }}" rel="stylesheet" />
+			<script type="text/javascript" src="{{asset('./../js/jquery-1.11.1.min.js')}}"></script>
+			<script type="text/javascript" src="{{asset('./../js/bootstrap.min.js')}}"></script>
 		{% endblock %}
 	</footer>
 </html>

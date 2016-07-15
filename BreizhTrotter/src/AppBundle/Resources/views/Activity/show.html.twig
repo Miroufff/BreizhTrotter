@@ -3,7 +3,7 @@
 {% block body -%}
     <h1>Activity</h1>
 
-    <table class="record_properties">
+    <table class="record_properties table">
         <tbody>
             <tr>
                 <th>Day</th>
@@ -21,94 +21,94 @@
                 <th>Feasibility</th>
                 <td>{{ entity.feasibility }}</td>
             </tr>
-            {% if entity.actions %}
-                <tr>
-                    <th>Actions</th>
-                    <table style="text-align: left; padding-left: 50px;">
-                        {% for action in entity.actions %}
-                            <tr>
-                                {% if entity.scenario.open %}
-                                    <td>
-                                        <form action="{{ path('action_existing_remove', { 'id': entity.id }) }}" method="post">
-                                            <input type="hidden" name="actionRemove" value="{{ action.id }}" />
-                                            <input type="submit" value="Remove action">
-                                        </form>
-                                    </td>
-                                    <td><a href="{{ path('action_show', { 'id': action.id }) }}">{{ action.numero}}</a></td>
-                                {% else %}
-                                    <td>{{ action.name }}</td>
-                                {% endif %}
-                                <td>{{ action.name }}</td>
-                            </tr>
-                        {% endfor %}
-                    </table>
-                </tr>
-            {% endif %}
-            {% if entity.constraints %}
-                <tr>
-                    <b><th>Constraints</th></b>
-                    <table style="text-align: left; padding-left: 50px;">
-                        {% for constraint in entity.constraints %}
-                            <tr>
-                                {% if entity.scenario.open %}
-                                    <td>
-                                        <form action="{{ path('constraint_existing_remove', { 'id': entity.id }) }}" method="post">
-                                            <input type="hidden" name="constraintRemove" value="{{ constraint.id }}" />
-                                            <input type="submit" value="Remove constraint">
-                                        </form>
-                                    </td>
-                                    <td><a href="{{ path('constraint_show', { 'id': constraint.id }) }}">{{ constraint.numero}}</a></td>
-                                {% else %}
-                                    <td>{{ constraint.numero }}</td>
-                                {% endif %}
-                                <td>{{ constraint.name }}</td>
-                            </tr>
-                        {% endfor %}
-                    </table>
-                </tr>
-            {% endif %}
-            {% if entity.mobilities %}
-                <tr>
-                    <b><th>Mobilities</th></b>
-                    <table style="text-align: left; padding-left: 50px;">
-                        {% for mobility in entity.mobilities %}
-                            <tr>
-                                {% if entity.scenario.open %}
-                                    <td>
-                                        <form action="{{ path('mobility_existing_remove', { 'id': entity.id }) }}" method="post">
-                                            <input type="hidden" name="mobilityRemove" value="{{ mobility.id }}" />
-                                            <input type="submit" value="Remove mobility">
-                                        </form>
-                                    </td>
-                                {% endif %}
-                                <td>{{ mobility.name }}</td>
-                            </tr>
-                        {% endfor %}
-                    </table>
-                </tr>
-            {% endif %}
-            {% if entity.equipments %}
-                <tr>
-                    <b><th>Equipments</th></b>
-                    <table style="text-align: left; padding-left: 50px;">
-                        {% for equipment in entity.equipments %}
-                            <tr>
-                                {% if entity.scenario.open %}
-                                    <td>
-                                        <form action="{{ path('equipment_existing_remove', { 'id': entity.id }) }}" method="post">
-                                            <input type="hidden" name="equipmentRemove" value="{{ equipment.id }}" />
-                                            <input type="submit" value="Remove equipment">
-                                        </form>
-                                    </td>
-                                {% endif %}
-                                <td>{{ equipment.name }}</td>
-                            </tr>
-                        {% endfor %}
-                    </table>
-                </tr>
-            {% endif %}
         </tbody>
     </table>
+    {% if entity.actions %}
+        <tr>
+            <b><th>Actions</th></b>
+            <table class="record_properties table" style="text-align: left; padding-left: 50px;">
+                {% for action in entity.actions %}
+                    <tr>
+                        {% if entity.scenario.open %}
+                            <td>
+                                <form action="{{ path('action_existing_remove', { 'id': entity.id }) }}" method="post">
+                                    <input type="hidden" name="actionRemove" value="{{ action.id }}" />
+                                    <input type="submit" value="Remove action">
+                                </form>
+                            </td>
+                            <td><a href="{{ path('action_show', { 'id': action.id }) }}">{{ action.numero}}</a></td>
+                        {% else %}
+                            <td>{{ action.name }}</td>
+                        {% endif %}
+                        <td>{{ action.name }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </tr>
+    {% endif %}
+    {% if entity.constraints %}
+        <tr>
+            <b><th>Constraints</th></b>
+            <table class="record_properties table" style="text-align: left; padding-left: 50px;">
+                {% for constraint in entity.constraints %}
+                    <tr>
+                        {% if entity.scenario.open %}
+                            <td>
+                                <form action="{{ path('constraint_existing_remove', { 'id': entity.id }) }}" method="post">
+                                    <input type="hidden" name="constraintRemove" value="{{ constraint.id }}" />
+                                    <input type="submit" value="Remove constraint">
+                                </form>
+                            </td>
+                            <td><a href="{{ path('constraint_show', { 'id': constraint.id }) }}">{{ constraint.numero}}</a></td>
+                        {% else %}
+                            <td>{{ constraint.numero }}</td>
+                        {% endif %}
+                        <td>{{ constraint.name }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </tr>
+    {% endif %}
+    {% if entity.mobilities %}
+        <tr>
+            <b><th>Mobilities</th></b>
+            <table class="record_properties table" style="text-align: left; padding-left: 50px;">
+                {% for mobility in entity.mobilities %}
+                    <tr>
+                        {% if entity.scenario.open %}
+                            <td>
+                                <form action="{{ path('mobility_existing_remove', { 'id': entity.id }) }}" method="post">
+                                    <input type="hidden" name="mobilityRemove" value="{{ mobility.id }}" />
+                                    <input type="submit" value="Remove mobility">
+                                </form>
+                            </td>
+                        {% endif %}
+                        <td>{{ mobility.name }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </tr>
+    {% endif %}
+    {% if entity.equipments %}
+        <tr>
+            <b><th>Equipments</th></b>
+            <table class="record_properties table" style="text-align: left; padding-left: 50px;">
+                {% for equipment in entity.equipments %}
+                    <tr>
+                        {% if entity.scenario.open %}
+                            <td>
+                                <form action="{{ path('equipment_existing_remove', { 'id': entity.id }) }}" method="post">
+                                    <input type="hidden" name="equipmentRemove" value="{{ equipment.id }}" />
+                                    <input type="submit" value="Remove equipment">
+                                </form>
+                            </td>
+                        {% endif %}
+                        <td>{{ equipment.name }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </tr>
+    {% endif %}
 
     <ul class="record_actions">
         {% if entity.scenario.open %}

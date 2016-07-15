@@ -41,7 +41,7 @@ class Scenario
      *
      * @ORM\Column(name="author", type="string", length=20)
      */
-    private $author = "mirouf";
+    private $author;
 
     /**
      * @var string

@@ -3,7 +3,7 @@
 {% block body -%}
     <h1>Action</h1>
 
-    <table class="record_properties">
+    <table class="record_properties table">
         <tbody>
             <tr>
                 <th>Step</th>
@@ -35,7 +35,7 @@
             </tr>
             <tr>
                 <th>Timelimit</th>
-                <td>{{ entity.timeLimit }}</td>
+                <td>{{ entity.timeLimit|date("m/d/Y", "Europe/Paris")}}</td>
             </tr>
             <tr>
                 <th>Accomplishment</th>

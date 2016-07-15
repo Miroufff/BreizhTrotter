@@ -3,30 +3,26 @@
 {% block body -%}
     <h1>Mobility</h1>
 
-    <table class="record_properties">
+    <table class="records_list table">
         <tbody>
             <tr>
                 <th>Name</th>
                 <td>{{ entity.name }}</td>
             </tr>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('mobility') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('mobility_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('mobility') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('mobility_edit', { 'id': entity.id }) }}">
+                Edit
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
 {% endblock %}

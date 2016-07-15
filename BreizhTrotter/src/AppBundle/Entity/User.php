@@ -29,6 +29,8 @@ class User extends FOSExtendUser
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=255)
      */
     protected $username;
 
