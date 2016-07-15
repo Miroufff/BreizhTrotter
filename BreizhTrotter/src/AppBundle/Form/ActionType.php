@@ -16,6 +16,8 @@ class ActionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('numero', 'text')
+            ->add('name')
             ->add('step', 'text')
             ->add('feasibility', 'choice', array(
                 'choices' => array(
@@ -23,7 +25,6 @@ class ActionType extends AbstractType
                     1 => 'Moyenne',
                     2 => 'Forte',
                 )))
-            ->add('name')
             ->add('description', 'textarea')
             ->add('budget', 'text')
             ->add('timeLimit')

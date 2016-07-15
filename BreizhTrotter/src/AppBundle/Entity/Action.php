@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -20,6 +21,13 @@ class Action
      * @ORM\Column(name="step", type="string", length=50)
      */
     private $step;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numero", type="string", length=10)
+     */
+    private $numero;
 
     /**
      * @var \DateTime
@@ -84,11 +92,12 @@ class Action
     private $image;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Activity", inversedBy="actions")
-     * @ORM\JoinColumn(name="id_action", referencedColumnName="id")
-     * @Assert\NotBlank()
+     * @ORM\ManyToMany(targetEntity="Activity", mappedBy="actions")
+     * @ORM\JoinTable(name="tr_activity_action",
+     *       joinColumns={@ORM\JoinColumn(name="action_id", referencedColumnName="id")},
+     *       inverseJoinColumns={@ORM\JoinColumn(name="activity_id", referencedColumnName="id")})
      */
-    private $activity;
+    private $activities;
 
     /**
      * @var integer
@@ -105,6 +114,7 @@ class Action
     public function __construct()
     {
         $this->updateDate = new DateTime('NOW');
+        $this->activities = new ArrayCollection();
     }
 
     /**
@@ -344,16 +354,43 @@ class Action
     /**
      * @return mixed
      */
-    public function getActivity()
+    public function getActivities()
     {
-        return $this->activity;
+        return $this->activities;
     }
 
     /**
-     * @param mixed $activity
+     * @param mixed $activities
      */
-    public function setActivity($activity)
+    public function setActivities($activities)
     {
-        $this->activity = $activity;
+        $this->activities = $activities;
+    }
+
+    /**
+     * Add activities
+     *
+     * @param Activity $activity
+     */
+    public function addActivities(Activity $activity)
+    {
+        $activity->addActions($this);
+        $this->activities[] = $activity;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNumero()
+    {
+        return $this->numero;
+    }
+
+    /**
+     * @param string $numero
+     */
+    public function setNumero($numero)
+    {
+        $this->numero = $numero;
     }
 }

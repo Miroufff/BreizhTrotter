@@ -25,16 +25,18 @@
                 <tr>
                     <th>Actions</th>
                     <table style="text-align: left; padding-left: 50px;">
-                        {% for action in entity.actions%}
+                        {% for action in entity.actions %}
                             <tr>
+                                <th>Numero</th>
                                 <th>Name</th>
                             </tr>
                             <tr>
                                 {% if entity.scenario.open %}
-                                    <td><a href="{{ path('action_show', { 'id': action.id }) }}">{{ action.name}}</a></td>
+                                    <td><a href="{{ path('action_show', { 'id': action.id }) }}">{{ action.numero}}</a></td>
                                 {% else %}
                                     <td>{{ action.name }}</td>
                                 {% endif %}
+                                <td>{{ action.name }}</td>
                             </tr>
                         {% endfor %}
                     </table>
@@ -44,16 +46,18 @@
                 <tr>
                     <b><th>Constraints</th></b>
                     <table style="text-align: left; padding-left: 50px;">
-                        {% for constraint in entity.constraints%}
+                        {% for constraint in entity.constraints %}
                             <tr>
+                                <th>Numero</th>
                                 <th>Name</th>
                             </tr>
                             <tr>
                                 {% if entity.scenario.open %}
-                                    <td><a href="{{ path('constraint_show', { 'id': constraint.id }) }}">{{ constraint.name}}</a></td>
+                                    <td><a href="{{ path('constraint_show', { 'id': constraint.id }) }}">{{ constraint.numero}}</a></td>
                                 {% else %}
-                                    <td>{{ constraint.name }}</td>
+                                    <td>{{ constraint.numero }}</td>
                                 {% endif %}
+                                <td>{{ constraint.name }}</td>
                             </tr>
                         {% endfor %}
                     </table>
@@ -69,11 +73,41 @@
                     Add action
                 </a>
             </li>
+            {% if actions %}
+                <li>
+                    <form action="{{ path('action_existing_new', { 'id': entity.id }) }}" method="post">
+                        <input type="hidden" name="action" />
+
+                        <select name="ACTIONS" id="ACTIONS">
+                            {% for action in actions %}
+                                <option value="{{ action.id }}">{{ action.numero }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <input type="submit" value="Add existing action" onclick="changeAction()">
+                    </form>
+                </li>
+            {% endif %}
             <li>
                 <a href="{{ path('constraint_new', { 'id': entity.id }) }}">
                     Add constraint
                 </a>
             </li>
+            {% if constraints %}
+                <li>
+                    <form action="{{ path('constraint_existing_new', { 'id': entity.id }) }}" method="post">
+                        <input type="hidden" name="constraint" />
+
+                        <select name="CONSTRAINTS" id="CONSTRAINTS">
+                            {% for constraint in constraints %}
+                                <option value="{{ constraint.id }}">{{ constraint.numero }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <input type="submit" value="Add existing constraint" onclick="changeConstraint()">
+                    </form>
+                </li>
+            {% endif %}
             <li>
                 <a href="{{ path('activity_edit', { 'id': entity.id }) }}">
                     Edit
@@ -87,4 +121,20 @@
         </li>
         <li>{{ form(delete_form) }}</li>
     </ul>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function changeAction()
+        {
+            var action = document.getElementById('ACTIONS').value;
+            document.querySelector('[name=action]').value = action;
+        }
+
+        function changeConstraint()
+        {
+            var constraint = document.getElementById('CONSTRAINTS').value;
+            document.querySelector('[name=constraint]').value = constraint;
+        }
+    </script>
 {% endblock %}

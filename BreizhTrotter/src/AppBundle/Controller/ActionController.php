@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Activity;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -50,20 +51,22 @@ class ActionController extends Controller
         $activity = $em->getRepository('AppBundle:Activity')->find($id);
 
         $entity = new Action();
-        $entity->setActivity($activity);
 
-        $form = $this->createCreateForm($entity);
+        $entity->addActivities($activity);
+
+        $form = $this->createCreateForm($entity, $activity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('activity_show', array('id' => $entity->getActivity()->getId())));
+            return $this->redirect($this->generateUrl('activity_show', array('id' => $activity->getId())));
         }
 
         return array(
             'entity' => $entity,
+            'activity' => $activity,
             'form'   => $form->createView(),
         );
     }
@@ -75,10 +78,10 @@ class ActionController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Action $entity)
+    private function createCreateForm(Action $entity, Activity $activity)
     {
         $form = $this->createForm(new ActionType(), $entity, array(
-            'action' => $this->generateUrl('action_create', array('id' => $entity->getActivity()->getId())),
+            'action' => $this->generateUrl('action_create', array('id' => $activity->getId())),
             'method' => 'POST',
         ));
 
@@ -101,13 +104,35 @@ class ActionController extends Controller
         $activity = $em->getRepository('AppBundle:Activity')->find($id);
 
         $entity = new Action();
-        $entity->setActivity($activity);
-        $form   = $this->createCreateForm($entity);
+        $entity->addActivities($activity);
+        $form   = $this->createCreateForm($entity, $activity);
 
         return array(
             'entity' => $entity,
+            'activity' => $activity,
             'form'   => $form->createView(),
         );
+    }
+
+    /**
+     * Displays a form to create a new Action entity.
+     *
+     * @Route("/existingActionNew/{id}", name="action_existing_new")
+     * @Method({"GET", "POST"})
+     * @Template()
+     */
+    public function existingActionNewAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $action = $em->getRepository('AppBundle:Action')->find($this->get('request')->request->get('action'));
+        $activity = $em->getRepository('AppBundle:Activity')->find($id);
+        $action->addActivities($activity);
+
+        $em->persist($action);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('activity_show', array('id' => $activity->getId())));
     }
 
     /**

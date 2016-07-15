@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;  
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -58,16 +59,18 @@ class Activity
     private $scenario;
 
     /**
-     * @var mixed
-     *
-     * @ORM\OneToMany(targetEntity="Action", mappedBy="activity", cascade={"persist","remove"})
+     * @ORM\ManyToMany(targetEntity="Action", inversedBy="activities")
+     * @ORM\JoinTable(name="tr_activity_action",
+     *       joinColumns={@ORM\JoinColumn(name="action_id", referencedColumnName="id")},
+     *       inverseJoinColumns={@ORM\JoinColumn(name="activity_id", referencedColumnName="id")})
      */
     private $actions;
 
     /**
-     * @var mixed
-     *
-     * @ORM\OneToMany(targetEntity="Constraint", mappedBy="activity", cascade={"persist","remove"})
+     * @ORM\ManyToMany(targetEntity="Constraint", inversedBy="activities")
+     * @ORM\JoinTable(name="tr_activity_constraint",
+     *       joinColumns={@ORM\JoinColumn(name="constraint_id", referencedColumnName="id")},
+     *       inverseJoinColumns={@ORM\JoinColumn(name="activity_id", referencedColumnName="id")})
      */
     private $constraints;
 
@@ -80,6 +83,14 @@ class Activity
      */
     private $id;
 
+    /**
+     * Activity constructor.
+     */
+    public function __construct()
+    {
+        $this->constraints = new ArrayCollection();
+        $this->actions     = new ArrayCollection();
+    }
 
     /**
      * Set day
@@ -226,6 +237,16 @@ class Activity
     }
 
     /**
+     * Add actions
+     *
+     * @param Action $action
+     */
+    public function addActions(Action $action)
+    {
+        $this->actions[] = $action;
+    }
+
+    /**
      * @return mixed
      */
     public function getConstraints()
@@ -239,6 +260,16 @@ class Activity
     public function setConstraints($constraints)
     {
         $this->constraints = $constraints;
+    }
+
+    /**
+     * Add constraints
+     *
+     * @param Constraint $constraint
+     */
+    public function addConstraints(Constraint $constraint)
+    {
+        $this->constraints[] = $constraint;
     }
 
     /**

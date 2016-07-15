@@ -127,11 +127,63 @@ class ActivityController extends Controller
             throw $this->createNotFoundException('Unable to find Activity entity.');
         }
 
+        $activities = $entity->getScenario()->getActivities();
+
+        $actions = array();
+        $existing = false;
+
+        foreach ($activities as $activity) {
+            foreach($activity->getActions() as $action) {
+                foreach($actions as $myAction) {
+                    if ($myAction->getNumero() == $action->getNumero()) {
+                        $existing = true;
+                    }
+                }
+
+                if (!$existing) {
+                    $actions[$action->getNumero()] = $action;
+                    $existing = false;
+                }
+            }
+        }
+
+        foreach ($entity->getActions() as $action) {
+            unset($actions[$action->getNumero()]);
+        }
+
+        $constraints = array();
+        $existing = false;
+
+        foreach ($activities as $activity) {
+            foreach($activity->getConstraints() as $constraint) {
+                foreach($constraints as $myConstraint) {
+                    if ($myConstraint->getNumero() == $constraint->getNumero()) {
+                        $existing = true;
+                    }
+                }
+
+                if (!$existing) {
+                    $constraints[$constraint->getNumero()] = $constraint;
+                    $existing = false;
+                }
+            }
+        }
+
+        foreach ($entity->getConstraints() as $constraint) {
+            unset($constraints[$constraint->getNumero()]);
+        }
+
+        $existingActionForm = $this->createDeleteForm($id);
+        $existingConstraintForm = $this->createDeleteForm($id);
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+            'entity'                   => $entity,
+            'actions'                  => $actions,
+            'constraints'              => $constraints,
+            'existing_action_form'     => $existingActionForm->createView(),
+            'existing_constraint_form' => $existingConstraintForm->createView(),
+            'delete_form'              => $deleteForm->createView(),
         );
     }
 

@@ -15,6 +15,8 @@ class ConstraintType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('numero')
+            ->add('name')
             ->add('diffLevel')
             ->add('context')
             ->add('description')

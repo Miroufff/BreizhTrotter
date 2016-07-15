@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Activity;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -35,6 +36,7 @@ class ConstraintController extends Controller
             'entities' => $entities,
         );
     }
+
     /**
      * Creates a new Constraint entity.
      *
@@ -49,20 +51,20 @@ class ConstraintController extends Controller
         $activity = $em->getRepository('AppBundle:Activity')->find($id);
 
         $entity = new Constraint();
-        $entity->setActivity($activity);
+        $entity->addActivities($activity);
 
-        $form = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity, $activity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em->persist($entity);
             $em->flush();
-
-            return $this->redirect($this->generateUrl('activity_show', array('id' => $entity->getActivity()->getId())));
+            return $this->redirect($this->generateUrl('activity_show', array('id' => $activity->getId())));
         }
 
         return array(
             'entity' => $entity,
+            'activity' => $activity,
             'form'   => $form->createView(),
         );
     }
@@ -71,13 +73,14 @@ class ConstraintController extends Controller
      * Creates a form to create a Constraint entity.
      *
      * @param Constraint $entity The entity
+     * @param Activity   $activity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Constraint $entity)
+    private function createCreateForm(Constraint $entity, Activity $activity)
     {
         $form = $this->createForm(new ConstraintType(), $entity, array(
-            'action' => $this->generateUrl('constraint_create', array('id' => $entity->getActivity()->getId())),
+            'action' => $this->generateUrl('constraint_create', array('id' => $activity->getId())),
             'method' => 'POST',
         ));
 
@@ -100,13 +103,35 @@ class ConstraintController extends Controller
         $activity = $em->getRepository('AppBundle:Activity')->find($id);
 
         $entity = new Constraint();
-        $entity->setActivity($activity);
-        $form   = $this->createCreateForm($entity);
+        $entity->addActivities($activity);
+        $form   = $this->createCreateForm($entity, $activity);
 
         return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+            'entity'   => $entity,
+            'activity' => $activity,
+            'form'     => $form->createView(),
         );
+    }
+
+    /**
+     * Displays a form to create a new Action entity.
+     *
+     * @Route("/existingConstraintNew/{id}", name="constraint_existing_new")
+     * @Method({"GET", "POST"})
+     * @Template()
+     */
+    public function existingConstraintNewAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $constraint= $em->getRepository('AppBundle:Constraint')->find($this->get('request')->request->get('constraint'));
+        $activity = $em->getRepository('AppBundle:Activity')->find($id);
+        $constraint->addActivities($activity);
+
+        $em->persist($constraint);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('activity_show', array('id' => $activity->getId())));
     }
 
     /**
