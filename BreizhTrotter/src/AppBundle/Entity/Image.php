@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;  
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -17,6 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Image
 {
+
     /**
      * @var integer
      *
@@ -25,11 +25,10 @@ class Image
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var \DateTime
      *
-     * @ORM\COlumn(name="updated_at",type="datetime", nullable=true)
+     * @ORM\Column(name="updated_at",type="datetime", nullable=true)
      */
     private $updateAt;
 
@@ -40,6 +39,12 @@ class Image
     {
         $this->updateAt = new \DateTime();
     }
+
+    /**
+     * @ORM\Column(type="string",length=255)
+     * @Assert\NotBlank
+     */
+    public $name;
 
     /**
      * @ORM\Column(type="string",length=255, nullable=true)
@@ -119,6 +124,12 @@ class Image
     public function getPath()
     {
         return $this->path;
+    }
+
+    public function getName()
+    {
+        var_dump($this->name);
+        return $this->name;
     }
 }
 

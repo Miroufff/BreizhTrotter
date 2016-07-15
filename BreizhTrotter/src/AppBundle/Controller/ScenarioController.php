@@ -125,6 +125,28 @@ class ScenarioController extends Controller
     }
 
     /**
+     * Finds and displays a Scenario entity.
+     *
+     * @Route("/preview/scenario/{id}", name="scenario_preview")
+     * @Method("GET")
+     * @Template()
+     */
+    public function previewAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('AppBundle:Scenario')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Scenario entity.');
+        }
+
+        return array(
+            'entity' => $entity,
+        );
+    }
+
+    /**
      * Displays a form to edit an existing Scenario entity.
      *
      * @Route("/{id}/edit", name="scenario_edit")

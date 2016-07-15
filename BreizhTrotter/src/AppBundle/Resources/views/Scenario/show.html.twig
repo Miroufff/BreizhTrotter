@@ -33,6 +33,14 @@
                     <th>Open</th>
                     <td>{{ entity.open }}</td>
                 </tr>
+                <tr>
+                    <th>Preview</th>
+                    <td>
+                        <a href="{{ path('scenario_preview', { 'id': entity.id }) }}">
+                            Scenario.pdf
+                        </a>
+                    </td>
+                </tr>
             </tbody>
         </table>
         {% if entity.activities %}
