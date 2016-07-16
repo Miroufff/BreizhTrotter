@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "989836bfab3f263a545ca30e534bf079",
-    "content-hash": "8c7409ab953b429608a423df78bc768c",
+    "hash": "277096821586f1bac025163175496315",
+    "content-hash": "bf77afffec8d34fba1b142a3e81d8619",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -1653,16 +1653,16 @@
         },
         {
             "name": "knplabs/knp-snappy-bundle",
-            "version": "dev-master",
+            "version": "v1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpSnappyBundle.git",
-                "reference": "f32454f8505dffae3414a771494da5d694177d41"
+                "reference": "efda38a2f9eb47830eb2a7642541abaaf5a1d34f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpSnappyBundle/zipball/f32454f8505dffae3414a771494da5d694177d41",
-                "reference": "f32454f8505dffae3414a771494da5d694177d41",
+                "url": "https://api.github.com/repos/KnpLabs/KnpSnappyBundle/zipball/efda38a2f9eb47830eb2a7642541abaaf5a1d34f",
+                "reference": "efda38a2f9eb47830eb2a7642541abaaf5a1d34f",
                 "shasum": ""
             },
             "require": {
@@ -1675,7 +1675,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5.x-dev"
+                    "dev-master": "1.2.x-dev"
                 }
             },
             "autoload": {
@@ -1706,7 +1706,7 @@
                 "pdf",
                 "snappy"
             ],
-            "time": "2016-05-26 11:25:10"
+            "time": "2015-11-11 17:40:14"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -4215,7 +4215,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "knplabs/knp-snappy-bundle": 20,
         "sonata-project/user-bundle": 20
     },
     "prefer-stable": false,

@@ -41,7 +41,7 @@ twig:
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
-    use_controller: false
+    use_controller: "%kernel.debug%"
     bundles:        [ AppBundle  ]
     #java: /usr/bin/java
     filters:
@@ -191,6 +191,11 @@ sonata_doctrine_orm_admin:
                 bigint:    SonataAdminBundle:CRUD:base_show_field.html.twig
                 integer:   SonataAdminBundle:CRUD:base_show_field.html.twig
                 decimal:   SonataAdminBundle:CRUD:base_show_field.html.twig
+
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\""
 
 sonata_media:
     default_context: default

@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use AppBundle\Entity\Scenario;
 use AppBundle\Form\ScenarioType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Scenario controller.
@@ -127,7 +128,7 @@ class ScenarioController extends Controller
     /**
      * Finds and displays a Scenario entity.
      *
-     * @Route("/{id}", name="scenario_close")
+     * @Route("/close/{id}", name="scenario_close")
      * @Method("GET")
      */
     public function closeAction($id)
@@ -135,14 +136,80 @@ class ScenarioController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('AppBundle:Scenario')->find($id);
+        $entity->setOpen(false);
+
+        $em->persist($entity);
+        $em->flush();
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Scenario entity.');
         }
 
-        return array(
-            'entity'      => $entity
-        );
+        return $this->redirect($this->generateUrl('scenario_show', array('id' => $entity->getId())));
+    }
+
+    /**
+     * Finds and displays a Scenario entity.
+     *
+     * @Route("/open/{id}", name="scenario_open")
+     * @Method("GET")
+     */
+    public function openAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('AppBundle:Scenario')->find($id);
+        $entity->setOpen(true);
+
+        $em->persist($entity);
+        $em->flush();
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Scenario entity.');
+        }
+
+        return $this->redirect($this->generateUrl('scenario_show', array('id' => $entity->getId())));
+    }
+
+    /**
+     * Finds and displays a Scenario entity.
+     *
+     * @Route("/download/scenario/{id}", name="scenario_download")
+     * @Method("GET")
+     */
+    public function downloadAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('AppBundle:Scenario')->find($id);
+
+        $html = $this->renderView('AppBundle:Scenario:preview.html.twig', array(
+            'entity'  => $entity,
+            'rootDir' => $this->get('kernel')->getRootDir().'/..'
+        ));
+
+        $response = new Response();
+        $response->setContent($this->get('knp_snappy.pdf')->getOutputFromHtml($html,
+            array(
+                'orientation' => 'Landscape',
+                'load-error-handling' => 'ignore',
+                'enable-javascript' => true,
+                'javascript-delay' => 1000,
+                'no-stop-slow-scripts' => true,
+                'no-background' => false,
+                'lowquality' => false,
+                'encoding' => 'utf-8',
+                'images' => true,
+                'cookie' => array(),
+                'dpi' => 300,
+                'image-dpi' => 300,
+                'enable-external-links' => true,
+                'enable-internal-links' => true
+            )
+        ));
+        $response->headers->set('Content-Type', 'application/pdf');
+        $response->headers->set('Content-disposition', 'filename=scenario'.$entity->getId().'pdf');
+        return $response;
     }
 
     /**
@@ -164,6 +231,7 @@ class ScenarioController extends Controller
 
         return array(
             'entity' => $entity,
+            'rootDir' => $this->get('kernel')->getRootDir().'/..'
         );
     }
 

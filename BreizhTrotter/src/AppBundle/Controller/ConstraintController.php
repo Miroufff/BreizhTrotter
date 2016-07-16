@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use AppBundle\Entity\Constraint;
 use AppBundle\Form\ConstraintType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Constraint controller.
@@ -181,6 +182,48 @@ class ConstraintController extends Controller
     }
 
     /**
+     * Finds and displays a Constraint entity.
+     *
+     * @Route("/download/constraint/{id}", name="constraint_download")
+     * @Method("GET")
+     */
+    public function downloadAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('AppBundle:Constraint')->find($id);
+
+        $html = $this->renderView('AppBundle:Constraint:preview.html.twig', array(
+            'entity'  => $entity,
+            'rootDir' => $this->get('kernel')->getRootDir().'/..'
+        ));
+
+        $response = new Response();
+        $response->setContent($this->get('knp_snappy.pdf')->getOutputFromHtml($html,
+            array(
+                'orientation' => 'Landscape',
+                'load-error-handling' => 'ignore',
+                'enable-javascript' => true,
+                'javascript-delay' => 1000,
+                'no-stop-slow-scripts' => true,
+                'no-background' => false,
+                'lowquality' => false,
+                'encoding' => 'utf-8',
+                'images' => true,
+                'cookie' => array(),
+                'dpi' => 300,
+                'image-dpi' => 300,
+                'enable-external-links' => true,
+                'enable-internal-links' => true
+            )
+        ));
+        $response->headers->set('Content-Type', 'application/pdf');
+        $response->headers->set('Content-disposition', 'filename=scenario'.$entity->getId().'pdf');
+
+        return $response;
+    }
+
+    /**
      * Finds and displays a Scenario entity.
      *
      * @Route("/preview/constraint/{id}", name="constraint_preview")
@@ -199,6 +242,7 @@ class ConstraintController extends Controller
 
         return array(
             'entity' => $entity,
+            'rootDir' => $this->get('kernel')->getRootDir().'/..'
         );
     }
 

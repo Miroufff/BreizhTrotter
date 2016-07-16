@@ -6,19 +6,19 @@
     <table class="record_properties table">
         <tbody>
             <tr>
-                <th>Day</th>
+                <th width="15%">Day</th>
                 <td>{{ entity.day }}</td>
             </tr>
             <tr>
-                <th>Name</th>
+                <th width="15%">Name</th>
                 <td>{{ entity.name }}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <th width="15%">Description</th>
                 <td>{{ entity.description }}</td>
             </tr>
             <tr>
-                <th>Feasibility</th>
+                <th width="15%">Feasibility</th>
                 <td>{{ entity.feasibility }}</td>
             </tr>
         </tbody>
@@ -30,22 +30,24 @@
                 {% for action in entity.actions %}
                     <tr>
                         {% if entity.scenario.open %}
-                            <td>
+                            <td width="15%">
                                 <form action="{{ path('action_existing_remove', { 'id': entity.id }) }}" method="post">
                                     <input type="hidden" name="actionRemove" value="{{ action.id }}" />
                                     <input type="submit" value="Remove action">
                                 </form>
                             </td>
-                            <td><a href="{{ path('action_show', { 'id': action.id }) }}">{{ action.numero}}</a></td>
+                            <td width="15%"><a href="{{ path('action_show', { 'id': action.id }) }}">{{ action.numero}}</a></td>
                         {% else %}
-                            <td>{{ action.name }}</td>
+                            <td width="15%">{{ action.numero }}</td>
                         {% endif %}
-                        <td>{{ action.name }}</td>
-                        <td>
-                            <a href="{{ path('action_preview', { 'id': action.id }) }}">
-                                Action-{{ action.numero}}.pdf
-                            </a>
-                        </td>
+                        <td width="50%">{{ action.name }}</td>
+                        {% if entity.scenario.open == 0 %}
+                            <td>
+                                <a href="{{ path('action_download', { 'id': action.id }) }}">
+                                    Download
+                                </a>
+                            </td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
             </table>
@@ -58,22 +60,24 @@
                 {% for constraint in entity.constraints %}
                     <tr>
                         {% if entity.scenario.open %}
-                            <td>
+                            <td width="15%">
                                 <form action="{{ path('constraint_existing_remove', { 'id': entity.id }) }}" method="post">
                                     <input type="hidden" name="constraintRemove" value="{{ constraint.id }}" />
                                     <input type="submit" value="Remove constraint">
                                 </form>
                             </td>
-                            <td><a href="{{ path('constraint_show', { 'id': constraint.id }) }}">{{ constraint.numero}}</a></td>
+                            <td width="15%"><a href="{{ path('constraint_show', { 'id': constraint.id }) }}">{{ constraint.numero}}</a></td>
                         {% else %}
-                            <td>{{ constraint.numero }}</td>
+                            <td width="15%">{{ constraint.numero }}</td>
                         {% endif %}
-                        <td>{{ constraint.name }}</td>
-                        <td>
-                            <a href="{{ path('constraint_preview', { 'id': constraint.id }) }}">
-                                Constraint-{{ constraint.numero}}.pdf
-                            </a>
-                        </td>
+                        <td width="50%">{{ constraint.name }}</td>
+                        {% if entity.scenario.open == 0 %}
+                            <td>
+                                <a href="{{ path('constraint_download', { 'id': constraint.id }) }}">
+                                    Download
+                                </a>
+                            </td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
             </table>
@@ -86,7 +90,7 @@
                 {% for mobility in entity.mobilities %}
                     <tr>
                         {% if entity.scenario.open %}
-                            <td>
+                            <td width="15%">
                                 <form action="{{ path('mobility_existing_remove', { 'id': entity.id }) }}" method="post">
                                     <input type="hidden" name="mobilityRemove" value="{{ mobility.id }}" />
                                     <input type="submit" value="Remove mobility">
@@ -106,7 +110,7 @@
                 {% for equipment in entity.equipments %}
                     <tr>
                         {% if entity.scenario.open %}
-                            <td>
+                            <td width="15%">
                                 <form action="{{ path('equipment_existing_remove', { 'id': entity.id }) }}" method="post">
                                     <input type="hidden" name="equipmentRemove" value="{{ equipment.id }}" />
                                     <input type="submit" value="Remove equipment">

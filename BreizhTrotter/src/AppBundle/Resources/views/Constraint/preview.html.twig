@@ -25,13 +25,10 @@
 <BODY LANG="fr-FR" LINK="#0000ff" DIR="LTR">
 <DIV TYPE=HEADER>
 	<P STYLE="margin-left: 1.28in; margin-right: -0.32in; text-indent: -1.38in; margin-bottom: 0in">
-		{% image '@AppBundle/Resources/public/images/breizhtrotter.png'  output="images/breizhtrotter.png" %}
-			<IMG SRC="{{ asset_url }}" NAME="Image 2" ALIGN=BOTTOM WIDTH=170 HEIGHT=39 BORDER=0><FONT FACE="Bagadek, serif"><FONT SIZE=1 STYLE="font-size: 2pt">	</FONT></FONT><FONT FACE="BigNoodleTitling, serif"><FONT SIZE=5><B>Fiche
-		{% endimage %}
-	CONTRAINTE</B></FONT></FONT><FONT COLOR="#9c2a64"><FONT FACE="Bagadek, serif"><FONT SIZE=4>
-	</FONT></FONT></FONT>{% image '@AppBundle/Resources/public/images/logoBMA.png'  output="images/logoBMA.png" %}
-			<IMG SRC="{{ asset_url }}" NAME="Picture 2" ALIGN=LEFT HSPACE=12 WIDTH=77 HEIGHT=66 BORDER=0>
-		{% endimage %}
+		<img src="{{ rootDir ~ '/web' ~ asset('images/breizhtrotter.PNG') }}" NAME="Image 2" ALIGN=BOTTOM WIDTH=170 HEIGHT=39 BORDER=0><FONT FACE="Bagadek, serif"><FONT SIZE=1 STYLE="font-size: 2pt">	</FONT></FONT><FONT FACE="BigNoodleTitling, serif"><FONT SIZE=5>
+		<B>Fiche CONTRAINTE</B></FONT></FONT><FONT COLOR="#9c2a64"><FONT FACE="Bagadek, serif"><FONT SIZE=4>
+	</FONT></FONT></FONT>
+		<img src="{{ rootDir ~ '/web' ~ asset('images/logoBMA.PNG') }}" NAME="Picture 2" ALIGN=LEFT HSPACE=12 WIDTH=77 HEIGHT=66 BORDER=0>
 	</P>
 	<P ALIGN=CENTER STYLE="margin-right: -0.32in; margin-top: 0.14in; margin-bottom: 0in">
 	<FONT COLOR="#9c2a64"><FONT FACE="Times New Roman, serif"><FONT SIZE=4>«&nbsp;</FONT></FONT></FONT><FONT COLOR="#9c2a64"><FONT FACE="Bagadek, serif"><FONT SIZE=4>{{ entity.activities.first.scenario.name }}</FONT></FONT></FONT></P>
@@ -70,17 +67,11 @@
 				de Difficulté :</FONT></FONT></P>
 				<P ALIGN=CENTER>
 					{% if entity.diffLevel == 0 %}
-						{% image '@AppBundle/Resources/public/images/difficulty1.gif'  output="images/difficulty1.PNG" %}
-							<IMG SRC="{{ asset_url }}" NAME="Image 17" alt="difficulty1.png" ALIGN=BOTTOM WIDTH=31 HEIGHT=76 BORDER=0>
-						{% endimage %}
+						<img src="{{ rootDir ~ '/web' ~ asset('images/difficulty1.gif') }}" ALIGN=BOTTOM WIDTH=31 HEIGHT=76 BORDER=0>
 					{% elseif entity.diffLevel == 1 %}
-						{% image '@AppBundle/Resources/public/images/difficulty2.gif'  output="images/difficulty2.PNG" %}
-							<IMG SRC="{{ asset_url }}" NAME="Image 17" alt="difficulty2.png" ALIGN=BOTTOM WIDTH=31 HEIGHT=76 BORDER=0>
-						{% endimage %}
+						<img src="{{ rootDir ~ '/web' ~ asset('images/difficulty2.gif') }}" ALIGN=BOTTOM WIDTH=31 HEIGHT=76 BORDER=0>
 					{% elseif entity.diffLevel == 2 %}
-						{% image '@AppBundle/Resources/public/images/difficulty3.gif'  output="images/difficulty3.PNG" %}
-							<IMG SRC="{{ asset_url }}" NAME="Image 17" alt="difficulty3.png" ALIGN=BOTTOM WIDTH=31 HEIGHT=76 BORDER=0>
-						{% endimage %}
+						<img src="{{ rootDir ~ '/web' ~ asset('images/difficulty3.gif') }}" ALIGN=BOTTOM WIDTH=31 HEIGHT=76 BORDER=0>
 					{% endif %}
 				</P>
 			</TD>
@@ -129,7 +120,7 @@
 			</TD>
 			<TD COLSPAN=2 WIDTH=39% BGCOLOR="#000000" STYLE="border: 1px solid #ffffff; padding: 0in">
 				<P ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT COLOR="#000000"><FONT FACE="Arial, serif"><FONT SIZE=2>/</FONT></FONT></FONT>
-					<img src="{{ asset(entity.image.AssetPath) }}" alt="{{ entity.image.name }}" width="100%" height="100%">
+					<img src="{{ rootDir ~ '/web' ~ asset(entity.image.AssetPath) }}" alt="{{ entity.image.name }}" width="100%" height="100%">
 				</P>
 				<P ALIGN=CENTER><BR>
 				</P>
@@ -302,18 +293,10 @@
 </P>
 <DIV TYPE=FOOTER>
 	<P STYLE="margin-bottom: 0in; line-height: 100%">
-		{% image '@AppBundle/Resources/public/images/iddil.png'  output="images/iddil.png" %}
-			<IMG SRC="{{ asset_url }}" NAME="graphics1" ALIGN=LEFT HSPACE=12 WIDTH=85 HEIGHT=40 BORDER=0>
-		{% endimage %}
-		{% image '@AppBundle/Resources/public/images/arist.jpg'  output="images/arist.jpg" %}
-			<IMG SRC="{{ asset_url }}" NAME="Picture 3" ALIGN=LEFT HSPACE=12 WIDTH=88 HEIGHT=43 BORDER=0>
-		{% endimage %}
-		{% image '@AppBundle/Resources/public/images/CCI.jpg'  output="images/CCI.jpg" %}
-			<IMG SRC="{{ asset_url }}" NAME="Image 16" ALIGN=LEFT HSPACE=12 WIDTH=173 HEIGHT=52 BORDER=0>
-		{% endimage %}
-		{% image '@AppBundle/Resources/public/images/bma.jpg'  output="images/bma.jpg" %}
-			<IMG SRC="{{ asset_url }}" NAME="Image 13" ALIGN=LEFT HSPACE=12 WIDTH=106 HEIGHT=53 BORDER=0>
-		{% endimage %}
+		<img src="{{ rootDir ~ '/web' ~ asset('images/iddil.PNG') }}" NAME="graphics1" ALIGN=LEFT HSPACE=12 WIDTH=85 HEIGHT=40 BORDER=0>
+		<img src="{{ rootDir ~ '/web' ~ asset('images/arist.JPG') }}" NAME="graphics1" ALIGN=LEFT HSPACE=12 WIDTH=85 HEIGHT=40 BORDER=0>
+		<img src="{{ rootDir ~ '/web' ~ asset('images/CCI.JPG') }}" NAME="graphics1" ALIGN=LEFT HSPACE=12 WIDTH=85 HEIGHT=40 BORDER=0>
+		<img src="{{ rootDir ~ '/web' ~ asset('images/bma.JPG') }}" NAME="graphics1" ALIGN=LEFT HSPACE=12 WIDTH=85 HEIGHT=40 BORDER=0>
 	</P>
 </DIV>
 </BODY>

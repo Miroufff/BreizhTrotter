@@ -30,17 +30,20 @@
                     <td>{{ entity.description }}</td>
                 </tr>
                 <tr>
-                    <th>Open</th>
-                    <td>{{ entity.open }}</td>
+                    <th>Status</th>
+                    {% if entity.open  %}
+                        <td>Open</td>
+                    {% else %}
+                        <td>Close</td>
+                    {% endif %}
                 </tr>
-                <tr>
-                    <th>Preview</th>
+                {% if entity.open == 0 %}
                     <td>
-                        <a href="{{ path('scenario_preview', { 'id': entity.id }) }}">
-                            Scenario.pdf
+                        <a href="{{ path('scenario_download', { 'id': entity.id }) }}">
+                            Download
                         </a>
                     </td>
-                </tr>
+                {% endif %}
             </tbody>
         </table>
         {% if entity.activities %}
@@ -79,6 +82,10 @@
                 <a href="{{ path('scenario_edit', { 'id': entity.id }) }}">
                     Edit
                 </a>
+            </li>
+        {% else %}
+            <li>
+                <a href="{{ path('scenario_open', { 'id': entity.id }) }}">Open the scenario</a>
             </li>
         {% endif %}
         <li>

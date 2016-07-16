@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use AppBundle\Entity\Action;
 use AppBundle\Form\ActionType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Action controller.
@@ -157,6 +158,48 @@ class ActionController extends Controller
     }
 
     /**
+     * Finds and displays a Action entity.
+     *
+     * @Route("/download/action/{id}", name="action_download")
+     * @Method("GET")
+     */
+    public function downloadAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('AppBundle:Action')->find($id);
+
+        $html = $this->renderView('AppBundle:Action:preview.html.twig', array(
+            'entity'  => $entity,
+            'rootDir' => $this->get('kernel')->getRootDir().'/..'
+        ));
+
+        $response = new Response();
+        $response->setContent($this->get('knp_snappy.pdf')->getOutputFromHtml($html,
+            array(
+                'orientation' => 'Landscape',
+                'load-error-handling' => 'ignore',
+                'enable-javascript' => true,
+                'javascript-delay' => 1000,
+                'no-stop-slow-scripts' => true,
+                'no-background' => false,
+                'lowquality' => false,
+                'encoding' => 'utf-8',
+                'images' => true,
+                'cookie' => array(),
+                'dpi' => 300,
+                'image-dpi' => 300,
+                'enable-external-links' => true,
+                'enable-internal-links' => true
+            )
+        ));
+        $response->headers->set('Content-Type', 'application/pdf');
+        $response->headers->set('Content-disposition', 'filename=scenario'.$entity->getId().'pdf');
+
+        return $response;
+    }
+
+    /**
      * Finds and displays a Scenario entity.
      *
      * @Route("/preview/action/{id}", name="action_preview")
@@ -175,6 +218,7 @@ class ActionController extends Controller
 
         return array(
             'entity' => $entity,
+            'rootDir' => $this->get('kernel')->getRootDir().'/..'
         );
     }
 
