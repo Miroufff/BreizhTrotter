@@ -4,15 +4,19 @@
             <COL WIDTH=256*>
             <TBODY>
             <TR>
-                <TD WIDTH=100% HEIGHT=178 VALIGN=TOP STYLE="border: none; padding: 0in">
+                <TD WIDTH=20% HEIGHT=50 VALIGN=TOP STYLE="border: none; padding: 0in">
+                </TD>
+            </TR>
+            <TR>
+                <TD WIDTH=20% HEIGHT=10 VALIGN=TOP STYLE="font-size: 20px; border: none; padding: 0in">
                     <P CLASS="western" align="center"><FONT COLOR="#97958e">TERRITOIRE : {{ entity.zone }}</FONT></P>
                 </TD>
             </TR>
             <tr>
-                <td width="300" HEIGHT="100" valign="top">
+                <td width="400" HEIGHT="150" valign="top">
                     <p align="center">
                         {% image '@AppBundle/Resources/public/images/LogoBreizhTrotter.PNG'  output="images/LogoBreizhTrotter.PNG" %}
-                            <img src="{{ asset_url }}" width="322" height="124" alt="LOGO_Breizh-Trotter-Game.jpg" class="pull-left">
+                            <img src="{{ asset_url }}" width="200" height="100" alt="LOGO_Breizh-Trotter-Game.jpg" class="pull-left">
                         {% endimage %}
                     </p>
                 </td>
@@ -36,12 +40,12 @@
                 </TD>
             </TR>
             <TR>
-                <TD WIDTH=100% HEIGHT=10 STYLE="border: none; padding: 0in">
+                <TD WIDTH=100% HEIGHT=10 STYLE="font-size: 25px; border: none; padding: 0in">
                     <P ALIGN=CENTER><B>{{ entity.author }}</B></P>
                 </TD>
             </TR>
             <TR>
-                <TD WIDTH=100% HEIGHT=10 STYLE="border: none; padding: 0in">
+                <TD WIDTH=100% HEIGHT=10 STYLE="font-size: 25px; border: none; padding: 0in">
                     <P ALIGN=CENTER>{{ entity.date|date('d/m/Y') }}</P>
                 </TD>
             </TR>
@@ -50,7 +54,7 @@
     </div>
     <p align="center">
         {% image '@AppBundle/Resources/public/images/LogoPartenaire.PNG'  output="images/LogoPartenaire.PNG" %}
-            <img src="{{ asset_url }}" width="500" height="114" alt="LogoPartenaire.png" class="pull-left">
+            <img src="{{ asset_url }}" width="600" height="130" alt="LogoPartenaire.png" class="pull-left">
         {% endimage %}
     </p>
     <TABLE WIDTH=100% CELLPADDING=7 CELLSPACING=0>
@@ -63,64 +67,126 @@
     </TABLE>
     <br clear="all"/>
     <p align="center">
-        <img src="{{ asset(entity.image.AssetPath) }}" alt="{{ entity.image.name }}" width="470" height="310">
+        <img src="{{ asset(entity.image.AssetPath) }}" alt="{{ entity.image.name }}" width="80%" height="100%">
     </p>
 </div>
 <br clear="all"/>
-<table border="1" cellspacing="0" cellpadding="0" width="1299" align="center">
+<TABLE WIDTH=80% CELLPADDING=5 CELLSPACING=0 align="center">
+    <COL WIDTH=53*>
+    <COL WIDTH=103*>
+    <COL WIDTH=49*>
+    <COL WIDTH=51*>
     <thead>
     <tr>
-        <td width="189" colspan="2">
-            <p align="center">
-                <strong>ETAPES</strong>
-            </p>
-        </td>
-        <td width="106">
-            <p align="center">
-                <strong>MOYEN DE MOBILITE</strong>
-            </p>
-        </td>
-        <td width="118">
-            <p align="center">
-                <strong>EQUIPEMENT</strong>
-            </p>
-        </td>
-        <td width="224">
-            <p align="center">
-                <strong>PHOTO</strong>
-            </p>
-        </td>
-        <td width="378">
-            <p align="center">
-                <strong>DESCRIPTIF EXPERIENCE</strong>
-            </p>
-        </td>
-        <td width="118">
-            <p align="center">
-                <strong>FAISABILITE de l’étape</strong>
-            </p>
-        </td>
-        <td width="83">
-            <p align="center">
-                <strong>Contraintes</strong>
-            </p>
-        </td>
-        <td width="83">
-            <p align="center">
-                <strong>Actions</strong>
-            </p>
-        </td>
+        <TD COLSPAN=2 WIDTH=20% BGCOLOR="#97958e" STYLE="border-top: 1.00pt solid #ffffff; border-bottom: none; border-left: 1.00pt solid #ffffff; border-right: 1.00pt solid #ffffff; padding-top: 0.05in; padding-bottom: 0in; padding-left: 0.1in; padding-right: 0.1in">
+            <P ALIGN=CENTER>
+                <FONT COLOR="#ffffff">
+                    <FONT FACE="Arial, serif">
+                        <FONT SIZE=2>
+                            <strong>ETAPES</strong>
+                        </FONT>
+                    </FONT>
+                </FONT>
+            </P>
+        </TD>
+        <TD WIDTH=10% BGCOLOR="#9c2a64" STYLE="border-top: 1.00pt solid #ffffff; border-bottom: none; border-left: 1.00pt solid #ffffff; border-right: 1.00pt solid #ffffff; padding: 0in">
+            <P ALIGN=CENTER>
+                <FONT COLOR="#ffffff">
+                    <FONT FACE="Arial, serif">
+                        <FONT SIZE=2>
+                            <strong>MOYEN DE MOBILITE</strong>
+                        </FONT>
+                    </FONT>
+                </FONT>
+            </P>
+        </TD>
+        <TD WIDTH=10% BGCOLOR="#000000" STYLE="border-top: 1.00pt solid #ffffff; border-bottom: none; border-left: 1.00pt solid #ffffff; border-right: 1.00pt solid #ffffff; padding: 0in">
+            <P ALIGN=CENTER>
+                <FONT COLOR="#ffffff">
+                    <FONT FACE="Arial, serif">
+                        <FONT SIZE=2>
+                            <strong>EQUIPEMENT</strong>
+                        </FONT>
+                    </FONT>
+                </FONT>
+            </P>
+        </TD>
+        <TD WIDTH=10% BGCOLOR="#000000" STYLE="border-top: 1.00pt solid #ffffff; border-bottom: none; border-left: 1.00pt solid #ffffff; border-right: 1.00pt solid #ffffff; padding: 0in">
+            <P ALIGN=CENTER>
+                <FONT COLOR="#ffffff">
+                    <FONT FACE="Arial, serif">
+                        <FONT SIZE=2>
+                            <strong>PHOTO</strong>
+                        </FONT>
+                    </FONT>
+                </FONT>
+            </P>
+        </TD>
+        <TD COLSPAN=2 WIDTH=25% BGCOLOR="#003e82" STYLE="border-top: 1.00pt solid #ffffff; border-bottom: none; border-left: 1.00pt solid #ffffff; border-right: 1.00pt solid #ffffff; padding-top: 0.05in; padding-bottom: 0in; padding-left: 0.1in; padding-right: 0.1in">
+            <P ALIGN=CENTER>
+                <FONT COLOR="#ffffff">
+                    <FONT FACE="Arial, serif">
+                        <FONT SIZE=2>
+                            <strong>DESCRIPTIF EXPERIENCE</strong>
+                        </FONT>
+                    </FONT>
+                </FONT>
+            </P>
+        </TD>
+        <TD WIDTH=10% BGCOLOR="#97958e" STYLE="border-top: 1.00pt solid #ffffff; border-bottom: none; border-left: 1.00pt solid #ffffff; border-right: 1.00pt solid #ffffff; padding: 0in">
+            <P ALIGN=CENTER>
+                <FONT COLOR="#ffffff">
+                    <FONT FACE="Arial, serif">
+                        <FONT SIZE=2>
+                            <strong>FAISABILITE de l’étape</strong>
+                        </FONT>
+                    </FONT>
+                </FONT>
+            </P>
+        </TD>
+        <TD WIDTH=7.5% BGCOLOR="red" STYLE="border-top: 1.00pt solid #ffffff; border-bottom: none; border-left: 1.00pt solid #ffffff; border-right: 1.00pt solid #ffffff; padding: 0in">
+            <P ALIGN=CENTER>
+                <FONT COLOR="#ffffff">
+                    <FONT FACE="Arial, serif">
+                        <FONT SIZE=2>
+                            <strong>Contraintes</strong>
+                        </FONT>
+                    </FONT>
+                </FONT>
+            </P>
+        </TD>
+        <TD WIDTH=20% BGCOLOR="green" STYLE="border-top: 1.00pt solid #ffffff; border-bottom: none; border-left: 1.00pt solid #ffffff; border-right: 1.00pt solid #ffffff; padding: 0in">
+            <P ALIGN=CENTER>
+                <FONT COLOR="#ffffff">
+                    <FONT FACE="Arial, serif">
+                        <FONT SIZE=2>
+                            <strong>Actions</strong>
+                        </FONT>
+                    </FONT>
+                </FONT>
+            </P>
+        </TD>
     </tr>
     </thead>
     <tbody>
         {% for activity in entity.activities %}
             <tr>
-                <td width="59">
+                <td width="20" BGCOLOR="#97958e" STYLE="border-top: 1.00pt solid #ffffff;">
                     <p align="center">
-                        <strong><em>{{ activity.day }}</em></strong>
+                        <FONT COLOR="#ffffff">
+                            <FONT FACE="Arial, serif">
+                                <FONT SIZE=2>
+                                    <strong>
+                                        <em>
+                                            {{ activity.day }}
+                                        </em>
+                                    </strong>
+                                </FONT>
+                            </FONT>
+                        </FONT>
                     </p>
                 </td>
-                <td width="130">
+                <td width="50">
                     <p align="center">
                         {{ activity.name }}
                     </p>
@@ -150,6 +216,8 @@
                     <p align="center">
                         {{ activity.description }}
                     </p>
+                </td><td width="0">
+                    <p align="center"></p>
                 </td>
                 <td width="118">
                     <p align="center">

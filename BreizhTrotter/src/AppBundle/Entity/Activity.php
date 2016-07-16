@@ -20,7 +20,7 @@ class Activity
     /**
      * @var integer
      *
-     * @ORM\Column(name="day", type="integer")
+     * @ORM\Column(name="day", type="string", length=50)
      */
     private $day;
 

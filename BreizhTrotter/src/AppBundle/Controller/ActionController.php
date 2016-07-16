@@ -157,6 +157,28 @@ class ActionController extends Controller
     }
 
     /**
+     * Finds and displays a Scenario entity.
+     *
+     * @Route("/preview/action/{id}", name="action_preview")
+     * @Method("GET")
+     * @Template()
+     */
+    public function previewAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('AppBundle:Action')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Scenario entity.');
+        }
+
+        return array(
+            'entity' => $entity,
+        );
+    }
+
+    /**
      * Finds and displays a Action entity.
      *
      * @Route("/{id}", name="action_show")

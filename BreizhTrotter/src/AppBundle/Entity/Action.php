@@ -46,13 +46,13 @@ class Action
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=50)
+     * @ORM\Column(name="name", type="string", length=500)
      */
     private $name;
 
     /** @var string
      *
-     * @ORM\Column(name="associateConstraint", type="string", length=100)
+     * @ORM\Column(name="associate_constraint", type="string", length=100)
      */
     private $associateConstraint;
 
@@ -73,21 +73,21 @@ class Action
     /**
      * @var string
      *
-     * @ORM\Column(name="experienceTourism", type="string", length=1000)
+     * @ORM\Column(name="experience_tourism", type="string", length=1000)
      */
     private $experienceTourism;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="sustainableMobility", type="string", length=1000)
+     * @ORM\Column(name="sustainable_mobility", type="string", length=1000)
      */
     private $sustainableMobility;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="involvedActor", type="string", length=1000)
+     * @ORM\Column(name="involved_actor", type="string", length=1000)
      */
     private $involvedActor;
 
@@ -101,14 +101,14 @@ class Action
     /**
      * @var string
      *
-     * @ORM\Column(name="vigilancePoint", type="string", length=1000)
+     * @ORM\Column(name="vigilance_point", type="string", length=1000)
      */
     private $vigilancePoint;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="mobilityEquipment", type="string", length=1000)
+     * @ORM\Column(name="mobility_equipment", type="string", length=1000)
      */
     private $mobilityEquipment;
 

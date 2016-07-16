@@ -45,11 +45,6 @@
     </table>
 
     <ul class="record_actions">
-        <li>
-            <a href="{{ path('action_edit', { 'id': entity.id }) }}">
-                Edit
-            </a>
-        </li>
         {% for activity in entity.activities %}
             <li>
                 <a href="{{ path('activity_show', { 'id': activity.id }) }}">

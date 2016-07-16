@@ -41,6 +41,11 @@
                             <td>{{ action.name }}</td>
                         {% endif %}
                         <td>{{ action.name }}</td>
+                        <td>
+                            <a href="{{ path('action_preview', { 'id': action.id }) }}">
+                                Action-{{ action.numero}}.pdf
+                            </a>
+                        </td>
                     </tr>
                 {% endfor %}
             </table>
@@ -64,7 +69,6 @@
                             <td>{{ constraint.numero }}</td>
                         {% endif %}
                         <td>{{ constraint.name }}</td>
-
                         <td>
                             <a href="{{ path('constraint_preview', { 'id': constraint.id }) }}">
                                 Constraint-{{ constraint.numero}}.pdf
