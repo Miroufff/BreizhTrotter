@@ -181,6 +181,28 @@ class ConstraintController extends Controller
     }
 
     /**
+     * Finds and displays a Scenario entity.
+     *
+     * @Route("/preview/constraint/{id}", name="constraint_preview")
+     * @Method("GET")
+     * @Template()
+     */
+    public function previewAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('AppBundle:Constraint')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Scenario entity.');
+        }
+
+        return array(
+            'entity' => $entity,
+        );
+    }
+
+    /**
      * Displays a form to edit an existing Constraint entity.
      *
      * @Route("/{id}/edit", name="constraint_edit")

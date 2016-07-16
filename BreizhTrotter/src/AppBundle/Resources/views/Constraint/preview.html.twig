@@ -1,0 +1,320 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>Week-end Grandes Marées pour couple parisien – 2J 2N – Mars ou Sept.</TITLE>
+	<META NAME="GENERATOR" CONTENT="LibreOffice 4.1.6.2 (Linux)">
+	<META NAME="AUTHOR" CONTENT="Briantais Laure">
+	<META NAME="CREATED" CONTENT="20150923;161600000000000">
+	<META NAME="CHANGEDBY" CONTENT="Briantais Laure">
+	<META NAME="CHANGED" CONTENT="20150923;163300000000000">
+	<META NAME="AppVersion" CONTENT="14.0000">
+	<META NAME="DocSecurity" CONTENT="0">
+	<META NAME="HyperlinksChanged" CONTENT="false">
+	<META NAME="LinksUpToDate" CONTENT="false">
+	<META NAME="ScaleCrop" CONTENT="false">
+	<META NAME="ShareDoc" CONTENT="false">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin-left: 0.5in; margin-right: 0.5in; margin-top: 0.49in; margin-bottom: 0.49in }
+		P { margin-bottom: 0.08in; direction: ltr; widows: 2; orphans: 2 }
+		A:link { color: #0000ff; so-language: zxx }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="fr-FR" LINK="#0000ff" DIR="LTR">
+<DIV TYPE=HEADER>
+	<P STYLE="margin-left: 1.28in; margin-right: -0.32in; text-indent: -1.38in; margin-bottom: 0in">
+		{% image '@AppBundle/Resources/public/images/breizhtrotter.png'  output="images/breizhtrotter.png" %}
+			<IMG SRC="{{ asset_url }}" NAME="Image 2" ALIGN=BOTTOM WIDTH=170 HEIGHT=39 BORDER=0><FONT FACE="Bagadek, serif"><FONT SIZE=1 STYLE="font-size: 2pt">	</FONT></FONT><FONT FACE="BigNoodleTitling, serif"><FONT SIZE=5><B>Fiche
+		{% endimage %}
+	CONTRAINTE</B></FONT></FONT><FONT COLOR="#9c2a64"><FONT FACE="Bagadek, serif"><FONT SIZE=4>
+	</FONT></FONT></FONT>{% image '@AppBundle/Resources/public/images/logoBMA.png'  output="images/logoBMA.png" %}
+			<IMG SRC="{{ asset_url }}" NAME="Picture 2" ALIGN=LEFT HSPACE=12 WIDTH=77 HEIGHT=66 BORDER=0>
+		{% endimage %}
+	</P>
+	<P ALIGN=CENTER STYLE="margin-right: -0.32in; margin-top: 0.14in; margin-bottom: 0in">
+	<FONT COLOR="#9c2a64"><FONT FACE="Times New Roman, serif"><FONT SIZE=4>«&nbsp;</FONT></FONT></FONT><FONT COLOR="#9c2a64"><FONT FACE="Bagadek, serif"><FONT SIZE=4>{{ entity.activities.first.scenario.name }}</FONT></FONT></FONT></P>
+</DIV>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<TABLE WIDTH=100% CELLPADDING=5 CELLSPACING=0>
+	<COL WIDTH=53*>
+	<COL WIDTH=103*>
+	<COL WIDTH=49*>
+	<COL WIDTH=51*>
+	<TBODY>
+		<TR>
+			<TD WIDTH=21% BGCOLOR="#9c2a64" STYLE="border: 1.00pt solid #ffffff; padding: 0.05in 0.1in">
+				<P ALIGN=CENTER><FONT COLOR="#ffffff"><FONT FACE="Arial, serif"><FONT SIZE=2>N°
+				Contrainte&nbsp;:</FONT></FONT></FONT><FONT COLOR="#ffffff"><FONT FACE="Arial, serif"><FONT SIZE=2><B>
+				{{ entity.numero }}</B></FONT></FONT></FONT></P>
+			</TD>
+			<TD COLSPAN=2 WIDTH=59% BGCOLOR="#97958e" STYLE="border-top: 1.00pt solid #ffffff; border-bottom: none; border-left: 1.00pt solid #ffffff; border-right: 1.00pt solid #ffffff; padding-top: 0.05in; padding-bottom: 0in; padding-left: 0.1in; padding-right: 0.1in">
+				<P ALIGN=CENTER><FONT COLOR="#ffffff"><FONT FACE="Arial, serif"><FONT SIZE=2>Etape
+				du séjour&nbsp;: </FONT></FONT></FONT>
+				</P>
+				<P ALIGN=CENTER><FONT COLOR="#ffffff"><FONT FACE="Arial, serif"><FONT SIZE=2><B>{{ entity.step }}</B></FONT></FONT></FONT></P>
+			</TD>
+			<TD WIDTH=20% BGCOLOR="#bd0f1e" STYLE="border-top: 1.00pt solid #ffffff; border-bottom: none; border-left: 1.00pt solid #ffffff; border-right: 1.00pt solid #ffffff; padding: 0in">
+				<P ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT COLOR="#ffffff"><FONT FACE="Arial, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Date
+				de MAJ de la fiche&nbsp;:</FONT></FONT></FONT></P>
+				<P ALIGN=CENTER><FONT COLOR="#ffffff"><FONT FACE="Arial, serif"><FONT SIZE=3><B>{{ entity.updateDate|date('d/m/Y') }}</B></FONT></FONT></FONT></P>
+			</TD>
+		</TR>
+	</TBODY>
+	<TBODY>
+		<TR>
+			<TD WIDTH=21% BGCOLOR="#d9d9d9" STYLE="border-top: 1.00pt solid #ffffff; border-bottom: none; border-left: 1.00pt solid #ffffff; border-right: 1.00pt solid #ffffff; padding-top: 0.05in; padding-bottom: 0in; padding-left: 0.1in; padding-right: 0.1in">
+				<P ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT FACE="Arial, serif"><FONT SIZE=2>Niveau
+				de Difficulté :</FONT></FONT></P>
+				<P ALIGN=CENTER>
+					{% if entity.diffLevel == 0 %}
+						{% image '@AppBundle/Resources/public/images/difficulty1.gif'  output="images/difficulty1.PNG" %}
+							<IMG SRC="{{ asset_url }}" NAME="Image 17" alt="difficulty1.png" ALIGN=BOTTOM WIDTH=31 HEIGHT=76 BORDER=0>
+						{% endimage %}
+					{% elseif entity.diffLevel == 1 %}
+						{% image '@AppBundle/Resources/public/images/difficulty2.gif'  output="images/difficulty2.PNG" %}
+							<IMG SRC="{{ asset_url }}" NAME="Image 17" alt="difficulty2.png" ALIGN=BOTTOM WIDTH=31 HEIGHT=76 BORDER=0>
+						{% endimage %}
+					{% elseif entity.diffLevel == 2 %}
+						{% image '@AppBundle/Resources/public/images/difficulty3.gif'  output="images/difficulty3.PNG" %}
+							<IMG SRC="{{ asset_url }}" NAME="Image 17" alt="difficulty3.png" ALIGN=BOTTOM WIDTH=31 HEIGHT=76 BORDER=0>
+						{% endimage %}
+					{% endif %}
+				</P>
+			</TD>
+			<TD COLSPAN=2 WIDTH=59% BGCOLOR="#003e82" STYLE="border-top: 1.00pt solid #ffffff; border-bottom: none; border-left: 1.00pt solid #ffffff; border-right: 1.00pt solid #ffffff; padding-top: 0.05in; padding-bottom: 0in; padding-left: 0.1in; padding-right: 0.1in">
+				<P ALIGN=CENTER><FONT COLOR="#ffffff"><FONT FACE="Arial, serif"><FONT SIZE=2>Titre
+				de la contrainte</FONT></FONT></FONT><FONT FACE="Arial, serif"><FONT SIZE=2>&nbsp;:</FONT></FONT></P>
+				<P ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT FACE="Arial, serif"><FONT SIZE=2><B>{{ entity.name }}</B></FONT></FONT></P>
+				<P><BR>
+				</P>
+			</TD>
+			<TD WIDTH=20% BGCOLOR="#5aa627" STYLE="border-top: 1.00pt solid #ffffff; border-bottom: none; border-left: 1.00pt solid #ffffff; border-right: 1.00pt solid #ffffff; padding: 0in">
+				<P ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT COLOR="#ffffff"><FONT FACE="Arial, serif"><FONT SIZE=2><B>N°
+				des actions associées&nbsp;:</B></FONT></FONT></FONT></P>
+				<P ALIGN=CENTER><FONT COLOR="#ffffff"><FONT FACE="Arial, serif"><FONT SIZE=2><B>{{ entity.associateAction }}</B></FONT></FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR>
+			<TD WIDTH=21% BGCOLOR="#fac92f" STYLE="border-top: none; border-bottom: 1px solid #ffffff; border-left: 1px solid #ffffff; border-right: 1px solid #ffffff; padding-top: 0in; padding-bottom: 0.05in; padding-left: 0.1in; padding-right: 0.1in">
+				<P><FONT COLOR="#ffffff"><FONT FACE="Arial, serif"><FONT SIZE=2><B>Contexte&nbsp;:
+				(actions avant / après)&nbsp;:</B></FONT></FONT></FONT></P>
+			</TD>
+			<TD COLSPAN=3 WIDTH=79% BGCOLOR="#d9d9d9" STYLE="border-top: none; border-bottom: 1px solid #ffffff; border-left: 1px solid #ffffff; border-right: 1px solid #ffffff; padding-top: 0in; padding-bottom: 0.05in; padding-left: 0.1in; padding-right: 0.1in">
+				<P STYLE="margin-bottom: 0in"><FONT COLOR="#000000"><FONT FACE="Arial, serif"><FONT SIZE=2>{{ entity.context }}</FONT></FONT></FONT></P>
+			</TD>
+		</TR>
+	</TBODY>
+	<TBODY>
+		<TR>
+			<TD WIDTH=21% BGCOLOR="#003e82" STYLE="border: 1px solid #ffffff; padding: 0.05in 0.1in">
+				<P><FONT COLOR="#ffffff"><FONT FACE="Arial, serif"><FONT SIZE=2><B>Descriptif
+				et état actuel de la réflexion&nbsp;:</B></FONT></FONT></FONT></P>
+			</TD>
+			<TD COLSPAN=3 WIDTH=79% BGCOLOR="#d9d9d9" STYLE="border-top: none; border-bottom: 1px solid #ffffff; border-left: 1px solid #ffffff; border-right: 1px solid #ffffff; padding-top: 0in; padding-bottom: 0.05in; padding-left: 0.1in; padding-right: 0.1in">
+				<P STYLE="margin-bottom: 0in"><FONT COLOR="#000000"><FONT FACE="Arial, serif"><FONT SIZE=2>{{ entity.description }}</FONT></FONT></FONT></P>
+			</TD>
+		</TR>
+	</TBODY>
+	<TBODY>
+		<TR>
+			<TD WIDTH=21% BGCOLOR="#e85612" STYLE="border: 1px solid #ffffff; padding: 0.05in 0.1in">
+				<P><FONT COLOR="#ffffff"><FONT FACE="Arial, serif"><FONT SIZE=2><B>Moyens
+				de mobilité et/ou équipement concernés&nbsp;:</B></FONT></FONT></FONT></P>
+			</TD>
+			<TD WIDTH=40% BGCOLOR="#d9d9d9" STYLE="border: 1px solid #ffffff; padding: 0.05in 0.1in">
+				<FONT COLOR="#000000"><FONT FACE="Arial, serif"><FONT SIZE=2>{{ entity.mobilityEquipment }}</FONT></FONT></FONT>
+			</TD>
+			<TD COLSPAN=2 WIDTH=39% BGCOLOR="#000000" STYLE="border: 1px solid #ffffff; padding: 0in">
+				<P ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT COLOR="#000000"><FONT FACE="Arial, serif"><FONT SIZE=2>/</FONT></FONT></FONT>
+					<img src="{{ asset(entity.image.AssetPath) }}" alt="{{ entity.image.name }}" width="100%" height="100%">
+				</P>
+				<P ALIGN=CENTER><BR>
+				</P>
+			</TD>
+		</TR>
+	</TBODY>
+	<TBODY>
+		<TR>
+			<TD WIDTH=21% BGCOLOR="#89b5dd" STYLE="border: 1px solid #ffffff; padding: 0.05in 0.1in">
+				<P><FONT COLOR="#ffffff"><FONT FACE="Arial, serif"><FONT SIZE=2><B>Acteurs
+				impliqués&nbsp;:</B></FONT></FONT></FONT></P>
+			</TD>
+			<TD COLSPAN=3 WIDTH=79% BGCOLOR="#d9d9d9" STYLE="border: 1px solid #ffffff; padding: 0.05in 0.1in">
+				<P><FONT COLOR="#000000"><FONT FACE="Arial, serif"><FONT SIZE=2>{{ entity.personInCharge }}</FONT></FONT></FONT></P>
+			</TD>
+		</TR>
+	</TBODY>
+	<TBODY>
+		<TR>
+			<TD WIDTH=21% BGCOLOR="#4c8a74" STYLE="border: 1px solid #ffffff; padding: 0.05in 0.1in">
+				<P><FONT COLOR="#ffffff"><FONT FACE="Arial, serif"><FONT SIZE=2><B>Actions
+				de diagnostic à conduire&nbsp;:</B></FONT></FONT></FONT></P>
+			</TD>
+			<TD COLSPAN=3 WIDTH=79% BGCOLOR="#d9d9d9" STYLE="border: 1px solid #ffffff; padding: 0.05in 0.1in">
+				<P STYLE="margin-bottom: 0in"><FONT COLOR="#000000"><FONT FACE="Arial, serif"><FONT SIZE=2>{{ entity.diagAction }}</FONT></FONT></FONT></P>
+			</TD>
+		</TR>
+	</TBODY>
+	<TBODY>
+		<TR>
+			<TD WIDTH=21% BGCOLOR="#00b0bf" STYLE="border: 1px solid #ffffff; padding: 0.05in 0.1in">
+				<P><FONT COLOR="#ffffff"><FONT FACE="Arial, serif"><FONT SIZE=2><B>Degré
+				d’impact sur la viabilité du séjour&nbsp;:</B></FONT></FONT></FONT></P>
+			</TD>
+			<TD WIDTH=40% BGCOLOR="#d9d9d9" STYLE="border: 1px solid #ffffff; padding: 0.05in 0.1in">
+				<P ALIGN=CENTER><A NAME="_GoBack"></A>
+					{% if entity.viabilityImpact == 0 %}
+						<FONT COLOR="#000000">
+							<FONT FACE="Arial, serif">
+								<FONT SIZE=2>
+									<B>
+										Faible&nbsp;
+									</B>
+								</FONT>
+							</FONT>
+						</FONT>
+						<FONT COLOR="#000000">
+							<FONT FACE="Arial, serif">
+								<FONT SIZE=2>
+										/ Moyen / Fort
+								</FONT>
+							</FONT>
+						</FONT>
+					{% elseif entity.viabilityImpact == 1 %}
+						<FONT COLOR="#000000">
+							<FONT FACE="Arial, serif">
+								<FONT SIZE=2>
+									Faible&nbsp; /
+								</FONT>
+							</FONT>
+						</FONT>
+						<FONT COLOR="#000000">
+							<FONT FACE="Arial, serif">
+								<FONT SIZE=2>
+									<B>
+										Moyen
+									</B>
+								</FONT>
+							</FONT>
+						</FONT>
+						<FONT COLOR="#000000">
+							<FONT FACE="Arial, serif">
+								<FONT SIZE=2>
+									/ Fort
+								</FONT>
+							</FONT>
+						</FONT>
+					{% elseif entity.viabilityImpact == 2 %}
+						<FONT COLOR="#000000">
+							<FONT FACE="Arial, serif">
+								<FONT SIZE=2>
+									Faible&nbsp;/ Moyen /
+								</FONT>
+							</FONT>
+						</FONT>
+						<FONT COLOR="#000000">
+							<FONT FACE="Arial, serif">
+								<FONT SIZE=2>
+									<B>
+										Fort
+									</B>
+								</FONT>
+							</FONT>
+						</FONT>
+					{% endif %}
+				</P>
+			</TD>
+			<TD WIDTH=19% BGCOLOR="#00b0bf" STYLE="border: 1px solid #ffffff; padding: 0in">
+				<P STYLE="margin-left: 0.08in"><FONT COLOR="#ffffff"><FONT FACE="Arial, serif"><FONT SIZE=2><B>Degré
+				d’impact sur «&nbsp;l’expérience tourisme&nbsp;» des
+				clients&nbsp;:</B></FONT></FONT></FONT></P>
+			</TD>
+			<TD WIDTH=20% BGCOLOR="#d9d9d9" STYLE="border: 1px solid #ffffff; padding: 0in">
+				<P ALIGN=CENTER>
+					{% if entity.tourismImpact == 0 %}
+						<FONT COLOR="#000000">
+							<FONT FACE="Arial, serif">
+								<FONT SIZE=2>
+									<B>
+										Faible&nbsp;
+									</B>
+								</FONT>
+							</FONT>
+						</FONT>
+						<FONT COLOR="#000000">
+							<FONT FACE="Arial, serif">
+								<FONT SIZE=2>
+									/ Moyen / Fort
+								</FONT>
+							</FONT>
+						</FONT>
+					{% elseif entity.tourismImpact == 1 %}
+						<FONT COLOR="#000000">
+							<FONT FACE="Arial, serif">
+								<FONT SIZE=2>
+									Faible&nbsp; /
+								</FONT>
+							</FONT>
+						</FONT>
+						<FONT COLOR="#000000">
+							<FONT FACE="Arial, serif">
+								<FONT SIZE=2>
+									<B>
+										Moyen
+									</B>
+								</FONT>
+							</FONT>
+						</FONT>
+						<FONT COLOR="#000000">
+							<FONT FACE="Arial, serif">
+								<FONT SIZE=2>
+									/ Fort
+								</FONT>
+							</FONT>
+						</FONT>
+					{% elseif entity.tourismImpact == 2 %}
+						<FONT COLOR="#000000">
+							<FONT FACE="Arial, serif">
+								<FONT SIZE=2>
+									Faible&nbsp;/ Moyen /
+								</FONT>
+							</FONT>
+						</FONT>
+						<FONT COLOR="#000000">
+							<FONT FACE="Arial, serif">
+								<FONT SIZE=2>
+									<B>
+										Fort
+									</B>
+								</FONT>
+							</FONT>
+						</FONT>
+					{% endif %}
+				</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P STYLE="margin-bottom: 0.14in"><BR><BR>
+</P>
+<DIV TYPE=FOOTER>
+	<P STYLE="margin-bottom: 0in; line-height: 100%">
+		{% image '@AppBundle/Resources/public/images/iddil.png'  output="images/iddil.png" %}
+			<IMG SRC="{{ asset_url }}" NAME="graphics1" ALIGN=LEFT HSPACE=12 WIDTH=85 HEIGHT=40 BORDER=0>
+		{% endimage %}
+		{% image '@AppBundle/Resources/public/images/arist.jpg'  output="images/arist.jpg" %}
+			<IMG SRC="{{ asset_url }}" NAME="Picture 3" ALIGN=LEFT HSPACE=12 WIDTH=88 HEIGHT=43 BORDER=0>
+		{% endimage %}
+		{% image '@AppBundle/Resources/public/images/CCI.jpg'  output="images/CCI.jpg" %}
+			<IMG SRC="{{ asset_url }}" NAME="Image 16" ALIGN=LEFT HSPACE=12 WIDTH=173 HEIGHT=52 BORDER=0>
+		{% endimage %}
+		{% image '@AppBundle/Resources/public/images/bma.jpg'  output="images/bma.jpg" %}
+			<IMG SRC="{{ asset_url }}" NAME="Image 13" ALIGN=LEFT HSPACE=12 WIDTH=106 HEIGHT=53 BORDER=0>
+		{% endimage %}
+	</P>
+</DIV>
+</BODY>
+</HTML>

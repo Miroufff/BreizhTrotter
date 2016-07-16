@@ -64,6 +64,12 @@
                             <td>{{ constraint.numero }}</td>
                         {% endif %}
                         <td>{{ constraint.name }}</td>
+
+                        <td>
+                            <a href="{{ path('constraint_preview', { 'id': constraint.id }) }}">
+                                Constraint-{{ constraint.numero}}.pdf
+                            </a>
+                        </td>
                     </tr>
                 {% endfor %}
             </table>

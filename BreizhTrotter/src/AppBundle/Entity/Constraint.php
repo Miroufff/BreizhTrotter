@@ -39,7 +39,7 @@ class Constraint
 
     /** @var string
      *
-     * @ORM\Column(name="associateAction", type="string", length=100)
+     * @ORM\Column(name="associate_action", type="string", length=100)
      */
     private $associateAction;
 
@@ -74,7 +74,7 @@ class Constraint
     /**
      * @var string
      *
-     * @ORM\Column(name="mobilityEquipment", type="string", length=1000)
+     * @ORM\Column(name="mobility_equipment", type="string", length=1000)
      */
     private $mobilityEquipment;
 
