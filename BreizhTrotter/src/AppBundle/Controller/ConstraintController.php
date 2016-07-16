@@ -218,7 +218,7 @@ class ConstraintController extends Controller
             )
         ));
         $response->headers->set('Content-Type', 'application/pdf');
-        $response->headers->set('Content-disposition', 'filename=scenario'.$entity->getId().'pdf');
+        $response->headers->set('Content-disposition', 'filename=scenario'.$entity->getId().'.pdf');
 
         return $response;
     }
