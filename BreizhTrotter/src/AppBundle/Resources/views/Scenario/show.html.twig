@@ -72,27 +72,35 @@
     </div>
     <ul class="record_actions">
         {% if entity.open %}
-            <li>
-                <a href="{{ path('activity_new', { 'id': entity.id })  }}">Add activity</a>
-            </li>
-            <li>
-                <a href="{{ path('scenario_close', { 'id': entity.id })  }}">Close the scenario</a>
-            </li>
-            <li>
-                <a href="{{ path('scenario_edit', { 'id': entity.id }) }}">
-                    Edit
-                </a>
-            </li>
+            {% if is_granted("ROLE_SCENARIO_VALIDATION") %}
+                <li>
+                    <a href="{{ path('scenario_close', { 'id': entity.id })  }}">Close the scenario</a>
+                </li>
+            {% endif %}
+            {% if is_granted("ROLE_SCENARIO_EDIT") %}
+                <li>
+                    <a href="{{ path('activity_new', { 'id': entity.id })  }}">Add activity</a>
+                </li>
+                <li>
+                    <a href="{{ path('scenario_edit', { 'id': entity.id }) }}">
+                        Edit
+                    </a>
+                </li>
+            {% endif %}
         {% else %}
-            <li>
-                <a href="{{ path('scenario_open', { 'id': entity.id }) }}">Open the scenario</a>
-            </li>
+            {% if is_granted("ROLE_SCENARIO_VALIDATION") %}
+                <li>
+                    <a href="{{ path('scenario_open', { 'id': entity.id }) }}">Open the scenario</a>
+                </li>
+            {% endif %}
         {% endif %}
         <li>
             <a href="{{ path('scenario') }}">
                 Back to the list
             </a>
         </li>
-        <li>{{ form(delete_form) }}</li>
+        {% if is_granted("ROLE_SCENARIO_DELETE") %}
+            <li>{{ form(delete_form) }}</li>
+        {% endif %}
     </ul>
 {% endblock %}

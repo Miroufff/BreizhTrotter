@@ -30,12 +30,14 @@
                 {% for action in entity.actions %}
                     <tr>
                         {% if entity.scenario.open %}
-                            <td width="15%">
-                                <form action="{{ path('action_existing_remove', { 'id': entity.id }) }}" method="post">
-                                    <input type="hidden" name="actionRemove" value="{{ action.id }}" />
-                                    <input type="submit" value="Remove action">
-                                </form>
-                            </td>
+                            {% if is_granted("ROLE_SCENARIO_EDIT") %}
+                                <td width="15%">
+                                    <form action="{{ path('action_existing_remove', { 'id': entity.id }) }}" method="post">
+                                        <input type="hidden" name="actionRemove" value="{{ action.id }}" />
+                                        <input type="submit" value="Remove action">
+                                    </form>
+                                </td>
+                            {% endif %}
                             <td width="15%"><a href="{{ path('action_show', { 'id': action.id }) }}">{{ action.numero}}</a></td>
                         {% else %}
                             <td width="15%">{{ action.numero }}</td>
@@ -60,12 +62,14 @@
                 {% for constraint in entity.constraints %}
                     <tr>
                         {% if entity.scenario.open %}
-                            <td width="15%">
-                                <form action="{{ path('constraint_existing_remove', { 'id': entity.id }) }}" method="post">
-                                    <input type="hidden" name="constraintRemove" value="{{ constraint.id }}" />
-                                    <input type="submit" value="Remove constraint">
-                                </form>
-                            </td>
+                            {% if is_granted("ROLE_SCENARIO_EDIT") %}
+                                <td width="15%">
+                                    <form action="{{ path('constraint_existing_remove', { 'id': entity.id }) }}" method="post">
+                                        <input type="hidden" name="constraintRemove" value="{{ constraint.id }}" />
+                                        <input type="submit" value="Remove constraint">
+                                    </form>
+                                </td>
+                            {% endif %}
                             <td width="15%"><a href="{{ path('constraint_show', { 'id': constraint.id }) }}">{{ constraint.numero}}</a></td>
                         {% else %}
                             <td width="15%">{{ constraint.numero }}</td>
@@ -90,12 +94,14 @@
                 {% for mobility in entity.mobilities %}
                     <tr>
                         {% if entity.scenario.open %}
-                            <td width="15%">
-                                <form action="{{ path('mobility_existing_remove', { 'id': entity.id }) }}" method="post">
-                                    <input type="hidden" name="mobilityRemove" value="{{ mobility.id }}" />
-                                    <input type="submit" value="Remove mobility">
-                                </form>
-                            </td>
+                            {% if is_granted("ROLE_SCENARIO_EDIT") %}
+                                <td width="15%">
+                                    <form action="{{ path('mobility_existing_remove', { 'id': entity.id }) }}" method="post">
+                                        <input type="hidden" name="mobilityRemove" value="{{ mobility.id }}" />
+                                        <input type="submit" value="Remove mobility">
+                                    </form>
+                                </td>
+                            {% endif %}
                         {% endif %}
                         <td>{{ mobility.name }}</td>
                     </tr>
@@ -110,12 +116,14 @@
                 {% for equipment in entity.equipments %}
                     <tr>
                         {% if entity.scenario.open %}
-                            <td width="15%">
-                                <form action="{{ path('equipment_existing_remove', { 'id': entity.id }) }}" method="post">
-                                    <input type="hidden" name="equipmentRemove" value="{{ equipment.id }}" />
-                                    <input type="submit" value="Remove equipment">
-                                </form>
-                            </td>
+                            {% if is_granted("ROLE_SCENARIO_EDIT") %}
+                                <td width="15%">
+                                    <form action="{{ path('equipment_existing_remove', { 'id': entity.id }) }}" method="post">
+                                        <input type="hidden" name="equipmentRemove" value="{{ equipment.id }}" />
+                                        <input type="submit" value="Remove equipment">
+                                    </form>
+                                </td>
+                            {% endif %}
                         {% endif %}
                         <td>{{ equipment.name }}</td>
                     </tr>
@@ -125,89 +133,93 @@
     {% endif %}
 
     <ul class="record_actions">
-        {% if entity.scenario.open %}
-            <li>
-                <a href="{{ path('action_new', { 'id': entity.id }) }}">
-                    Add action
-                </a>
-            </li>
-            {% if actions %}
+        {% if is_granted("ROLE_SCENARIO_EDIT") %}
+            {% if entity.scenario.open %}
                 <li>
-                    <form action="{{ path('action_existing_new', { 'id': entity.id }) }}" method="post">
-                        <input type="hidden" name="action" />
+                    <a href="{{ path('action_new', { 'id': entity.id }) }}">
+                        Add action
+                    </a>
+                </li>
+                {% if actions %}
+                    <li>
+                        <form action="{{ path('action_existing_new', { 'id': entity.id }) }}" method="post">
+                            <input type="hidden" name="action" />
 
-                        <select name="ACTIONS" id="ACTIONS">
-                            {% for action in actions %}
-                                <option value="{{ action.id }}">{{ action.numero }}</option>
-                            {% endfor %}
-                        </select>
+                            <select name="ACTIONS" id="ACTIONS">
+                                {% for action in actions %}
+                                    <option value="{{ action.id }}">{{ action.numero }}</option>
+                                {% endfor %}
+                            </select>
 
-                        <input type="submit" value="Add existing action" onclick="changeAction()">
-                    </form>
+                            <input type="submit" value="Add existing action" onclick="changeAction()">
+                        </form>
+                    </li>
+                {% endif %}
+                <li>
+                    <a href="{{ path('constraint_new', { 'id': entity.id }) }}">
+                        Add constraint
+                    </a>
+                </li>
+                {% if constraints %}
+                    <li>
+                        <form action="{{ path('constraint_existing_new', { 'id': entity.id }) }}" method="post">
+                            <input type="hidden" name="constraint" />
+
+                            <select name="CONSTRAINTS" id="CONSTRAINTS">
+                                {% for constraint in constraints %}
+                                    <option value="{{ constraint.id }}">{{ constraint.numero }}</option>
+                                {% endfor %}
+                            </select>
+
+                            <input type="submit" value="Add existing constraint" onclick="changeConstraint()">
+                        </form>
+                    </li>
+                {% endif %}
+                {% if mobilities %}
+                    <li>
+                        <form action="{{ path('mobility_existing_new', { 'id': entity.id }) }}" method="post">
+                            <input type="hidden" name="mobility" />
+
+                            <select name="MOBILITIES" id="MOBILITIES">
+                                {% for mobility in mobilities %}
+                                    <option value="{{ mobility.id }}">{{ mobility.name }}</option>
+                                {% endfor %}
+                            </select>
+
+                            <input type="submit" value="Add existing mobility" onclick="changeMobility()">
+                        </form>
+                    </li>
+                {% endif %}
+                {% if equipments %}
+                    <li>
+                        <form action="{{ path('equipment_existing_new', { 'id': entity.id }) }}" method="post">
+                            <input type="hidden" name="equipment" />
+
+                            <select name="EQUIPMENTS" id="EQUIPMENTS">
+                                {% for equipment in equipments %}
+                                    <option value="{{ equipment.id }}">{{ equipment.name }}</option>
+                                {% endfor %}
+                            </select>
+
+                            <input type="submit" value="Add existing equipment" onclick="changeEquipment()">
+                        </form>
+                    </li>
+                {% endif %}
+                <li>
+                    <a href="{{ path('activity_edit', { 'id': entity.id }) }}">
+                        Edit
+                    </a>
                 </li>
             {% endif %}
-            <li>
-                <a href="{{ path('constraint_new', { 'id': entity.id }) }}">
-                    Add constraint
-                </a>
-            </li>
-            {% if constraints %}
-                <li>
-                    <form action="{{ path('constraint_existing_new', { 'id': entity.id }) }}" method="post">
-                        <input type="hidden" name="constraint" />
-
-                        <select name="CONSTRAINTS" id="CONSTRAINTS">
-                            {% for constraint in constraints %}
-                                <option value="{{ constraint.id }}">{{ constraint.numero }}</option>
-                            {% endfor %}
-                        </select>
-
-                        <input type="submit" value="Add existing constraint" onclick="changeConstraint()">
-                    </form>
-                </li>
-            {% endif %}
-            {% if mobilities %}
-                <li>
-                    <form action="{{ path('mobility_existing_new', { 'id': entity.id }) }}" method="post">
-                        <input type="hidden" name="mobility" />
-
-                        <select name="MOBILITIES" id="MOBILITIES">
-                            {% for mobility in mobilities %}
-                                <option value="{{ mobility.id }}">{{ mobility.name }}</option>
-                            {% endfor %}
-                        </select>
-
-                        <input type="submit" value="Add existing mobility" onclick="changeMobility()">
-                    </form>
-                </li>
-            {% endif %}
-            {% if equipments %}
-                <li>
-                    <form action="{{ path('equipment_existing_new', { 'id': entity.id }) }}" method="post">
-                        <input type="hidden" name="equipment" />
-
-                        <select name="EQUIPMENTS" id="EQUIPMENTS">
-                            {% for equipment in equipments %}
-                                <option value="{{ equipment.id }}">{{ equipment.name }}</option>
-                            {% endfor %}
-                        </select>
-
-                        <input type="submit" value="Add existing equipment" onclick="changeEquipment()">
-                    </form>
-                </li>
-            {% endif %}
-            <li>
-                <a href="{{ path('activity_edit', { 'id': entity.id }) }}">
-                    Edit
-                </a>
-            </li>
         {% endif %}
         <li>
             <a href="{{ path('scenario_show', { id : entity.scenario.id }) }}">
                 Back to the scenario
             </a>
         </li>
-        <li>{{ form(delete_form) }}</li>
+        {% if is_granted("ROLE_SCENARIO_DELETE") %}
+            <li>{{ form(delete_form) }}</li>
+        {% endif %}
     </ul>
 {% endblock %}
 

@@ -31,9 +31,11 @@
                     <li>
                         <a href="{{ path('scenario_show', { 'id': entity.id }) }}">show</a>
                     </li>
-                    <li>
-                        <a href="{{ path('scenario_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
+                    {% if is_granted("ROLE_SCENARIO_EDIT") %}
+                        <li>
+                            <a href="{{ path('scenario_edit', { 'id': entity.id }) }}">edit</a>
+                        </li>
+                    {% endif %}
                 </ul>
                 </td>
             </tr>
