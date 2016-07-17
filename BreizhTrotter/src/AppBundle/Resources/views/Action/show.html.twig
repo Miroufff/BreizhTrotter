@@ -6,36 +6,74 @@
     <table class="record_properties table">
         <tbody>
             <tr>
-                <th>Step</th>
+                <th>N° Action</th>
+                <td>{{ entity.numero }}</td>
+            </tr>
+            <tr>
+                <th>Etape du séjour</th>
                 <td>{{ entity.step }}</td>
             </tr>
             <tr>
-                <th>Updatedate</th>
+                <th>Date de MAJ de la fiche</th>
                 <td>{{ entity.updateDate|date('Y-m-d H:i:s') }}</td>
             </tr>
             <tr>
-                <th>Feasibility</th>
-                <td>{{ entity.feasibility }}</td>
+                <th>Niveau de Faisabilité</th>
+                {% if entity.feasibility == 0 %}
+                    <td>Forte</td>
+                {% elseif entity.feasibility == 1 %}
+                    <td>Moyenne</td>
+                {% elseif entity.feasibility == 2 %}
+                    <td>Faible</td>
+                {% endif %}
             </tr>
             <tr>
-                <th>Name</th>
+                <th>Titre de l’action</th>
                 <td>{{ entity.name }}</td>
             </tr>
             <tr>
-                <th>Personincharge</th>
+                <th>N° des contraintes associées</th>
+                <td>{{ entity.associateConstraint }}</td>
+            </tr>
+            <tr>
+                <th>Responsable(s) de l’action</th>
                 <td>{{ entity.personInCharge }}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <th>Descriptif et état actuel de la réflexion</th>
                 <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>Bénéfices « Expérience Tourisme »</th>
+                <td>{{ entity.experienceTourism }}</td>
+            </tr>
+            <tr>
+                <th>Bénéfices « Mobilité durable »</th>
+                <td>{{ entity.sustainableMobility }}</td>
+            </tr>
+            <tr>
+                <th>Moyens de mobilité et/ou équipement concernés</th>
+                <td>{{ entity.mobilityEquipment }}</td>
+            </tr>
+            <tr>
+                <th>Acteurs impliqués</th>
+                <td>{{ entity.involvedActor }}</td>
+            </tr>
+            <tr>
+                <th>Livrables</th>
+                <td>{{ entity.deliverable }}</td>
             </tr>
             <tr>
                 <th>Budget</th>
                 <td>{{ entity.budget }}</td>
             </tr>
             <tr>
-                <th>Timelimit</th>
+                <th>Délai</th>
                 <td>{{ entity.timeLimit|date("m/d/Y", "Europe/Paris")}}</td>
+            </tr>
+            <tr>
+                <th>Points de vigilance</th>
+                <td>{{ entity.vigilancePoint }}</td>
             </tr>
             <tr>
                 <th>Accomplishment</th>
@@ -48,14 +86,14 @@
         {% if is_granted("ROLE_SCENARIO_DELETE") %}
             <li>
                 <a href="{{ path('action_edit', { 'id': entity.id }) }}">
-                    Edit
+                    Modifier
                 </a>
             </li>
         {% endif %}
         {% for activity in entity.activities %}
             <li>
                 <a href="{{ path('activity_show', { 'id': activity.id }) }}">
-                    Back to the activity {{ activity.name }}
+                    Retour à l'activité : {{ activity.name }}
                 </a>
             </li>
         {% endfor %}

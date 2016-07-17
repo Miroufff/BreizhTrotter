@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body -%}
-    <h1>Scenario list</h1>
+    <h1>List des Scenarios</h1>
 
     <table class="records_list table">
         <thead>
             <tr>
-                <th>Name</th>
+                <th>Nom</th>
                 <th>Zone</th>
                 <th>Date</th>
-                <th>Author</th>
-                <th>Content</th>
+                <th>Auteur</th>
+                <th>Contenu</th>
                 <th>Description</th>
-                <th>Open</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -25,7 +25,11 @@
                 <td>{{ entity.author }}</td>
                 <td>{{ entity.content }}</td>
                 <td>{{ entity.description }}</td>
-                <td>{{ entity.open }}</td>
+                {% if entity.open  %}
+                    <td>Ouvert</td>
+                {% else %}
+                    <td>Fermé</td>
+                {% endif %}
                 <td>
                 <ul>
                     <li>
@@ -46,7 +50,7 @@
         <ul>
         <li>
             <a href="{{ path('scenario_new') }}">
-                Create a new entry
+                Créer un nouveau scenario
             </a>
         </li>
     </ul>

@@ -16,29 +16,38 @@ class ActionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('numero', 'text')
-            ->add('step', 'text')
+            ->add('numero', 'text', array('label'=>'N° Action'))
+            ->add('step', 'text', array('label'=>'Etape du séjour'))
             ->add('feasibility', 'choice', array(
+                'label'=>'Niveau de Faisabilité',
                 'choices' => array(
-                    0 => 'Faible',
+                    2 => 'Faible',
                     1 => 'Moyenne',
-                    2 => 'Forte',
+                    0 => 'Forte',
                 )))
-            ->add('name')
-            ->add('associateConstraint')
-            ->add('personInCharge')
-            ->add('description', 'textarea')
-            ->add('experienceTourism', 'textarea')
-            ->add('sustainableMobility', 'textarea')
-            ->add('mobilityEquipment', 'textarea')
-            ->add('involvedActor', 'textarea')
-            ->add('deliverable', 'textarea')
-            ->add('budget', 'text')
-            ->add('timeLimit', 'birthday', array(
-                'placeholder' => 'Select a value',)
+            ->add('name', 'text', array('label'=>'Titre de l’action'))
+            ->add('associateConstraint', 'text', array('label'=>'N° des contraintes associées'))
+            ->add('personInCharge', 'text', array('label'=>'Responsable(s) de l’action'))
+            ->add('description', 'textarea', array('label'=>'Descriptif et état actuel de la réflexion'))
+            ->add('experienceTourism', 'textarea', array('label'=>'Bénéfices « Expérience Tourisme »'))
+            ->add('sustainableMobility', 'textarea', array('label'=>'Bénéfices « Mobilité durable »'))
+            ->add('mobilityEquipment', 'textarea', array('label'=>'Moyens de mobilité et/ou équipement concernés'))
+            ->add('involvedActor', 'textarea', array('label'=>'Acteurs impliqués'))
+            ->add('deliverable', 'textarea', array('label'=>'Livrables'))
+            ->add('budget', 'text', array('label'=>'Budget'))
+            ->add('timeLimit', 'birthday',
+                array(
+                    'label'       => 'Délai',
+                    'placeholder' => 'Select a value'
+                )
             )
-            ->add('vigilancePoint', 'textarea')
-            ->add('accomplishment', 'integer', array('attr' => array('min' => 0, 'max' =>100)))
+            ->add('vigilancePoint', 'textarea', array('label'=>'Points de vigilance'))
+            ->add('accomplishment', 'integer',
+                array(
+                    'label' => 'Taux d’accomplissement de l’action',
+                    'attr'  => array('min' => 0, 'max' =>100)
+                )
+            )
             ->add('image', new ImageType())
         ;
     }

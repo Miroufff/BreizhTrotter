@@ -82,7 +82,7 @@ class ActivityController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Créer'));
 
         return $form;
     }
@@ -202,6 +202,7 @@ class ActivityController extends Controller
             'constraints' => $constraints,
             'equipments'  => $equipments,
             'mobilities'  => $mobilities,
+            'rootDir' => $this->get('kernel')->getRootDir().'/..',
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -247,7 +248,7 @@ class ActivityController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Modifier'));
 
         return $form;
     }
@@ -322,7 +323,7 @@ class ActivityController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('activity_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Supprimer'))
             ->getForm()
         ;
     }

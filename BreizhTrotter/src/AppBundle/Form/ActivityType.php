@@ -15,14 +15,15 @@ class ActivityType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('day')
-            ->add('name')
-            ->add('description', 'textarea')
+            ->add('day', 'text', array('label'=>"Jour de l'étape"))
+            ->add('name', 'text', array('label'=>"Nom de l'étape"))
+            ->add('description', 'textarea', array('label'=>"Descriptif expérience"))
             ->add('feasibility', 'choice', array(
+                'label' => 'Faisabilité',
                 'choices' => array(
-                    0 => 'Faible',
+                    2 => 'Faible',
                     1 => 'Moyenne',
-                    2 => 'Forte',
+                    0 => 'Forte',
                 )))
             ->add('image', new ImageType())
         ;

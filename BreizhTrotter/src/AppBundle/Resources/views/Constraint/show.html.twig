@@ -1,36 +1,66 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Constraint</h1>
+    <h1>Contrainte</h1>
 
     <table class="record_properties table">
         <tbody>
             <tr>
-                <th>Updatedate</th>
+                <th>N° Contrainte</th>
+                <td>{{ entity.numero }}</td>
+            </tr>
+            <tr>
+                <th>Etape du séjour</th>
+                <td>{{ entity.step }}</td>
+            </tr>
+            <tr>
+                <th>Date de MAJ de la fiche</th>
                 <td>{{ entity.updateDate|date('Y-m-d H:i:s') }}</td>
             </tr>
             <tr>
-                <th>Difflevel</th>
-                <td>{{ entity.diffLevel }}</td>
+                <th>Niveau de Difficulté</th>
+                {% if entity.diffLevel == 0 %}
+                    <td>Forte</td>
+                {% elseif entity.diffLevel == 1 %}
+                    <td>Moyenne</td>
+                {% elseif entity.diffLevel == 2 %}
+                    <td>Faible</td>
+                {% endif %}
             </tr>
             <tr>
-                <th>Context</th>
+                <th>Titre de la contrainte</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+            <tr>
+                <th>N° des actions associées</th>
+                <td>{{ entity.associateAction }}</td>
+            </tr>
+            <tr>
+                <th>Contexte : (actions avant / après)</th>
                 <td>{{ entity.context }}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <th>Descriptif et état actuel de la réflexion</th>
                 <td>{{ entity.description }}</td>
             </tr>
             <tr>
-                <th>Diagaction</th>
+                <th>Moyens de mobilité et/ou équipement concernés</th>
+                <td>{{ entity.mobilityEquipment }}</td>
+            </tr>
+            <tr>
+                <th>Acteurs impliqués</th>
+                <td>{{ entity.personInCharge }}</td>
+            </tr>
+            <tr>
+                <th>Actions de diagnostic à conduire</th>
                 <td>{{ entity.diagAction }}</td>
             </tr>
             <tr>
-                <th>Viabilityimpact</th>
+                <th>Degré d’impact sur la viabilité du séjour</th>
                 <td>{{ entity.viabilityImpact }}</td>
             </tr>
             <tr>
-                <th>Tourismimpact</th>
+                <th>Degré d’impact sur « l’expérience tourisme » des clients</th>
                 <td>{{ entity.tourismImpact }}</td>
             </tr>
         </tbody>
@@ -40,14 +70,14 @@
         {% if is_granted("ROLE_SCENARIO_EDIT") %}
             <li>
                 <a href="{{ path('constraint_edit', { 'id': entity.id }) }}">
-                    Edit
+                    Modifier
                 </a>
             </li>
         {% endif %}
         {% for activity in entity.activities %}
             <li>
                 <a href="{{ path('activity_show', { 'id': activity.id }) }}">
-                    Back to the activity {{ activity.name }}
+                    Retour à l'activité : {{ activity.name }}
                 </a>
             </li>
         {% endfor %}

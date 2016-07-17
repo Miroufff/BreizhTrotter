@@ -6,23 +6,23 @@
         <table class="record_properties table">
             <tbody>
                 <tr>
-                    <th>Zone</th>
-                    <td>{{ entity.zone }}</td>
+                    <th>Nom</th>
+                    <td>{{ entity.name }}</td>
                 </tr>
                 <tr>
-                    <th>Name</th>
-                    <td>{{ entity.name }}</td>
+                    <th>Zone</th>
+                    <td>{{ entity.zone }}</td>
                 </tr>
                 <tr>
                     <th>Date</th>
                     <td>{{ entity.date|date('Y-m-d H:i:s') }}</td>
                 </tr>
                 <tr>
-                    <th>Author</th>
+                    <th>Auteur</th>
                     <td>{{ entity.author }}</td>
                 </tr>
                 <tr>
-                    <th>Content</th>
+                    <th>Contenu</th>
                     <td>{{ entity.content }}</td>
                 </tr>
                 <tr>
@@ -32,9 +32,9 @@
                 <tr>
                     <th>Status</th>
                     {% if entity.open  %}
-                        <td>Open</td>
+                        <td>Ouvert</td>
                     {% else %}
-                        <td>Close</td>
+                        <td>Fermé</td>
                     {% endif %}
                 </tr>
                 {% if entity.open == 0 %}
@@ -52,10 +52,10 @@
                 <table class="record_properties table" style="text-align: left; padding-left: 20px;">
                     {% for activity in entity.activities %}
                         <tr>
-                            <th>Name</th>
-                            <th>Day</th>
+                            <th>Nom</th>
+                            <th>Jour</th>
                             <th>Description</th>
-                            <th>Feasibility</th>
+                            <th>Faisabilité</th>
                         </tr>
                         <tr>
                             <td><a href="{{ path('activity_show', { 'id': activity.id }) }}">{{ activity }}</a></td>
@@ -74,29 +74,29 @@
         {% if entity.open %}
             {% if is_granted("ROLE_SCENARIO_VALIDATION") %}
                 <li>
-                    <a href="{{ path('scenario_close', { 'id': entity.id })  }}">Close the scenario</a>
+                    <a href="{{ path('scenario_close', { 'id': entity.id })  }}">Fermer le scenario</a>
                 </li>
             {% endif %}
             {% if is_granted("ROLE_SCENARIO_EDIT") %}
                 <li>
-                    <a href="{{ path('activity_new', { 'id': entity.id })  }}">Add activity</a>
+                    <a href="{{ path('activity_new', { 'id': entity.id })  }}">Ajouter une activité</a>
                 </li>
                 <li>
                     <a href="{{ path('scenario_edit', { 'id': entity.id }) }}">
-                        Edit
+                        Modifier
                     </a>
                 </li>
             {% endif %}
         {% else %}
             {% if is_granted("ROLE_SCENARIO_VALIDATION") %}
                 <li>
-                    <a href="{{ path('scenario_open', { 'id': entity.id }) }}">Open the scenario</a>
+                    <a href="{{ path('scenario_open', { 'id': entity.id }) }}">Ouvrir le scenario</a>
                 </li>
             {% endif %}
         {% endif %}
         <li>
             <a href="{{ path('scenario') }}">
-                Back to the list
+                Retour à la liste
             </a>
         </li>
         {% if is_granted("ROLE_SCENARIO_DELETE") %}

@@ -1,16 +1,16 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Activity</h1>
+    <h1>Activité</h1>
 
     <table class="record_properties table">
         <tbody>
             <tr>
-                <th width="15%">Day</th>
+                <th width="15%">Jour de l'étape</th>
                 <td>{{ entity.day }}</td>
             </tr>
             <tr>
-                <th width="15%">Name</th>
+                <th width="15%">Nom de l'étape</th>
                 <td>{{ entity.name }}</td>
             </tr>
             <tr>
@@ -18,8 +18,14 @@
                 <td>{{ entity.description }}</td>
             </tr>
             <tr>
-                <th width="15%">Feasibility</th>
-                <td>{{ entity.feasibility }}</td>
+                <th width="15%">Faisabilité</th>
+                {% if entity.feasibility == 0 %}
+                    <td>Forte</td>
+                {% elseif entity.feasibility == 1 %}
+                    <td>Moyenne</td>
+                {% elseif entity.feasibility == 2 %}
+                    <td>Faible</td>
+                {% endif %}
             </tr>
         </tbody>
     </table>
@@ -31,10 +37,10 @@
                     <tr>
                         {% if entity.scenario.open %}
                             {% if is_granted("ROLE_SCENARIO_EDIT") %}
-                                <td width="15%">
+                                <td width="15.5%">
                                     <form action="{{ path('action_existing_remove', { 'id': entity.id }) }}" method="post">
                                         <input type="hidden" name="actionRemove" value="{{ action.id }}" />
-                                        <input type="submit" value="Remove action">
+                                        <input type="submit" value="Supprimer l'action">
                                     </form>
                                 </td>
                             {% endif %}
@@ -57,7 +63,7 @@
     {% endif %}
     {% if entity.constraints %}
         <tr>
-            <b><th>Constraints</th></b>
+            <b><th>Contraintes</th></b>
             <table class="record_properties table" style="text-align: left; padding-left: 50px;">
                 {% for constraint in entity.constraints %}
                     <tr>
@@ -66,7 +72,7 @@
                                 <td width="15%">
                                     <form action="{{ path('constraint_existing_remove', { 'id': entity.id }) }}" method="post">
                                         <input type="hidden" name="constraintRemove" value="{{ constraint.id }}" />
-                                        <input type="submit" value="Remove constraint">
+                                        <input type="submit" value="Supprimer la contrainte">
                                     </form>
                                 </td>
                             {% endif %}
@@ -89,16 +95,16 @@
     {% endif %}
     {% if entity.mobilities %}
         <tr>
-            <b><th>Mobilities</th></b>
+            <b><th>Mobilités</th></b>
             <table class="record_properties table" style="text-align: left; padding-left: 50px;">
                 {% for mobility in entity.mobilities %}
                     <tr>
                         {% if entity.scenario.open %}
                             {% if is_granted("ROLE_SCENARIO_EDIT") %}
-                                <td width="15%">
+                                <td width="16%">
                                     <form action="{{ path('mobility_existing_remove', { 'id': entity.id }) }}" method="post">
                                         <input type="hidden" name="mobilityRemove" value="{{ mobility.id }}" />
-                                        <input type="submit" value="Remove mobility">
+                                        <input type="submit" value="Supprimer la mobilité">
                                     </form>
                                 </td>
                             {% endif %}
@@ -111,7 +117,7 @@
     {% endif %}
     {% if entity.equipments %}
         <tr>
-            <b><th>Equipments</th></b>
+            <b><th>Equipements</th></b>
             <table class="record_properties table" style="text-align: left; padding-left: 50px;">
                 {% for equipment in entity.equipments %}
                     <tr>
@@ -120,7 +126,7 @@
                                 <td width="15%">
                                     <form action="{{ path('equipment_existing_remove', { 'id': entity.id }) }}" method="post">
                                         <input type="hidden" name="equipmentRemove" value="{{ equipment.id }}" />
-                                        <input type="submit" value="Remove equipment">
+                                        <input type="submit" value="Supprimer l'équipement">
                                     </form>
                                 </td>
                             {% endif %}
@@ -137,7 +143,7 @@
             {% if entity.scenario.open %}
                 <li>
                     <a href="{{ path('action_new', { 'id': entity.id }) }}">
-                        Add action
+                        Ajouter un action
                     </a>
                 </li>
                 {% if actions %}
@@ -151,13 +157,13 @@
                                 {% endfor %}
                             </select>
 
-                            <input type="submit" value="Add existing action" onclick="changeAction()">
+                            <input type="submit" value="Ajouter une action existante" onclick="changeAction()">
                         </form>
                     </li>
                 {% endif %}
                 <li>
                     <a href="{{ path('constraint_new', { 'id': entity.id }) }}">
-                        Add constraint
+                        Ajouter une contrainte
                     </a>
                 </li>
                 {% if constraints %}
@@ -171,7 +177,7 @@
                                 {% endfor %}
                             </select>
 
-                            <input type="submit" value="Add existing constraint" onclick="changeConstraint()">
+                            <input type="submit" value="Ajouter une contrainte existante" onclick="changeConstraint()">
                         </form>
                     </li>
                 {% endif %}
@@ -186,7 +192,7 @@
                                 {% endfor %}
                             </select>
 
-                            <input type="submit" value="Add existing mobility" onclick="changeMobility()">
+                            <input type="submit" value="Ajouter un moyen de mobilité" onclick="changeMobility()">
                         </form>
                     </li>
                 {% endif %}
@@ -201,20 +207,20 @@
                                 {% endfor %}
                             </select>
 
-                            <input type="submit" value="Add existing equipment" onclick="changeEquipment()">
+                            <input type="submit" value="Ajouter un équipement" onclick="changeEquipment()">
                         </form>
                     </li>
                 {% endif %}
                 <li>
                     <a href="{{ path('activity_edit', { 'id': entity.id }) }}">
-                        Edit
+                        Modifier
                     </a>
                 </li>
             {% endif %}
         {% endif %}
         <li>
             <a href="{{ path('scenario_show', { id : entity.scenario.id }) }}">
-                Back to the scenario
+                Retour au scenario
             </a>
         </li>
         {% if is_granted("ROLE_SCENARIO_DELETE") %}

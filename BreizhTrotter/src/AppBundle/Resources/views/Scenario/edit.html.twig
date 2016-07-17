@@ -1,14 +1,14 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Scenario edit</h1>
+    <h1>Edition du scenario</h1>
 
     {{ form(edit_form) }}
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('scenario') }}">
-            Back to the list
+        <a href="{{ path('scenario_show', { id : entity.id }) }}">
+            Retour au scenario
         </a>
     </li>
     {% if is_granted("ROLE_SCENARIO_DELETE") %}

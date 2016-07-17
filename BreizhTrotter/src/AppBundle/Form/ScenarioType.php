@@ -27,10 +27,10 @@ class ScenarioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('name', 'text', array('label'=>"Titre du scénario"))
             ->add('zone')
-            ->add('content')
-            ->add('author')
+            ->add('content', 'text', array('label'=>"Contenu"))
+            ->add('author', 'text', array('label'=>"Auteur"))
             ->add('date', 'date')
             ->add('description', 'textarea')
             ->add('image', new ImageType())
