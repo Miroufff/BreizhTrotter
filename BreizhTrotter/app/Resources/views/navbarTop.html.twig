@@ -28,13 +28,14 @@
 					</ul>
 				{% endif %}
 			</ul>
-			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-				<div class="logout">
-	                <a href="{{ path('fos_user_security_logout') }}">
-	                    {{ 'Déconnexion'|trans({}, 'FOSUserBundle') }}
-	                </a>
-	        	</div>
-	        {% endif %}
+			<div class="logout">
+				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+					<a href="{{ path('fos_user_security_logout') }}">
+						{{ 'Déconnexion'|trans({}, 'FOSUserBundle') }}
+					</a>
+	        	{% endif %}
+				<a href="/admin">Espace privé</a>
+			</div>
 		</div>
 	</div>
 </nav>  
