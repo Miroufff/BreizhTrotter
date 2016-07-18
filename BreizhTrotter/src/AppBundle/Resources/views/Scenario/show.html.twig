@@ -55,14 +55,19 @@
                             <th>Nom</th>
                             <th>Jour</th>
                             <th>Description</th>
-                            <th>Faisabilité</th>
+                            <th>Niveau de Faisabilité</th>
                         </tr>
                         <tr>
                             <td><a href="{{ path('activity_show', { 'id': activity.id }) }}">{{ activity }}</a></td>
                             <td>{{ activity.day}}</td>
                             <td>{{ activity.description}}</td>
-                            <td>{{ activity.feasibility}}</td>
-                        </tr>
+                            {% if activity.feasibility == 0 %}
+                                <td>Forte</td>
+                            {% elseif activity.feasibility == 1 %}
+                                <td>Moyenne</td>
+                            {% elseif activity.feasibility == 2 %}
+                                <td>Faible</td>
+                            {% endif %}                        </tr>
                     {% endfor %}
                 </table>
             </tr>
