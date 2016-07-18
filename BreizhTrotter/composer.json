@@ -23,7 +23,8 @@
         "sonata-project/admin-bundle": "^3.1",
         "sonata-project/doctrine-orm-admin-bundle": "^3.0",
         "sonata-project/user-bundle": "dev-master",
-        "jms/serializer-bundle": "^1.1"
+        "jms/serializer-bundle": "^1.1",
+        "phpdocumentor/phpdocumentor": "2.*"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
