@@ -312,7 +312,7 @@ class Action
     /**
      * Set timeLimit
      *
-     * @param integer $timeLimit
+     * @param \DateTime $timeLimit
      *
      * @return Action
      */

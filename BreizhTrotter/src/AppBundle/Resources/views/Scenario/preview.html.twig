@@ -79,7 +79,9 @@
     </TABLE>
     <br clear="all"/>
     <p align="center">
-        <img src="{{ rootDir ~ '/web' ~ asset(entity.image.AssetPath) }}" alt="{{ entity.image.name }}" WIDTH=1300 HEIGHT=1100>
+        {% if entity.image %}
+            <img src="{{ rootDir ~ '/web' ~ asset(entity.image.AssetPath) }}" alt="{{ entity.image.name }}" WIDTH=1300 HEIGHT=1100>
+        {% endif %}
     </p>
 </div>
 <br clear="all"/>
@@ -207,7 +209,9 @@
                     <p align="center">
                         <em>
                             {% for mobility in activity.mobilities %}
-                                <img src="{{ rootDir ~ '/web' ~ asset(mobility.image.AssetPath) }}" alt="{{ mobility.image.name }}" width="36" height="36">
+                                {% if entity.image %}
+                                    <img src="{{ rootDir ~ '/web' ~ asset(mobility.image.AssetPath) }}" alt="{{ mobility.image.name }}" width="36" height="36">
+                                {% endif %}
                             {% endfor %}
                         </em>
                     </p>
@@ -215,13 +219,17 @@
                 <td width="118">
                     <p align="center">
                         {% for equipment in activity.equipments %}
-                            <img src="{{ rootDir ~ '/web' ~ asset(equipment.image.AssetPath) }}" alt="{{ equipment.image.name }}" width="36" height="36">
+                            {% if entity.image %}
+                                <img src="{{ rootDir ~ '/web' ~ asset(equipment.image.AssetPath) }}" alt="{{ equipment.image.name }}" width="36" height="36">
+                            {% endif %}
                         {% endfor %}
                     </p>
                 </td>
                 <td width="224">
                     <p align="center">
-                        <img src="{{ rootDir ~ '/web' ~ asset(activity.image.AssetPath) }}" alt="{{ activity.image.name }}" width="164" height="107">
+                        {% if entity.image %}
+                            <img src="{{ rootDir ~ '/web' ~ asset(activity.image.AssetPath) }}" alt="{{ activity.image.name }}" width="164" height="107">
+                        {% endif %}
                     </p>
                 </td>
                 <td width="378">

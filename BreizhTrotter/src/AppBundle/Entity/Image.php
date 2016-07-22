@@ -44,7 +44,7 @@ class Image
      * @ORM\Column(type="string",length=255)
      * @Assert\NotBlank
      */
-    public $name;
+    public $name = "image";
 
     /**
      * @ORM\Column(type="string",length=255, nullable=true)

@@ -93,6 +93,7 @@ class Scenario
      */
     public function __construct()
     {
+        $this->date       = New \DateTime();
         $this->activities = new ArrayCollection();
     }
 

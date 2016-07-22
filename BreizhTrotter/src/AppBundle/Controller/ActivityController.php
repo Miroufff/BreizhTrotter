@@ -17,25 +17,6 @@ use AppBundle\Form\ActivityType;
  */
 class ActivityController extends Controller
 {
-
-    /**
-     * Lists all Activity entities.
-     *
-     * @Route("/", name="activity")
-     * @Method("GET")
-     * @Template()
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('AppBundle:Activity')->findAll();
-
-        return array(
-            'entities' => $entities,
-        );
-    }
-
     /**
      * Creates a new Activity entity.
      *

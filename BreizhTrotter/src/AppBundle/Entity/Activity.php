@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Activity
 {
     /**
-     * @var integer
+     * @var string
      *
      * @ORM\Column(name="day", type="string", length=50)
      */
@@ -113,7 +113,7 @@ class Activity
     /**
      * Set day
      *
-     * @param integer $day
+     * @param string $day
      *
      * @return Activity
      */

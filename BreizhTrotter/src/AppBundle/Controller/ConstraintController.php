@@ -19,25 +19,6 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ConstraintController extends Controller
 {
-
-    /**
-     * Lists all Constraint entities.
-     *
-     * @Route("/", name="constraint")
-     * @Method("GET")
-     * @Template()
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('AppBundle:Constraint')->findAll();
-
-        return array(
-            'entities' => $entities,
-        );
-    }
-
     /**
      * Creates a new Constraint entity.
      *

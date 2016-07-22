@@ -120,7 +120,9 @@
 			</TD>
 			<TD COLSPAN=2 WIDTH=39% BGCOLOR="#000000" STYLE="border: 1px solid #ffffff; padding: 0in">
 				<P ALIGN=CENTER STYLE="margin-bottom: 0in"><FONT COLOR="#000000"><FONT FACE="Arial, serif"><FONT SIZE=2>/</FONT></FONT></FONT>
-					<img src="{{ rootDir ~ '/web' ~ asset(entity.image.AssetPath) }}" alt="{{ entity.image.name }}" width="100%" height="100%">
+					{% if entity.image %}
+						<img src="{{ rootDir ~ '/web' ~ asset(entity.image.AssetPath) }}" alt="{{ entity.image.name }}" width="100%" height="100%">
+					{% endif %}
 				</P>
 				<P ALIGN=CENTER><BR>
 				</P>

@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class MobilityControllerTest extends WebTestCase
 {
-    /*
     public function testCompleteScenario()
     {
         // Create a new client to browse the application
@@ -15,11 +14,11 @@ class MobilityControllerTest extends WebTestCase
         // Create a new entry in the database
         $crawler = $client->request('GET', '/mobility/');
         $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /mobility/");
-        $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
+        $crawler = $client->click($crawler->selectLink("Créer un moyen de mobilité")->link());
 
         // Fill in the form and submit it
-        $form = $crawler->selectButton('Create')->form(array(
-            'appbundle_mobility[field_name]'  => 'Test',
+        $form = $crawler->selectButton('Créer')->form(array(
+            'appbundle_mobility[name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -30,10 +29,10 @@ class MobilityControllerTest extends WebTestCase
         $this->assertGreaterThan(0, $crawler->filter('td:contains("Test")')->count(), 'Missing element td:contains("Test")');
 
         // Edit the entity
-        $crawler = $client->click($crawler->selectLink('Edit')->link());
+        $crawler = $client->click($crawler->selectLink('Modifier')->link());
 
-        $form = $crawler->selectButton('Update')->form(array(
-            'appbundle_mobility[field_name]'  => 'Foo',
+        $form = $crawler->selectButton('Modifier')->form(array(
+            'appbundle_mobility[name]'  => 'Foo',
             // ... other fields to fill
         ));
 
@@ -44,12 +43,10 @@ class MobilityControllerTest extends WebTestCase
         $this->assertGreaterThan(0, $crawler->filter('[value="Foo"]')->count(), 'Missing element [value="Foo"]');
 
         // Delete the entity
-        $client->submit($crawler->selectButton('Delete')->form());
+        $client->submit($crawler->selectButton('Supprimer')->form());
         $crawler = $client->followRedirect();
 
         // Check the entity has been delete on the list
         $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
     }
-
-    */
 }

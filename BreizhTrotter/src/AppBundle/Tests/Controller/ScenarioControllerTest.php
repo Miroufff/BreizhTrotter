@@ -6,50 +6,74 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ScenarioControllerTest extends WebTestCase
 {
-    /*
-    public function testCompleteScenario()
+    /**
+     * @var Client
+     */
+    protected $client = null;
+
+
+    public function setUp()
     {
-        // Create a new client to browse the application
-        $client = static::createClient();
+        $this->doLogin("admin", "admin");
+    }
 
-        // Create a new entry in the database
-        $crawler = $client->request('GET', '/scenario/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /scenario/");
-        $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
-
-        // Fill in the form and submit it
-        $form = $crawler->selectButton('Create')->form(array(
-            'appbundle_scenario[field_name]'  => 'Test',
-            // ... other fields to fill
+    public function doLogin($username, $password) {
+        $this->client = static::createClient();
+        $crawler = $this->client->request('GET', '/login');
+        $form = $crawler->selectButton('_submit')->form(array(
+            '_username'  => $username,
+            '_password'  => $password,
         ));
 
-        $client->submit($form);
-        $crawler = $client->followRedirect();
+        $this->client->submit($form);
+
+        $this->assertTrue($this->client->getResponse()->isRedirect());
+
+        $crawler = $this->client->followRedirect();
+    }
+
+    public function testCompleteScenario()
+    {
+        // Create a new entry in the database
+        $crawler = $this->client->request('GET', '/scenario/');
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /scenario/");
+        $crawler = $this->client->click($crawler->selectLink('Créer un nouveau scenario')->link());
+
+        // Fill in the form and submit it
+        $form = $crawler->selectButton('Créer')->form(array(
+            'appbundle_scenario[author]'      => 'Test',
+            'appbundle_scenario[zone]'        => 'Test',
+            'appbundle_scenario[content]'     => 'Test',
+            'appbundle_scenario[name]'        => 'Test',
+            'appbundle_scenario[description]' => 'Test',
+        ));
+
+        $this->client->submit($form);
+        $crawler = $this->client->followRedirect();
 
         // Check data in the show view
         $this->assertGreaterThan(0, $crawler->filter('td:contains("Test")')->count(), 'Missing element td:contains("Test")');
 
         // Edit the entity
-        $crawler = $client->click($crawler->selectLink('Edit')->link());
+        $crawler = $this->client->click($crawler->selectLink('Modifier')->link());
 
-        $form = $crawler->selectButton('Update')->form(array(
-            'appbundle_scenario[field_name]'  => 'Foo',
+        // Fill in the form and submit it
+        $form = $crawler->selectButton('Modifier')->form(array(
+            'appbundle_scenario[author]'  => 'Mirouf',
             // ... other fields to fill
         ));
 
-        $client->submit($form);
-        $crawler = $client->followRedirect();
+        $this->client->submit($form);
+        $crawler = $this->client->followRedirect();
 
-        // Check the element contains an attribute with value equals "Foo"
-        $this->assertGreaterThan(0, $crawler->filter('[value="Foo"]')->count(), 'Missing element [value="Foo"]');
+        // Check data in the show view
+        $this->assertGreaterThan(0, $crawler->filter('[value="Mirouf"]')->count(), 'Missing element td:contains("Mirouf")');
 
         // Delete the entity
-        $client->submit($crawler->selectButton('Delete')->form());
-        $crawler = $client->followRedirect();
+        $this->client->submit($crawler->selectButton('Supprimer')->form());
+        $crawler = $this->client->followRedirect();
 
         // Check the entity has been delete on the list
-        $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
+        $this->assertNotRegExp('/Foo/', $this->client->getResponse()->getContent());
     }
-
-    */
 }

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for C:\wamp\www\BreizhTrotter\BreizhTrotter\src/AppBundle/Controller</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../css/nv.d3.min.css" rel="stylesheet">
+  <link href="../../css/style.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="../../js/html5shiv.min.js"></script>
+  <script src="../../js/respond.min.js"></script>
+  <![endif]-->
+ </head>
+ <body>
+  <header>
+   <div class="container">
+    <div class="row">
+     <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li><a href="../../index.html">C:\wamp\www\BreizhTrotter\BreizhTrotter\src</a></li>
+        <li><a href="../index.html">AppBundle</a></li>
+        <li><a href="index.html">Controller</a></li>
+        <li class="active">(Dashboard)</li>
+
+      </ol>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="SecurityController.php.html#17">SecurityController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionController.php.html#20">ActionController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ImageController.php.html#15">ImageController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActivityController.php.html#18">ActivityController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ConstraintController.php.html#20">ConstraintController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ScenarioController.php.html#19">ScenarioController</a></td><td class="text-right">53%</td></tr>
+       <tr><td><a href="MobilityController.php.html#18">MobilityController</a></td><td class="text-right">73%</td></tr>
+       <tr><td><a href="EquipmentController.php.html#18">EquipmentController</a></td><td class="text-right">73%</td></tr>
+       <tr><td><a href="IndexController.php.html#9">IndexController</a></td><td class="text-right">83%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ActivityController.php.html#18">ActivityController</a></td><td class="text-right">1190</td></tr>
+       <tr><td><a href="ActionController.php.html#20">ActionController</a></td><td class="text-right">506</td></tr>
+       <tr><td><a href="ConstraintController.php.html#20">ConstraintController</a></td><td class="text-right">462</td></tr>
+       <tr><td><a href="ImageController.php.html#15">ImageController</a></td><td class="text-right">306</td></tr>
+       <tr><td><a href="ScenarioController.php.html#19">ScenarioController</a></td><td class="text-right">80</td></tr>
+       <tr><td><a href="MobilityController.php.html#18">MobilityController</a></td><td class="text-right">25</td></tr>
+       <tr><td><a href="EquipmentController.php.html#18">EquipmentController</a></td><td class="text-right">25</td></tr>
+       <tr><td><a href="SecurityController.php.html#17">SecurityController</a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="IndexController.php.html#9">IndexController</a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="EquipmentController.php.html#130"><abbr title="EquipmentController::existingEquipmentRemoveAction">existingEquipmentRemoveAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EquipmentController.php.html#109"><abbr title="EquipmentController::existingEquipmentNewAction">existingEquipmentNewAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ImageController.php.html#22"><abbr title="ImageController::indexAction">indexAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ImageController.php.html#36"><abbr title="ImageController::createAction">createAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ImageController.php.html#63"><abbr title="ImageController::createCreateForm">createCreateForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ConstraintController.php.html#341"><abbr title="ConstraintController::createDeleteForm">createDeleteForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ConstraintController.php.html#314"><abbr title="ConstraintController::deleteAction">deleteAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ConstraintController.php.html#214"><abbr title="ConstraintController::previewAction">previewAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ConstraintController.php.html#171"><abbr title="ConstraintController::downloadAction">downloadAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ConstraintController.php.html#237"><abbr title="ConstraintController::editAction">editAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionController.php.html#30"><abbr title="ActionController::indexAction">indexAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ConstraintController.php.html#282"><abbr title="ConstraintController::updateAction">updateAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ImageController.php.html#79"><abbr title="ImageController::newAction">newAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ImageController.php.html#94"><abbr title="ImageController::showAction">showAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ScenarioController.php.html#157"><abbr title="ScenarioController::openAction">openAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ScenarioController.php.html#134"><abbr title="ScenarioController::closeAction">closeAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ScenarioController.php.html#180"><abbr title="ScenarioController::downloadAction">downloadAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ScenarioController.php.html#222"><abbr title="ScenarioController::previewAction">previewAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SecurityController.php.html#27"><abbr title="SecurityController::renderLogin">renderLogin</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MobilityController.php.html#130"><abbr title="MobilityController::existingMobilityRemoveAction">existingMobilityRemoveAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="MobilityController.php.html#109"><abbr title="MobilityController::existingMobilityNewAction">existingMobilityNewAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ImageController.php.html#143"><abbr title="ImageController::createEditForm">createEditForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ImageController.php.html#116"><abbr title="ImageController::editAction">editAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ImageController.php.html#158"><abbr title="ImageController::updateAction">updateAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ImageController.php.html#188"><abbr title="ImageController::deleteAction">deleteAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ImageController.php.html#215"><abbr title="ImageController::createDeleteForm">createDeleteForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ConstraintController.php.html#147"><abbr title="ConstraintController::showAction">showAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ConstraintController.php.html#264"><abbr title="ConstraintController::createEditForm">createEditForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionController.php.html#284"><abbr title="ActionController::createEditForm">createEditForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionController.php.html#257"><abbr title="ActionController::editAction">editAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionController.php.html#302"><abbr title="ActionController::updateAction">updateAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ConstraintController.php.html#126"><abbr title="ConstraintController::existingConstraintRemoveAction">existingConstraintRemoveAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActivityController.php.html#27"><abbr title="ActivityController::createAction">createAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionController.php.html#361"><abbr title="ActionController::createDeleteForm">createDeleteForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionController.php.html#232"><abbr title="ActionController::showAction">showAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionController.php.html#209"><abbr title="ActionController::previewAction">previewAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionController.php.html#82"><abbr title="ActionController::createCreateForm">createCreateForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionController.php.html#48"><abbr title="ActionController::createAction">createAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionController.php.html#101"><abbr title="ActionController::newAction">newAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionController.php.html#125"><abbr title="ActionController::existingActionNewAction">existingActionNewAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionController.php.html#166"><abbr title="ActionController::downloadAction">downloadAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionController.php.html#146"><abbr title="ActionController::existingActionRemoveAction">existingActionRemoveAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActivityController.php.html#59"><abbr title="ActivityController::createCreateForm">createCreateForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionController.php.html#334"><abbr title="ActionController::deleteAction">deleteAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActivityController.php.html#302"><abbr title="ActivityController::createDeleteForm">createDeleteForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActivityController.php.html#78"><abbr title="ActivityController::newAction">newAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ConstraintController.php.html#29"><abbr title="ConstraintController::createAction">createAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ConstraintController.php.html#62"><abbr title="ConstraintController::createCreateForm">createCreateForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ConstraintController.php.html#105"><abbr title="ConstraintController::existingConstraintNewAction">existingConstraintNewAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ConstraintController.php.html#81"><abbr title="ConstraintController::newAction">newAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActivityController.php.html#243"><abbr title="ActivityController::updateAction">updateAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActivityController.php.html#275"><abbr title="ActivityController::deleteAction">deleteAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActivityController.php.html#198"><abbr title="ActivityController::editAction">editAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActivityController.php.html#225"><abbr title="ActivityController::createEditForm">createEditForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActivityController.php.html#101"><abbr title="ActivityController::showAction">showAction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ScenarioController.php.html#290"><abbr title="ScenarioController::updateAction">updateAction</abbr></a></td><td class="text-right">64%</td></tr>
+       <tr><td><a href="MobilityController.php.html#221"><abbr title="MobilityController::updateAction">updateAction</abbr></a></td><td class="text-right">64%</td></tr>
+       <tr><td><a href="EquipmentController.php.html#221"><abbr title="EquipmentController::updateAction">updateAction</abbr></a></td><td class="text-right">64%</td></tr>
+       <tr><td><a href="EquipmentController.php.html#45"><abbr title="EquipmentController::createAction">createAction</abbr></a></td><td class="text-right">72%</td></tr>
+       <tr><td><a href="ScenarioController.php.html#46"><abbr title="ScenarioController::createAction">createAction</abbr></a></td><td class="text-right">72%</td></tr>
+       <tr><td><a href="MobilityController.php.html#45"><abbr title="MobilityController::createAction">createAction</abbr></a></td><td class="text-right">72%</td></tr>
+       <tr><td><a href="IndexController.php.html#14"><abbr title="IndexController::indexAction">indexAction</abbr></a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="ScenarioController.php.html#110"><abbr title="ScenarioController::showAction">showAction</abbr></a></td><td class="text-right">87%</td></tr>
+       <tr><td><a href="MobilityController.php.html#151"><abbr title="MobilityController::showAction">showAction</abbr></a></td><td class="text-right">87%</td></tr>
+       <tr><td><a href="EquipmentController.php.html#151"><abbr title="EquipmentController::showAction">showAction</abbr></a></td><td class="text-right">87%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ActivityController.php.html#101"><abbr title="ActivityController::showAction">showAction</abbr></a></td><td class="text-right">420</td></tr>
+       <tr><td><a href="ConstraintController.php.html#314"><abbr title="ConstraintController::deleteAction">deleteAction</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="ActivityController.php.html#243"><abbr title="ActivityController::updateAction">updateAction</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="ActivityController.php.html#275"><abbr title="ActivityController::deleteAction">deleteAction</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="ActionController.php.html#334"><abbr title="ActionController::deleteAction">deleteAction</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="ImageController.php.html#158"><abbr title="ImageController::updateAction">updateAction</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="ImageController.php.html#188"><abbr title="ImageController::deleteAction">deleteAction</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="ActionController.php.html#302"><abbr title="ActionController::updateAction">updateAction</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="ConstraintController.php.html#282"><abbr title="ConstraintController::updateAction">updateAction</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="SecurityController.php.html#27"><abbr title="SecurityController::renderLogin">renderLogin</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ActionController.php.html#48"><abbr title="ActionController::createAction">createAction</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ImageController.php.html#36"><abbr title="ImageController::createAction">createAction</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ImageController.php.html#116"><abbr title="ImageController::editAction">editAction</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ScenarioController.php.html#222"><abbr title="ScenarioController::previewAction">previewAction</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ScenarioController.php.html#157"><abbr title="ScenarioController::openAction">openAction</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ImageController.php.html#94"><abbr title="ImageController::showAction">showAction</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ConstraintController.php.html#237"><abbr title="ConstraintController::editAction">editAction</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ActivityController.php.html#27"><abbr title="ActivityController::createAction">createAction</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ActionController.php.html#257"><abbr title="ActionController::editAction">editAction</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ActionController.php.html#232"><abbr title="ActionController::showAction">showAction</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ActionController.php.html#209"><abbr title="ActionController::previewAction">previewAction</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ScenarioController.php.html#134"><abbr title="ScenarioController::closeAction">closeAction</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ActivityController.php.html#198"><abbr title="ActivityController::editAction">editAction</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ConstraintController.php.html#29"><abbr title="ConstraintController::createAction">createAction</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ConstraintController.php.html#147"><abbr title="ConstraintController::showAction">showAction</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ConstraintController.php.html#214"><abbr title="ConstraintController::previewAction">previewAction</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="MobilityController.php.html#221"><abbr title="MobilityController::updateAction">updateAction</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="ScenarioController.php.html#290"><abbr title="ScenarioController::updateAction">updateAction</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="EquipmentController.php.html#221"><abbr title="EquipmentController::updateAction">updateAction</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="EquipmentController.php.html#45"><abbr title="EquipmentController::createAction">createAction</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="MobilityController.php.html#45"><abbr title="MobilityController::createAction">createAction</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="ScenarioController.php.html#46"><abbr title="ScenarioController::createAction">createAction</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="IndexController.php.html#14"><abbr title="IndexController::indexAction">indexAction</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="EquipmentController.php.html#151"><abbr title="EquipmentController::showAction">showAction</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="MobilityController.php.html#151"><abbr title="MobilityController::showAction">showAction</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="ScenarioController.php.html#110"><abbr title="ScenarioController::showAction">showAction</abbr></a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 2.2.4</a> using <a href="https://secure.php.net/" target="_top">PHP 5.5.12</a> and <a href="https://phpunit.de/">PHPUnit 4.8.27</a> at Fri Jul 22 11:53:20 CEST 2016.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../../js/jquery.min.js" type="text/javascript"></script>
+  <script src="../../js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="../../js/holder.min.js" type="text/javascript"></script>
+  <script src="../../js/d3.min.js" type="text/javascript"></script>
+  <script src="../../js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([5,0,0,0,0,0,1,0,2,1,0,0], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([55,0,0,0,0,0,0,3,3,4,6,15], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(key, y, e, graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,22,"<a href=\"ActionController.php.html#20\">ActionController<\/a>"],[0,34,"<a href=\"ActivityController.php.html#18\">ActivityController<\/a>"],[0,21,"<a href=\"ConstraintController.php.html#20\">ConstraintController<\/a>"],[73.958333333333,19,"<a href=\"EquipmentController.php.html#18\">EquipmentController<\/a>"],[0,17,"<a href=\"ImageController.php.html#15\">ImageController<\/a>"],[83.333333333333,2,"<a href=\"IndexController.php.html#9\">IndexController<\/a>"],[73.684210526316,19,"<a href=\"MobilityController.php.html#18\">MobilityController<\/a>"],[53.846153846154,24,"<a href=\"ScenarioController.php.html#19\">ScenarioController<\/a>"],[0,2,"<a href=\"SecurityController.php.html#17\">SecurityController<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(key, y, e, graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"ActionController.php.html#30\">ActionController::indexAction<\/a>"],[0,2,"<a href=\"ActionController.php.html#48\">ActionController::createAction<\/a>"],[0,1,"<a href=\"ActionController.php.html#82\">ActionController::createCreateForm<\/a>"],[0,1,"<a href=\"ActionController.php.html#101\">ActionController::newAction<\/a>"],[0,1,"<a href=\"ActionController.php.html#125\">ActionController::existingActionNewAction<\/a>"],[0,1,"<a href=\"ActionController.php.html#146\">ActionController::existingActionRemoveAction<\/a>"],[0,1,"<a href=\"ActionController.php.html#166\">ActionController::downloadAction<\/a>"],[0,2,"<a href=\"ActionController.php.html#209\">ActionController::previewAction<\/a>"],[0,2,"<a href=\"ActionController.php.html#232\">ActionController::showAction<\/a>"],[0,2,"<a href=\"ActionController.php.html#257\">ActionController::editAction<\/a>"],[0,1,"<a href=\"ActionController.php.html#284\">ActionController::createEditForm<\/a>"],[0,3,"<a href=\"ActionController.php.html#302\">ActionController::updateAction<\/a>"],[0,3,"<a href=\"ActionController.php.html#334\">ActionController::deleteAction<\/a>"],[0,1,"<a href=\"ActionController.php.html#361\">ActionController::createDeleteForm<\/a>"],[0,2,"<a href=\"ActivityController.php.html#27\">ActivityController::createAction<\/a>"],[0,1,"<a href=\"ActivityController.php.html#59\">ActivityController::createCreateForm<\/a>"],[0,1,"<a href=\"ActivityController.php.html#78\">ActivityController::newAction<\/a>"],[0,20,"<a href=\"ActivityController.php.html#101\">ActivityController::showAction<\/a>"],[0,2,"<a href=\"ActivityController.php.html#198\">ActivityController::editAction<\/a>"],[0,1,"<a href=\"ActivityController.php.html#225\">ActivityController::createEditForm<\/a>"],[0,3,"<a href=\"ActivityController.php.html#243\">ActivityController::updateAction<\/a>"],[0,3,"<a href=\"ActivityController.php.html#275\">ActivityController::deleteAction<\/a>"],[0,1,"<a href=\"ActivityController.php.html#302\">ActivityController::createDeleteForm<\/a>"],[0,2,"<a href=\"ConstraintController.php.html#29\">ConstraintController::createAction<\/a>"],[0,1,"<a href=\"ConstraintController.php.html#62\">ConstraintController::createCreateForm<\/a>"],[0,1,"<a href=\"ConstraintController.php.html#81\">ConstraintController::newAction<\/a>"],[0,1,"<a href=\"ConstraintController.php.html#105\">ConstraintController::existingConstraintNewAction<\/a>"],[0,1,"<a href=\"ConstraintController.php.html#126\">ConstraintController::existingConstraintRemoveAction<\/a>"],[0,2,"<a href=\"ConstraintController.php.html#147\">ConstraintController::showAction<\/a>"],[0,1,"<a href=\"ConstraintController.php.html#171\">ConstraintController::downloadAction<\/a>"],[0,2,"<a href=\"ConstraintController.php.html#214\">ConstraintController::previewAction<\/a>"],[0,2,"<a href=\"ConstraintController.php.html#237\">ConstraintController::editAction<\/a>"],[0,1,"<a href=\"ConstraintController.php.html#264\">ConstraintController::createEditForm<\/a>"],[0,3,"<a href=\"ConstraintController.php.html#282\">ConstraintController::updateAction<\/a>"],[0,3,"<a href=\"ConstraintController.php.html#314\">ConstraintController::deleteAction<\/a>"],[0,1,"<a href=\"ConstraintController.php.html#341\">ConstraintController::createDeleteForm<\/a>"],[100,1,"<a href=\"EquipmentController.php.html#28\">EquipmentController::indexAction<\/a>"],[72.727272727273,2,"<a href=\"EquipmentController.php.html#45\">EquipmentController::createAction<\/a>"],[100,1,"<a href=\"EquipmentController.php.html#72\">EquipmentController::createCreateForm<\/a>"],[100,1,"<a href=\"EquipmentController.php.html#91\">EquipmentController::newAction<\/a>"],[0,1,"<a href=\"EquipmentController.php.html#109\">EquipmentController::existingEquipmentNewAction<\/a>"],[0,1,"<a href=\"EquipmentController.php.html#130\">EquipmentController::existingEquipmentRemoveAction<\/a>"],[87.5,2,"<a href=\"EquipmentController.php.html#151\">EquipmentController::showAction<\/a>"],[90,2,"<a href=\"EquipmentController.php.html#176\">EquipmentController::editAction<\/a>"],[100,1,"<a href=\"EquipmentController.php.html#203\">EquipmentController::createEditForm<\/a>"],[64.285714285714,3,"<a href=\"EquipmentController.php.html#221\">EquipmentController::updateAction<\/a>"],[90.909090909091,3,"<a href=\"EquipmentController.php.html#253\">EquipmentController::deleteAction<\/a>"],[100,1,"<a href=\"EquipmentController.php.html#280\">EquipmentController::createDeleteForm<\/a>"],[0,1,"<a href=\"ImageController.php.html#22\">ImageController::indexAction<\/a>"],[0,2,"<a href=\"ImageController.php.html#36\">ImageController::createAction<\/a>"],[0,1,"<a href=\"ImageController.php.html#63\">ImageController::createCreateForm<\/a>"],[0,1,"<a href=\"ImageController.php.html#79\">ImageController::newAction<\/a>"],[0,2,"<a href=\"ImageController.php.html#94\">ImageController::showAction<\/a>"],[0,2,"<a href=\"ImageController.php.html#116\">ImageController::editAction<\/a>"],[0,1,"<a href=\"ImageController.php.html#143\">ImageController::createEditForm<\/a>"],[0,3,"<a href=\"ImageController.php.html#158\">ImageController::updateAction<\/a>"],[0,3,"<a href=\"ImageController.php.html#188\">ImageController::deleteAction<\/a>"],[0,1,"<a href=\"ImageController.php.html#215\">ImageController::createDeleteForm<\/a>"],[83.333333333333,2,"<a href=\"IndexController.php.html#14\">IndexController::indexAction<\/a>"],[100,1,"<a href=\"MobilityController.php.html#28\">MobilityController::indexAction<\/a>"],[72.727272727273,2,"<a href=\"MobilityController.php.html#45\">MobilityController::createAction<\/a>"],[100,1,"<a href=\"MobilityController.php.html#72\">MobilityController::createCreateForm<\/a>"],[100,1,"<a href=\"MobilityController.php.html#91\">MobilityController::newAction<\/a>"],[0,1,"<a href=\"MobilityController.php.html#109\">MobilityController::existingMobilityNewAction<\/a>"],[0,1,"<a href=\"MobilityController.php.html#130\">MobilityController::existingMobilityRemoveAction<\/a>"],[87.5,2,"<a href=\"MobilityController.php.html#151\">MobilityController::showAction<\/a>"],[90,2,"<a href=\"MobilityController.php.html#176\">MobilityController::editAction<\/a>"],[100,1,"<a href=\"MobilityController.php.html#203\">MobilityController::createEditForm<\/a>"],[64.285714285714,3,"<a href=\"MobilityController.php.html#221\">MobilityController::updateAction<\/a>"],[90.909090909091,3,"<a href=\"MobilityController.php.html#253\">MobilityController::deleteAction<\/a>"],[100,1,"<a href=\"MobilityController.php.html#280\">MobilityController::createDeleteForm<\/a>"],[100,1,"<a href=\"ScenarioController.php.html#29\">ScenarioController::indexAction<\/a>"],[72.727272727273,2,"<a href=\"ScenarioController.php.html#46\">ScenarioController::createAction<\/a>"],[100,1,"<a href=\"ScenarioController.php.html#73\">ScenarioController::createCreateForm<\/a>"],[100,1,"<a href=\"ScenarioController.php.html#92\">ScenarioController::newAction<\/a>"],[87.5,2,"<a href=\"ScenarioController.php.html#110\">ScenarioController::showAction<\/a>"],[0,2,"<a href=\"ScenarioController.php.html#134\">ScenarioController::closeAction<\/a>"],[0,2,"<a href=\"ScenarioController.php.html#157\">ScenarioController::openAction<\/a>"],[0,1,"<a href=\"ScenarioController.php.html#180\">ScenarioController::downloadAction<\/a>"],[0,2,"<a href=\"ScenarioController.php.html#222\">ScenarioController::previewAction<\/a>"],[90,2,"<a href=\"ScenarioController.php.html#245\">ScenarioController::editAction<\/a>"],[100,1,"<a href=\"ScenarioController.php.html#272\">ScenarioController::createEditForm<\/a>"],[64.285714285714,3,"<a href=\"ScenarioController.php.html#290\">ScenarioController::updateAction<\/a>"],[90.909090909091,3,"<a href=\"ScenarioController.php.html#322\">ScenarioController::deleteAction<\/a>"],[100,1,"<a href=\"ScenarioController.php.html#349\">ScenarioController::createDeleteForm<\/a>"],[0,2,"<a href=\"SecurityController.php.html#27\">SecurityController::renderLogin<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>
