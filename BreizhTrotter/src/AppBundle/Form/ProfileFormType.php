@@ -52,12 +52,6 @@ class ProfileFormType extends AbstractType
         ));
     }
 
-    // BC for SF < 2.7
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $this->configureOptions($resolver);
-    }
-
     // BC for SF < 3.0
     public function getName()
     {

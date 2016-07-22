@@ -6,13 +6,11 @@
     {{ form(edit_form) }}
 
     <ul class="record_actions">
-        {% for activity in entity.activities %}
-            <li>
-                <a href="{{ path('activity_show', { 'id': activity.id }) }}">
-                    Retour à l'activité : {{ activity.name }}
-                </a>
-            </li>
-        {% endfor %}
+        <li>
+            <a href="{{ path('activity_show', { 'id': idActivity }) }}">
+                Retour à l'activité
+            </a>
+        </li>
         {% if is_granted("ROLE_SCENARIO_DELETE") %}
             <li>{{ form(delete_form) }}</li>
         {% endif %}

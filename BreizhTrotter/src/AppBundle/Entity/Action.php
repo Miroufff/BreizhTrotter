@@ -161,8 +161,9 @@ class Action
      */
     public function __construct()
     {
-        $this->updateDate  = new DateTime('NOW');
-        $this->activities  = new ArrayCollection();
+        $this->updateDate = new DateTime('NOW');
+        $this->timeLimit  = new DateTime();
+        $this->activities = new ArrayCollection();
     }
 
     /**

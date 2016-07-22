@@ -111,14 +111,6 @@ class Mobility
     }
 
     /**
-     * @param mixed $activities
-     */
-    public function setActivities($activities)
-    {
-        $this->activities = $activities;
-    }
-
-    /**
      * Add activities
      *
      * @param Activity $activity

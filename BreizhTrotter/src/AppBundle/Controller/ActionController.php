@@ -206,11 +206,11 @@ class ActionController extends Controller
     /**
      * Finds and displays a Action entity.
      *
-     * @Route("/{id}", name="action_show")
+     * @Route("/{id}/{idActivity}", name="action_show")
      * @Method("GET")
      * @Template()
      */
-    public function showAction($id)
+    public function showAction($id, $idActivity)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -220,10 +220,11 @@ class ActionController extends Controller
             throw $this->createNotFoundException('Unable to find Action entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($id, $idActivity);
 
         return array(
             'entity'      => $entity,
+            'idActivity'  => $idActivity,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -231,11 +232,11 @@ class ActionController extends Controller
     /**
      * Displays a form to edit an existing Action entity.
      *
-     * @Route("/{id}/edit", name="action_edit")
+     * @Route("/{id}/{idActivity}/edit", name="action_edit")
      * @Method("GET")
      * @Template()
      */
-    public function editAction($id)
+    public function editAction($id, $idActivity)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -245,11 +246,12 @@ class ActionController extends Controller
             throw $this->createNotFoundException('Unable to find Action entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $editForm = $this->createEditForm($entity, $idActivity);
+        $deleteForm = $this->createDeleteForm($id, $idActivity);
 
         return array(
             'entity'      => $entity,
+            'idActivity'  => $idActivity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
@@ -262,10 +264,10 @@ class ActionController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Action $entity)
+    private function createEditForm(Action $entity, $idActivity)
     {
         $form = $this->createForm(new ActionType(), $entity, array(
-            'action' => $this->generateUrl('action_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('action_update', array('id' => $entity->getId(), 'idActivity' => $idActivity)),
             'method' => 'PUT',
         ));
 
@@ -276,11 +278,11 @@ class ActionController extends Controller
     /**
      * Edits an existing Action entity.
      *
-     * @Route("/{id}", name="action_update")
+     * @Route("/{id}/{idActivity}", name="action_update")
      * @Method("PUT")
      * @Template("AppBundle:Action:edit.html.twig")
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request, $id, $idActivity)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -290,18 +292,19 @@ class ActionController extends Controller
             throw $this->createNotFoundException('Unable to find Action entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $deleteForm = $this->createDeleteForm($id, $idActivity);
+        $editForm = $this->createEditForm($entity, $idActivity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('action_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('action_edit', array('id' => $id, 'idActivity' => $idActivity )));
         }
 
         return array(
             'entity'      => $entity,
+            'idActivity'  => $idActivity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
@@ -309,12 +312,12 @@ class ActionController extends Controller
     /**
      * Deletes a Action entity.
      *
-     * @Route("/{id}", name="action_delete")
+     * @Route("/{id}/{idActivity}", name="action_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Request $request, $id, $idActivity)
     {
-        $form = $this->createDeleteForm($id);
+        $form = $this->createDeleteForm($id, $idActivity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -329,7 +332,7 @@ class ActionController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('action'));
+        return $this->redirect($this->generateUrl('activity_show', array("id" => $idActivity)));
     }
 
     /**
@@ -339,10 +342,10 @@ class ActionController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
+    private function createDeleteForm($id, $idActivity)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('action_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('action_delete', array('id' => $id, 'idActivity' => $idActivity)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Supprimer'))
             ->getForm()

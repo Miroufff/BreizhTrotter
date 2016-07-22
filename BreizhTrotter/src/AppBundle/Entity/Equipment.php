@@ -109,15 +109,7 @@ class Equipment
     {
         return $this->activities;
     }
-
-    /**
-     * @param mixed $activities
-     */
-    public function setActivities($activities)
-    {
-        $this->activities = $activities;
-    }
-
+    
     /**
      * Add activities
      *

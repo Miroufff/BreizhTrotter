@@ -140,11 +140,11 @@ class ConstraintController extends Controller
     /**
      * Finds and displays a Constraint entity.
      *
-     * @Route("/{id}", name="constraint_show")
+     * @Route("/{id}/{idActivity}", name="constraint_show")
      * @Method("GET")
      * @Template()
      */
-    public function showAction($id)
+    public function showAction($id, $idActivity)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -154,10 +154,11 @@ class ConstraintController extends Controller
             throw $this->createNotFoundException('Unable to find Constraint entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($id, $idActivity);
 
         return array(
             'entity'      => $entity,
+            'idActivity'  => $idActivity,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -230,11 +231,11 @@ class ConstraintController extends Controller
     /**
      * Displays a form to edit an existing Constraint entity.
      *
-     * @Route("/{id}/edit", name="constraint_edit")
+     * @Route("/{id}/{idActivity}/edit", name="constraint_edit")
      * @Method("GET")
      * @Template()
      */
-    public function editAction($id)
+    public function editAction($id, $idActivity)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -244,11 +245,12 @@ class ConstraintController extends Controller
             throw $this->createNotFoundException('Unable to find Constraint entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $editForm = $this->createEditForm($entity, $idActivity);
+        $deleteForm = $this->createDeleteForm($id, $idActivity);
 
         return array(
             'entity'      => $entity,
+            'idActivity'  => $idActivity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
@@ -261,10 +263,10 @@ class ConstraintController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Constraint $entity)
+    private function createEditForm(Constraint $entity, $idActivity)
     {
         $form = $this->createForm(new ConstraintType(), $entity, array(
-            'action' => $this->generateUrl('constraint_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('constraint_update', array('id' => $entity->getId(), 'idActivity' => $idActivity)),
             'method' => 'PUT',
         ));
 
@@ -275,11 +277,11 @@ class ConstraintController extends Controller
     /**
      * Edits an existing Constraint entity.
      *
-     * @Route("/{id}", name="constraint_update")
+     * @Route("/{id}/{idActivity}", name="constraint_update")
      * @Method("PUT")
      * @Template("AppBundle:Constraint:edit.html.twig")
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request, $id, $idActivity)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -289,18 +291,19 @@ class ConstraintController extends Controller
             throw $this->createNotFoundException('Unable to find Constraint entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $deleteForm = $this->createDeleteForm($id, $idActivity);
+        $editForm = $this->createEditForm($entity, $idActivity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('constraint_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('constraint_edit', array('id' => $id, 'idActivity' => $idActivity)));
         }
 
         return array(
             'entity'      => $entity,
+            'idActivity'  => $idActivity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
@@ -308,12 +311,12 @@ class ConstraintController extends Controller
     /**
      * Deletes a Constraint entity.
      *
-     * @Route("/{id}", name="constraint_delete")
+     * @Route("/{id}/{idActivity}", name="constraint_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Request $request, $id, $idActivity)
     {
-        $form = $this->createDeleteForm($id);
+        $form = $this->createDeleteForm($id, $idActivity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -328,7 +331,7 @@ class ConstraintController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('constraint'));
+        return $this->redirect($this->generateUrl('activity_show', array('id' => $idActivity)));
     }
 
     /**
@@ -338,10 +341,10 @@ class ConstraintController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
+    private function createDeleteForm($id, $idActivity)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('constraint_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('constraint_delete', array('id' => $id, 'idActivity' => $idActivity)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Supprimer'))
             ->getForm()

@@ -85,18 +85,16 @@
     <ul class="record_actions">
         {% if is_granted("ROLE_SCENARIO_DELETE") %}
             <li>
-                <a href="{{ path('action_edit', { 'id': entity.id }) }}">
+                <a href="{{ path('action_edit', { 'id': entity.id, 'idActivity': idActivity }) }}">
                     Modifier
                 </a>
             </li>
         {% endif %}
-        {% for activity in entity.activities %}
-            <li>
-                <a href="{{ path('activity_show', { 'id': activity.id }) }}">
-                    Retour à l'activité : {{ activity.name }}
-                </a>
-            </li>
-        {% endfor %}
+        <li>
+            <a href="{{ path('activity_show', { 'id': idActivity }) }}">
+                Retour à l'activité
+            </a>
+        </li>
         {% if is_granted("ROLE_SCENARIO_DELETE") %}
             <li>{{ form(delete_form) }}</li>
         {% endif %}
