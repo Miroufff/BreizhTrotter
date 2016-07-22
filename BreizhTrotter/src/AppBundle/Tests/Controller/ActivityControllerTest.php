@@ -2,7 +2,13 @@
 
 namespace AppBundle\Tests\Controller;
 
+use Doctrine\Bundle\DoctrineBundle\Command\CreateDatabaseDoctrineCommand;
+use Doctrine\Bundle\DoctrineBundle\Command\DropDatabaseDoctrineCommand;
+use Doctrine\Bundle\DoctrineBundle\Command\Proxy\CreateSchemaDoctrineCommand;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\NullOutput;
 
 class ActivityControllerTest extends WebTestCase
 {
@@ -11,16 +17,29 @@ class ActivityControllerTest extends WebTestCase
      */
     protected $client = null;
 
+    private $em;
+    private $application;
+
 
     public function setUp()
     {
     }
 
-    public function testRedirect()
+    public function testRedirectLogin()
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/');
         $this->assertTrue($client->getResponse()->isRedirect());
+    }
+
+    public function testRedirectLogout()
+    {
+        $this->doLogin("admin", "admin");
+        $crawler = $this->client->request('GET', '/');
+        $crawler = $this->client->click($crawler->selectLink('Déconnexion')->link());
+        $this->assertTrue($this->client->getResponse()->isRedirect());
+        $crawler = $this->client->request('GET', '/');
+        $this->assertTrue($this->client->getResponse()->isRedirect());
     }
 
     public function doLogin($username, $password) {
