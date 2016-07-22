@@ -252,14 +252,6 @@ class Scenario
     }
 
     /**
-     * @param mixed $activities
-     */
-    public function setActivities($activities)
-    {
-        $this->activities = $activities;
-    }
-
-    /**
      * @return mixed
      */
     public function getImage()

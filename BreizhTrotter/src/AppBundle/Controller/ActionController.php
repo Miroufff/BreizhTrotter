@@ -19,25 +19,6 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ActionController extends Controller
 {
-
-    /**
-     * Lists all Action entities.
-     *
-     * @Route("/", name="action")
-     * @Method("GET")
-     * @Template()
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('AppBundle:Action')->findAll();
-
-        return array(
-            'entities' => $entities,
-        );
-    }
-
     /**
      * Creates a new Action entity.
      *

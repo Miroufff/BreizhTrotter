@@ -289,7 +289,7 @@ class ActivityController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('activity'));
+        return $this->redirect($this->generateUrl('scenario_show', array("id" => $entity->getScenario()->getId())));
     }
 
     /**
