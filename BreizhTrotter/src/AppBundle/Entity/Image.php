@@ -69,8 +69,8 @@ class Image
     }
 
     /**
-     * @ORM\Prepersist()
-     * @ORM\Preupdate()
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
      */
     public function preUpload()
     {
